@@ -15,8 +15,6 @@ public class Drag : MonoBehaviour
     {
         if(exitDrag || gameObject.GetComponent<InitData>().state == 3 )
         {
-            Debug.Log("truc");
-
             DetachObj();
             gameObject.transform.localScale = gameObject.GetComponent<InitData>().initScale;
             gameObject.transform.rotation = gameObject.GetComponent<InitData>().initRotation;
@@ -44,7 +42,7 @@ public class Drag : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
                 Debug.Log(hit.transform.tag);
-                if (hit.transform.tag == "Receptacle")
+                if (hit.transform.name == gameObject.name + "_Receptacle")
                 {
                     gameObject.GetComponent<InitData>().state = 4;
                     gameObject.transform.position = hit.transform.position;

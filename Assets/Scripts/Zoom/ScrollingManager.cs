@@ -9,12 +9,7 @@ public class ScrollingManager : MonoBehaviour
     private bool readyClick = true;
     
     public GameObject cameraEmpty;
-    public Vector3 cameraPosition;
 
-    private void Start()
-    {
-        cameraPosition = cameraEmpty.transform.position;
-    }
     private void Update()
     {
         switchColliderState();
@@ -35,10 +30,11 @@ public class ScrollingManager : MonoBehaviour
         {
             //Calcul distance si cette distance est plus petite que x alors clique
             curDist = Vector2.Distance(initPoint, Input.mousePosition);
-            if (curDist / 100 >= 1)
+            if (curDist / 50 >= 1)
             {
                 //Desactive le click
                 readyClick = false;
+                FindObjectOfType<CameraController>().readyClick = true;
             }
         }
     }
@@ -53,7 +49,7 @@ public class ScrollingManager : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit))
             {
-                FindObjectOfType<CameraController>().moveCamera(hit.transform, true);
+                FindObjectOfType<CameraController>().moveCamera(cameraEmpty, true);
                 
             }
                 FindObjectOfType<GameManager>().switchZoom();

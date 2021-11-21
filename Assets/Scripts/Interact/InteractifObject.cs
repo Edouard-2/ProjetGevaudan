@@ -175,27 +175,27 @@ public class InteractifObject : MonoBehaviour
     public void RaycastHit()
     {
         //Lorsque le bouton gauche est appuyé
-        if (Input.GetMouseButtonDown(0) && FindObjectOfType<GameManager>().gameState == 2)
+        if (Input.GetMouseButtonDown(0) )
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit))
             {
                 //Si c'est un obj qui ne va pas dans l'inventaire
-                if ( (hit.transform.tag == "Grand" || hit.transform.tag == "Petit" ) && state == 0 )
+                if ( (hit.transform.tag == "Grand" || hit.transform.tag == "Petit" ) && state == 0 && FindObjectOfType<GameManager>().gameState == 2)
                 {
                     CheckMovement(hit.transform);
                 }
 
                 //Si il va dans l'inventaire
-                else if ( ( hit.transform.tag == "Petit_Inventaire" || hit.transform.tag == "Petit_Drag") && hit.transform.GetComponent<InitData>().state == 0)
+                else if ( ( hit.transform.tag == "Petit_Inventaire" || hit.transform.tag == "Petit_Drag") && hit.transform.GetComponent<InitData>().state == 0 && FindObjectOfType<GameManager>().gameState == 2)
                 {
                     CheckMovement(hit.transform);
                     ReadyInventaire = true;
                 }
 
                 //Si c'est le flou arrière
-                else if ( state == 1 && hit.transform.tag == "Flou" )
+                else if ( state == 1 && hit.transform.tag == "Flou" && FindObjectOfType<GameManager>().gameState != 0)
                 {
                     //Si c'est un obj de inventaire les ombre porté sont toujours désactivé
                     if(curObject.transform.tag != "Petit_Inventaire" && curObject.transform.tag != "Petit_Drag")

@@ -69,7 +69,7 @@ public class InitData : MonoBehaviour
         }
 
         //Verifie qu'il est dans l'état inventaire
-        if ( state == 2 && FindObjectOfType<InteractifObject>().state == 0 && ready && FindObjectOfType<GameManager>().gameState == 2)
+        if ( state == 2 && FindObjectOfType<InteractifObject>().state == 0 && ready && FindObjectOfType<GameManager>().gameState != 0)
         {
             Debug.Log("hey");
             //On le sort de l'inventaire

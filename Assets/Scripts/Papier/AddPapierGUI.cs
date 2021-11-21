@@ -14,7 +14,7 @@ public class AddPapierGUI : MonoBehaviour
     private void Update()
     {
         //Si le joueur click et que aucun autres objet est en vu frontale (zoomé)
-        if (Input.GetMouseButtonDown(0) && FindObjectOfType<InteractifObject>().state == 0 && FindObjectOfType<GameManager>().gameState == 2)
+        if (Input.GetMouseButtonDown(0) && FindObjectOfType<InteractifObject>().state == 0 && FindObjectOfType<GameManager>().gameState != 0)
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

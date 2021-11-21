@@ -8,12 +8,7 @@ public class IsScrolling : MonoBehaviour
 
     private void OnMouseUpAsButton()
     {
-        if (DeZoom && FindObjectOfType<GameManager>().gameState == 2 && (FindObjectOfType<InteractifObject>().curObject == FindObjectOfType<InteractifObject>().transform || FindObjectOfType<InteractifObject>().curObject.GetComponent<InitData>().state != 1) )
-        {
-            FindObjectOfType<GameManager>().switchZoom();
-            FindObjectOfType<CameraController>().moveCamera(gameObject, false);
-            Debug.Log("DeZoom");
-        }
+        StartCoroutine(DeZoomAction());
     }
 
     //Appeler dans le script addPapier
@@ -27,5 +22,16 @@ public class IsScrolling : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
 
         DeZoom = true;
+    }
+
+    IEnumerator DeZoomAction()
+    {
+        yield return new WaitForSeconds(0.1f);
+        if (DeZoom && FindObjectOfType<GameManager>().gameState == 2 && (FindObjectOfType<InteractifObject>().curObject == FindObjectOfType<InteractifObject>().transform || FindObjectOfType<InteractifObject>().curObject.GetComponent<InitData>().state != 1))
+        {
+            FindObjectOfType<GameManager>().switchZoom();
+            FindObjectOfType<CameraController>().moveCamera(gameObject, false);
+            Debug.Log("DeZoom");
+        }
     }
 }

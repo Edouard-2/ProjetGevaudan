@@ -103,7 +103,7 @@ public class CameraController : MonoBehaviour
 
     void rotate()
     {
-        float rotateData = Input.GetAxis("Mouse X") * 400 * Time.deltaTime;
+        float rotateData = Input.GetAxis("Mouse X") * 100 * Time.deltaTime;
 
         transform.Rotate(0, -rotateData, 0 ,Space.World);
 

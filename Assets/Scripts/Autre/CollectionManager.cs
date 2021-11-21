@@ -18,6 +18,7 @@ public class CollectionManager : MonoBehaviour, IPointerClickHandler
         }
         else
         {
+            DesactiveDeZoom();
             activeDesactive(true);
             FindObjectOfType<GameManager>().gameState = 0;
         }
@@ -28,6 +29,16 @@ public class CollectionManager : MonoBehaviour, IPointerClickHandler
         for (int i = 0; i < uiListObj.Count; i++)
         {
             uiListObj[i].SetActive(_bool);
+        }
+    }
+    void DesactiveDeZoom()
+    {
+        IsScrolling[] listObj = FindObjectsOfType<IsScrolling>();
+
+        foreach (var item in listObj)
+        {
+            item.DeZoom = false;
+            item.DeZooming();
         }
     }
 }

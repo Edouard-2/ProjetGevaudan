@@ -23,16 +23,24 @@ public class GameManager : MonoBehaviour
 
     public void switchZoom()
     {
+        Debug.Log("zofn");
         if ( gameState == 1) 
         { 
+            
+            prevGameState = gameState;
             gameState = 2;
-            prevGameState = 1;
         }
-
-        else 
+        else if (gameState == 0)
         {
+            int temp = prevGameState;
+            prevGameState = gameState;
+            gameState = temp;
+        }
+        else if (gameState == 2)
+        {
+            prevGameState = gameState;
             gameState = 1;
-            prevGameState = 2;
+            
         }
     }
 }

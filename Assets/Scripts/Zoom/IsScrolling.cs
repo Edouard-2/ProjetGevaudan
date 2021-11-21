@@ -5,9 +5,11 @@ using UnityEngine;
 public class IsScrolling : MonoBehaviour
 {
     public bool DeZoom = true;
+    public bool state = true;
 
     private void OnMouseUpAsButton()
     {
+        
         StartCoroutine(DeZoomAction());
     }
 
@@ -16,6 +18,10 @@ public class IsScrolling : MonoBehaviour
     {
         StartCoroutine(activeDeZoom());
     }
+    public void activeState()
+    {
+        StartCoroutine(changeState());
+    }
 
     IEnumerator activeDeZoom()
     {
@@ -23,11 +29,17 @@ public class IsScrolling : MonoBehaviour
 
         DeZoom = true;
     }
+    IEnumerator changeState()
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        state = true;
+    }
 
     IEnumerator DeZoomAction()
     {
-        yield return new WaitForSeconds(0.1f);
-        if (DeZoom && FindObjectOfType<GameManager>().gameState == 2 && (FindObjectOfType<InteractifObject>().curObject == FindObjectOfType<InteractifObject>().transform || FindObjectOfType<InteractifObject>().curObject.GetComponent<InitData>().state != 1))
+        yield return new WaitForSeconds(0.01f);
+        if (state && DeZoom && FindObjectOfType<GameManager>().gameState == 2 && (FindObjectOfType<InteractifObject>().curObject == FindObjectOfType<InteractifObject>().transform || FindObjectOfType<InteractifObject>().curObject.GetComponent<InitData>().state != 1))
         {
             FindObjectOfType<GameManager>().switchZoom();
             FindObjectOfType<CameraController>().moveCamera(gameObject, false);

@@ -13,14 +13,16 @@ public class CollectionManager : MonoBehaviour, IPointerClickHandler
     {
         if (uiListObj[0].active)
         {
+            activeDeZoom();
             activeDesactive(false);
-            FindObjectOfType<GameManager>().gameState = FindObjectOfType<GameManager>().prevGameState;
+            FindObjectOfType<GameManager>().switchZoom();
         }
         else
         {
             DesactiveDeZoom();
             activeDesactive(true);
-            FindObjectOfType<GameManager>().gameState = 0;
+
+            FindObjectOfType<GameManager>().switchZoom();
         }
     }
 
@@ -37,8 +39,16 @@ public class CollectionManager : MonoBehaviour, IPointerClickHandler
 
         foreach (var item in listObj)
         {
-            item.DeZoom = false;
-            item.DeZooming();
+            item.state = false;
+        }
+    }
+    void activeDeZoom()
+    {
+        IsScrolling[] listObj = FindObjectsOfType<IsScrolling>();
+
+        foreach (var item in listObj)
+        {
+            item.activeState();
         }
     }
 }

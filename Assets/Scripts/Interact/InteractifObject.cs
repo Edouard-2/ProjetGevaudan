@@ -63,7 +63,7 @@ public class InteractifObject : MonoBehaviour
         }
 
         //Si l'obj vien d'arriver et qu'il peut aller dans l'inventaire
-        else if (state == 0 && curObject.position != initPosition && ReadyInventaire )
+        else if (state == 0 && curObject.position != initPosition && ReadyInventaire && curObject != transform )
         {
             
             GoInventaire(curObject);
@@ -101,16 +101,39 @@ public class InteractifObject : MonoBehaviour
     //Zoom
     public void Zoom()
     {
-            curObject.position = Vector3.MoveTowards(curObject.position, positionFront.transform.position, Vector3.Distance(curObject.position, positionFront.transform.position) / speedPosition * Time.deltaTime);
-            curObject.localScale = Vector3.MoveTowards(curObject.localScale, facteur, Vector3.Distance(curObject.localScale, facteur) / speedPosition * Time.deltaTime);
+        curObject.position = Vector3.MoveTowards(curObject.position, positionFront.transform.position, Vector3.Distance(curObject.position, positionFront.transform.position) / speedPosition * Time.deltaTime);
+        curObject.localScale = Vector3.MoveTowards(curObject.localScale, facteur, Vector3.Distance(curObject.localScale, facteur) / speedPosition * Time.deltaTime);
+        StartCoroutine(SecondStateInitData());
     }
 
     //DeZoom
     public void DeZoom()
     {
-            curObject.position = Vector3.MoveTowards(curObject.position, initPosition, Vector3.Distance(curObject.position, initPosition) / speedPosition * Time.deltaTime);
-            curObject.localScale = Vector3.MoveTowards(curObject.localScale, initScale, Vector3.Distance(curObject.localScale, initScale) / speedPosition * Time.deltaTime);
-            curObject.rotation = initRotation;
+        curObject.position = Vector3.MoveTowards(curObject.position, initPosition, Vector3.Distance(curObject.position, initPosition) / speedPosition * Time.deltaTime);
+        curObject.localScale = Vector3.MoveTowards(curObject.localScale, initScale, Vector3.Distance(curObject.localScale, initScale) / speedPosition * Time.deltaTime);
+        curObject.rotation = initRotation;
+        StartCoroutine(InitStateInitData());
+        
+    }
+
+    IEnumerator SecondStateInitData()
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        curObject.GetComponent<InitData>().state = 1;
+    }
+    IEnumerator InitStateInitData()
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        curObject.GetComponent<InitData>().state = 0;
+    }
+    
+    IEnumerator switchStateInventaireObj(Transform _curObject)
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        _curObject.GetComponent<InitData>().state = 2;
     }
 
     //Mettre l'obj dans l'inventaire 
@@ -127,7 +150,8 @@ public class InteractifObject : MonoBehaviour
         _curObject.GetComponent<InitData>().id = id;
 
         //Le changer d'état
-        _curObject.GetComponent<InitData>().state = 2;
+
+        StartCoroutine(switchStateInventaireObj(_curObject));
 
         //La bonne rotation
         _curObject.rotation = FindObjectOfType<InventaireManager>().emplacementItems[id].transform.rotation;
@@ -185,7 +209,6 @@ public class InteractifObject : MonoBehaviour
                         {
                             rangerInventaire(curObject);
                         }
-
                         
                     }
 
@@ -208,7 +231,7 @@ public class InteractifObject : MonoBehaviour
          int id = _curObject.GetComponent<InitData>().id;
 
         //Le changer d'état
-        _curObject.GetComponent<InitData>().state = 2;
+        StartCoroutine(switchStateInventaireObj(_curObject));
 
         //La bonne rotation
         _curObject.rotation = FindObjectOfType<InventaireManager>().emplacementItems[id].transform.rotation;
@@ -234,8 +257,6 @@ public class InteractifObject : MonoBehaviour
 
         //Initialiser les variablies init
         initVariables(_hit);
-        
-        _hit.GetComponent<InitData>().state = 1;
 
         //Enlever les ombre porté
         _hit.GetComponent<Renderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;

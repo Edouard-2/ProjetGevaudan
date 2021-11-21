@@ -8,8 +8,6 @@ public class Drag : MonoBehaviour
     public bool downDrag = false;
     public bool exitDrag = false;
 
-    private Vector3 mOffset;
-    private float mZCoord;
 
     private void OnMouseDrag()
     {

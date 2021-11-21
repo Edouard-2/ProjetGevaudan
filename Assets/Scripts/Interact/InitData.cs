@@ -31,6 +31,11 @@ public class InitData : MonoBehaviour
         initRotation = transform.rotation;
     }
 
+    private void Update()
+    {
+        
+    }
+
     [System.Obsolete]
     //LORSQUE LA SOURIS RESTE APPUYE
     private void OnMouseDrag()
@@ -66,6 +71,7 @@ public class InitData : MonoBehaviour
         //Verifie qu'il est dans l'état inventaire
         if ( state == 2 && FindObjectOfType<InteractifObject>().state == 0 && ready && FindObjectOfType<GameManager>().gameState == 2)
         {
+            Debug.Log("hey");
             //On le sort de l'inventaire
             RemoveInventaire();
 

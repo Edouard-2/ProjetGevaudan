@@ -7,7 +7,14 @@ public class ScrollingManager : MonoBehaviour
     private Vector2 initPoint;
     private float curDist;
     private bool readyClick = true;
+    
+    public GameObject cameraEmpty;
+    public Vector3 cameraPosition;
 
+    private void Start()
+    {
+        cameraPosition = cameraEmpty.transform.position;
+    }
     private void Update()
     {
         switchColliderState();
@@ -41,9 +48,18 @@ public class ScrollingManager : MonoBehaviour
         if( readyClick && FindObjectOfType<GameManager>().gameState == 1)
         {
             Debug.Log("Zoom");
-            FindObjectOfType<GameManager>().switchZoom();
+
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out hit))
+            {
+                FindObjectOfType<CameraController>().moveCamera(hit.transform, true);
+                
+            }
+                FindObjectOfType<GameManager>().switchZoom();
         }
     }
+
 
     void switchColliderState()
     {

@@ -5,12 +5,14 @@ using UnityEngine;
 public class IsScrolling : MonoBehaviour
 {
     public bool DeZoom = true;
+    
 
     private void OnMouseUpAsButton()
     {
-        if (DeZoom && FindObjectOfType<GameManager>().gameState == 2 && FindObjectOfType<InteractifObject>().curObject != FindObjectOfType<InteractifObject>().transform && FindObjectOfType<InteractifObject>().curObject.GetComponent<InitData>().state != 1 )
+        if (DeZoom && FindObjectOfType<GameManager>().gameState == 2 && (FindObjectOfType<InteractifObject>().curObject == FindObjectOfType<InteractifObject>().transform || FindObjectOfType<InteractifObject>().curObject.GetComponent<InitData>().state != 1) )
         {
             FindObjectOfType<GameManager>().switchZoom();
+            FindObjectOfType<CameraController>().moveCamera(transform, false);
             Debug.Log("DeZoom");
         }
     }

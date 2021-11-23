@@ -6,9 +6,9 @@ public class CameraController : MonoBehaviour
 {
     Vector3 initPosition;
     Vector3 startPosition;
-    Vector3 NextPosition;
+    public Vector3 NextPosition;
     Quaternion initRotation;
-    Quaternion NextRotation;
+    public Quaternion NextRotation;
 
     private float rotSpeed = 10f;
     private float posSpeed = 0.5f;
@@ -34,16 +34,13 @@ public class CameraController : MonoBehaviour
             if(FindObjectOfType<GameManager>().gameState == 1)
             {
                 gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, startPosition, posSpeed);
+                gameObject.transform.rotation = NextRotation;
             }
             else
             {
                 gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, NextPosition, posSpeed);
             }
 
-            if (FindObjectOfType<GameManager>().gameState != 1)
-            {
-                gameObject.transform.rotation = NextRotation;
-            }
             
             /*gameObject.transform.rotation = Quaternion.RotateTowards(gameObject.transform.rotation, NextRotation, rotSpeed);*/
         }

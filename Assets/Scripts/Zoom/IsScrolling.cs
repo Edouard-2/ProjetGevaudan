@@ -9,7 +9,6 @@ public class IsScrolling : MonoBehaviour
 
     private void OnMouseUpAsButton()
     {
-        
         StartCoroutine(DeZoomAction());
     }
 
@@ -41,7 +40,7 @@ public class IsScrolling : MonoBehaviour
         yield return new WaitForSeconds(0.01f);
         if (state && DeZoom && FindObjectOfType<GameManager>().gameState == 2 && (FindObjectOfType<InteractifObject>().curObject == FindObjectOfType<InteractifObject>().transform || FindObjectOfType<InteractifObject>().curObject.GetComponent<InitData>().state != 1))
         {
-            FindObjectOfType<GameManager>().switchZoom();
+            FindObjectOfType<GameManager>().switchZoom(0);
             FindObjectOfType<CameraController>().moveCamera(gameObject, false);
             Debug.Log("DeZoom");
         }

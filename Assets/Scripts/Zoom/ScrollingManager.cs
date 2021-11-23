@@ -7,6 +7,8 @@ public class ScrollingManager : MonoBehaviour
     private Vector2 initPoint;
     private float curDist;
     private bool readyClick = true;
+
+    public bool activate;
     
     public GameObject cameraEmpty;
 
@@ -41,7 +43,7 @@ public class ScrollingManager : MonoBehaviour
 
     private void OnMouseUp()
     {
-        if( readyClick && FindObjectOfType<GameManager>().gameState == 1)
+        if(activate && readyClick && (FindObjectOfType<GameManager>().gameState == 1 || FindObjectOfType<GameManager>().gameState == 2 || FindObjectOfType<GameManager>().gameState == 3))
         {
             Debug.Log("Zoom");
 
@@ -49,23 +51,79 @@ public class ScrollingManager : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit))
             {
-                FindObjectOfType<CameraController>().moveCamera(cameraEmpty, true);
-                
+                if (gameObject.tag == "Seconde_Hitbox" && FindObjectOfType<GameManager>().gameState == 2)
+                {
+                    FindObjectOfType<CameraController>().moveCamera(cameraEmpty, true);
+                }
+                else if (gameObject.tag == "First_Hitbox" && FindObjectOfType<GameManager>().gameState == 1)
+                {
+                    FindObjectOfType<CameraController>().moveCamera(cameraEmpty, true);
+                }
+                else if (gameObject.tag == "First_Hitbox" && FindObjectOfType<GameManager>().gameState == 3)
+                {
+                    FindObjectOfType<CameraController>().moveCamera(cameraEmpty, true);
+                }
+
+                if(FindObjectOfType<GameManager>().gameState == 2)
+                {
+                    FindObjectOfType<GameManager>().switchZoom(3);
+                    
+                }
+                else
+                {
+                    FindObjectOfType<GameManager>().switchZoom(0);
+                }
             }
-                FindObjectOfType<GameManager>().switchZoom();
         }
     }
 
 
     void switchColliderState()
     {
-        if (readyClick && FindObjectOfType<GameManager>().gameState == 2)
+        if (readyClick && FindObjectOfType<GameManager>().gameState == 3 )
         {
-            gameObject.GetComponent<BoxCollider>().enabled = false;
+            if (gameObject.tag == "Seconde_Hitbox")
+            {
+                gameObject.GetComponent<BoxCollider>().enabled = false;
+            }
+            else
+            {
+                gameObject.GetComponent<BoxCollider>().enabled = true;
+            }
+            if (gameObject.name == "Avant")
+            {
+                gameObject.GetComponent<BoxCollider>().enabled = false;
+            }
+
         }
+        
+        if (readyClick && FindObjectOfType<GameManager>().gameState == 2 )
+        {
+            if (gameObject.tag == "Seconde_Hitbox")
+            {
+                gameObject.GetComponent<BoxCollider>().enabled = true;
+            }
+            else
+            {
+                gameObject.GetComponent<BoxCollider>().enabled = false;
+            }
+        }
+
         if (readyClick && FindObjectOfType<GameManager>().gameState == 1)
         {
-            gameObject.GetComponent<BoxCollider>().enabled = true;
+            if (gameObject.tag == "Seconde_Hitbox")
+            {
+                gameObject.GetComponent<BoxCollider>().enabled = false;
+            }
+            else
+            {
+                gameObject.GetComponent<BoxCollider>().enabled = true;
+            }
+            if (gameObject.name == "Avant")
+            {
+                gameObject.GetComponent<BoxCollider>().enabled = true;
+            }
+
         }
     }
 }

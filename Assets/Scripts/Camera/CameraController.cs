@@ -5,12 +5,13 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     Vector3 initPosition;
+    Vector3 startPosition;
     Vector3 NextPosition;
     Quaternion initRotation;
     Quaternion NextRotation;
 
     private float rotSpeed = 10f;
-    private float posSpeed = 1f;
+    private float posSpeed = 0.5f;
     
     private float initPoint = -1000000;
 
@@ -21,6 +22,7 @@ public class CameraController : MonoBehaviour
     private void Start()
     {
         initPosition = transform.position;
+        startPosition = transform.position;
         initRotation = transform.rotation;
         NextPosition = Vector3.zero;
     }
@@ -29,12 +31,24 @@ public class CameraController : MonoBehaviour
     {
         if (NextPosition != Vector3.zero && gameObject.transform.position != NextPosition)
         {
-            gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, NextPosition, posSpeed);
-            gameObject.transform.rotation = NextRotation;
+            if(FindObjectOfType<GameManager>().gameState == 1)
+            {
+                gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, startPosition, posSpeed);
+            }
+            else
+            {
+                gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, NextPosition, posSpeed);
+            }
+
+            if (FindObjectOfType<GameManager>().gameState != 1)
+            {
+                gameObject.transform.rotation = NextRotation;
+            }
+            
             /*gameObject.transform.rotation = Quaternion.RotateTowards(gameObject.transform.rotation, NextRotation, rotSpeed);*/
         }
 
-        else if( FindObjectOfType<GameManager>().gameState == 1)
+        if( FindObjectOfType<GameManager>().gameState == 1)
         {
             DeplacementCamera();
         }
@@ -70,7 +84,7 @@ public class CameraController : MonoBehaviour
     void DeplacementCamera()
     {
         
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && FindObjectOfType<InventaireManager>().state == 0 )
         {
         
             if (initPoint == -1000000)
@@ -103,7 +117,7 @@ public class CameraController : MonoBehaviour
 
     void rotate()
     {
-        float rotateData = Input.GetAxis("Mouse X") * 400 * Time.deltaTime;
+        float rotateData = Input.GetAxis("Mouse X") * 5;
 
         transform.Rotate(0, -rotateData, 0 ,Space.World);
 

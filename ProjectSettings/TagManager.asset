@@ -11,6 +11,8 @@ TagManager:
   - Petit_Inventaire
   - Receptacle
   - Petit_Drag
+  - First_Hitbox
+  - Seconde_Hitbox
   layers:
   - Default
   - TransparentFX

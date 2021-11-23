@@ -19,7 +19,7 @@ public class PapierManager : MonoBehaviour
     private void Update()
     {
         //Lorsque le bouton gauche de la souris est appuyé
-        if (Input.GetMouseButtonDown(0) && FindObjectOfType<GameManager>().gameState == 2)
+        if (Input.GetMouseButtonDown(0) && (FindObjectOfType<GameManager>().gameState == 2 || FindObjectOfType<GameManager>().gameState == 3 ))
         {
             //On verifie si aucun autre papier n'est déja avancé
             int length = listPapier.Count;

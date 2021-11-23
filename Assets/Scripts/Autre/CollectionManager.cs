@@ -15,14 +15,14 @@ public class CollectionManager : MonoBehaviour, IPointerClickHandler
         {
             activeDeZoom();
             activeDesactive(false);
-            FindObjectOfType<GameManager>().switchZoom();
+            FindObjectOfType<GameManager>().switchZoom(0);
         }
         else
         {
             DesactiveDeZoom();
             activeDesactive(true);
 
-            FindObjectOfType<GameManager>().switchZoom();
+            FindObjectOfType<GameManager>().switchZoom(0);
         }
     }
 

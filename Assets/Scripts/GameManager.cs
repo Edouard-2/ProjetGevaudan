@@ -15,18 +15,16 @@ public class GameManager : MonoBehaviour
         gameState = 1;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void switchZoom(int _nbr)
     {
-        
-    }
 
-    public void switchZoom()
-    {
-        Debug.Log("zofn");
-        if ( gameState == 1) 
+        if (_nbr == 3)
+        {
+            prevGameState = gameState;
+            gameState = 3;
+        }
+        else if ( gameState == 1) 
         { 
-            
             prevGameState = gameState;
             gameState = 2;
         }
@@ -36,11 +34,17 @@ public class GameManager : MonoBehaviour
             prevGameState = gameState;
             gameState = temp;
         }
+
         else if (gameState == 2)
         {
             prevGameState = gameState;
             gameState = 1;
-            
+        }
+
+        else if (gameState == 3)
+        {
+            prevGameState = gameState;
+            gameState = 2;
         }
     }
 }

@@ -31,10 +31,6 @@ public class InitData : MonoBehaviour
         initRotation = transform.rotation;
     }
 
-    private void Update()
-    {
-        
-    }
 
     [System.Obsolete]
     //LORSQUE LA SOURIS RESTE APPUYE

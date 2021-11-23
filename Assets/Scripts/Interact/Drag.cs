@@ -11,7 +11,7 @@ public class Drag : MonoBehaviour
 
     private void OnMouseDrag()
     {
-        if(exitDrag || gameObject.GetComponent<InitData>().state == 3 )
+        if((exitDrag || gameObject.GetComponent<InitData>().state == 3) && FindObjectOfType<GameManager>().gameState == 2)
         {
             DetachObj();
             gameObject.transform.localScale = gameObject.GetComponent<InitData>().initScale;
@@ -49,15 +49,18 @@ public class Drag : MonoBehaviour
                 {
                     gameObject.GetComponent<BoxCollider>().enabled = true;
                     gameObject.GetComponent<InitData>().state = 2;
+                    
                     FindObjectOfType<InteractifObject>().rangerInventaire(gameObject.transform);
                 }
             }
+            
         }
+        exitDrag = false;
     }
 
     private void OnMouseOver()
     {
-        if (gameObject.GetComponent<InitData>().state == 2)
+        if (gameObject.GetComponent<InitData>().state == 3)
         {
             exitDrag = false;
         }

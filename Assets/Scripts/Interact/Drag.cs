@@ -17,7 +17,7 @@ public class Drag : MonoBehaviour
             gameObject.transform.localScale = gameObject.GetComponent<InitData>().initScale;
             gameObject.transform.rotation = gameObject.GetComponent<InitData>().initRotation;
 
-            gameObject.transform.localPosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 3));
+            gameObject.transform.localPosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1));
         }
     }
 
@@ -43,7 +43,8 @@ public class Drag : MonoBehaviour
                 if (hit.transform.name == gameObject.name + "_Receptacle")
                 {
                     gameObject.GetComponent<InitData>().state = 4;
-                    gameObject.transform.position = hit.transform.position;
+                    gameObject.transform.position = hit.transform.GetComponent<Receptacle>().empty.position;
+                    hit.transform.GetComponent<Receptacle>().ActiveBlock();
                     gameObject.transform.SetParent(hit.transform);
                 }
                 else

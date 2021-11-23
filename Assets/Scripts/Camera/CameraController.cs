@@ -29,16 +29,17 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
-        if (NextPosition != Vector3.zero && gameObject.transform.position != NextPosition)
+        if (NextPosition != Vector3.zero && gameObject.transform.position != NextPosition )
         {
-            if(FindObjectOfType<GameManager>().gameState == 1)
+            if(FindObjectOfType<GameManager>().gameState == 1 )
             {
                 gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, startPosition, posSpeed);
                 gameObject.transform.rotation = NextRotation;
             }
-            else
+            else 
             {
                 gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, NextPosition, posSpeed);
+                gameObject.transform.rotation = NextRotation;
             }
 
             
@@ -48,6 +49,8 @@ public class CameraController : MonoBehaviour
         if( FindObjectOfType<GameManager>().gameState == 1)
         {
             DeplacementCamera();
+            gameObject.transform.position = startPosition;
+            NextPosition = Vector3.zero;
         }
 
         if (Input.touchCount == 0)

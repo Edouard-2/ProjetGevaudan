@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class Receptacle : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Transform empty;
 
-    // Update is called once per frame
-    void Update()
+    public void ActiveBlock()
     {
-        
+        gameObject.GetComponent<OpenTiroir>().ChangeState();
     }
 }

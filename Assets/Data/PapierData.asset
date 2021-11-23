@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 660f15338400b2c4d8cb56457979794e, type: 3}
   m_Name: PapierData
   m_EditorClassIdentifier: 
-  boolPapier: 000000000000
+  boolPapier: 010100000000

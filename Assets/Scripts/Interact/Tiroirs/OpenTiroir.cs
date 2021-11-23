@@ -65,7 +65,7 @@ public class OpenTiroir : MonoBehaviour
         camera.transform.rotation = _rotation;
     }
 
-    void ChangeState()
+    public void ChangeState()
     {
         besoinClef = false;
     }

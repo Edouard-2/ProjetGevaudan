@@ -11,6 +11,7 @@ public class InitData : MonoBehaviour
     //Autre
     public float rotSpeed = 5f;
 
+    public Vector3 initRotationValue;
     public Quaternion initRotation;
 
     public int state = 0;
@@ -28,7 +29,7 @@ public class InitData : MonoBehaviour
         //Initialisation
         initPosition = transform.position;
         initScale = transform.lossyScale;
-        initRotation = transform.rotation;
+        initRotation =  Quaternion.Euler(initRotationValue);
     }
 
 

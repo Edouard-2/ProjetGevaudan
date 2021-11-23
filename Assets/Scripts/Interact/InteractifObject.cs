@@ -182,13 +182,13 @@ public class InteractifObject : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
                 //Si c'est un obj qui ne va pas dans l'inventaire
-                if ( (hit.transform.tag == "Grand" || hit.transform.tag == "Petit" ) && state == 0 && FindObjectOfType<GameManager>().gameState == 2)
+                if ( (hit.transform.tag == "Grand" || hit.transform.tag == "Petit" ) && state == 0 && FindObjectOfType<GameManager>().gameState != 1 && FindObjectOfType<GameManager>().gameState != 0)
                 {
                     CheckMovement(hit.transform);
                 }
 
                 //Si il va dans l'inventaire
-                else if ( ( hit.transform.tag == "Petit_Inventaire" || hit.transform.tag == "Petit_Drag") && hit.transform.GetComponent<InitData>().state == 0 && FindObjectOfType<GameManager>().gameState == 2)
+                else if ( ( hit.transform.tag == "Petit_Inventaire" || hit.transform.tag == "Petit_Drag") && hit.transform.GetComponent<InitData>().state == 0 && FindObjectOfType<GameManager>().gameState != 1 && FindObjectOfType<GameManager>().gameState != 0)
                 {
                     CheckMovement(hit.transform);
                     ReadyInventaire = true;

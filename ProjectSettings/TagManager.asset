@@ -13,6 +13,7 @@ TagManager:
   - Petit_Drag
   - First_Hitbox
   - Seconde_Hitbox
+  - interieur
   layers:
   - Default
   - TransparentFX

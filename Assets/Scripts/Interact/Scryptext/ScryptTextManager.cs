@@ -15,6 +15,9 @@ public class ScryptTextManager : MonoBehaviour
     public GameObject camera;
 
     public GameObject antiHit;
+    public GameObject hit;
+
+    public bool done = false;
 
     string rouageWord;
     string correctWord = "MANDEMENT";
@@ -55,7 +58,9 @@ public class ScryptTextManager : MonoBehaviour
             hitBoxActive.SetActive(true);
             hitBoxDesactive.SetActive(false);
             antiHit.SetActive(false);
-
+            hit.SetActive(false);
+            hit.GetComponent<BoxCollider>().enabled = false;
+            done = true;
             FindObjectOfType<CameraController>().moveCamera(hitBoxActive.GetComponent<ScrollingManager>().cameraEmpty, true);
             
         }
@@ -63,6 +68,7 @@ public class ScryptTextManager : MonoBehaviour
 
     IEnumerator activeAnimation()
     {
+        FindObjectOfType<GameManager>().gameState = -1;
         yield return new WaitForSeconds(1f);
         gameObject.GetComponent<Animator>().SetTrigger("open");
         StartCoroutine(activePorteAnimation());
@@ -70,9 +76,11 @@ public class ScryptTextManager : MonoBehaviour
 
     IEnumerator activePorteAnimation()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         porteGauche.GetComponent<Animator>().SetTrigger("open");
         yield return new WaitForSeconds(0.1f);
         porteDroite.GetComponent<Animator>().SetTrigger("open");
+        yield return new WaitForSeconds(0.5f);
+        FindObjectOfType<GameManager>().gameState = 3;
     }
 }

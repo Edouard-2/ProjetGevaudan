@@ -45,13 +45,13 @@ public class ScrollingManager : MonoBehaviour
     {
         if(activate && readyClick && (FindObjectOfType<GameManager>().gameState == 1 || FindObjectOfType<GameManager>().gameState == 2 || FindObjectOfType<GameManager>().gameState == 3))
         {
-            Debug.Log("Zoom");
+            
 
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit))
             {
-                if (gameObject.tag == "Seconde_Hitbox" && FindObjectOfType<GameManager>().gameState == 2)
+                if ((gameObject.tag == "Seconde_Hitbox" || gameObject.tag == "interieur") && FindObjectOfType<GameManager>().gameState == 2)
                 {
                     FindObjectOfType<CameraController>().moveCamera(cameraEmpty, true);
                 }
@@ -64,13 +64,24 @@ public class ScrollingManager : MonoBehaviour
                     FindObjectOfType<CameraController>().moveCamera(cameraEmpty, true);
                 }
 
-                if(FindObjectOfType<GameManager>().gameState == 2)
+                if (FindObjectOfType<GameManager>().gameState == 2)
                 {
-                    FindObjectOfType<GameManager>().switchZoom(3);
-                    
+                    if(gameObject.tag == "First_Hitbox")
+                    {
+                        FindObjectOfType<GameManager>().switchZoom(0);
+                    }
+                    else if (gameObject.tag == "interieur" || gameObject.tag == "Seconde_Hitbox")
+                    {
+                        FindObjectOfType<GameManager>().switchZoom(3);
+                    }
                 }
-                else
+                else if (FindObjectOfType<GameManager>().gameState == 3)
                 {
+                    FindObjectOfType<GameManager>().switchZoom(0);
+                }
+                else if(hit.transform.tag != "Untagged" && hit.transform.tag != "interieur")
+                {
+                    Debug.Log(hit.transform.name);
                     FindObjectOfType<GameManager>().switchZoom(0);
                 }
             }
@@ -82,6 +93,11 @@ public class ScrollingManager : MonoBehaviour
     {
         if (readyClick && FindObjectOfType<GameManager>().gameState == 3 )
         {
+            if (gameObject.tag == "First_Hitbox")
+            {
+                gameObject.GetComponent<BoxCollider>().enabled = true;
+            }
+            
             if (gameObject.tag == "Seconde_Hitbox")
             {
                 gameObject.GetComponent<BoxCollider>().enabled = false;
@@ -90,6 +106,16 @@ public class ScrollingManager : MonoBehaviour
             {
                 gameObject.GetComponent<BoxCollider>().enabled = true;
             }
+
+            if (gameObject.tag == "interieur" && !FindObjectOfType<ScryptTextManager>().done)
+            {
+                gameObject.GetComponent<BoxCollider>().enabled = true;
+            }
+            else if ( gameObject.tag == "interieur" )
+            {
+                gameObject.GetComponent<BoxCollider>().enabled = false;
+            }
+
             if (gameObject.name == "Avant")
             {
                 gameObject.GetComponent<BoxCollider>().enabled = false;
@@ -103,7 +129,19 @@ public class ScrollingManager : MonoBehaviour
             {
                 gameObject.GetComponent<BoxCollider>().enabled = true;
             }
-            else
+            else if(gameObject.tag == "First_Hitbox")
+            {
+                gameObject.GetComponent<BoxCollider>().enabled = true;
+            }
+            if (gameObject.tag == "interieur" && !FindObjectOfType<ScryptTextManager>().done)
+            {
+                gameObject.GetComponent<BoxCollider>().enabled = false;
+            }
+            else if (gameObject.tag == "interieur")
+            {
+                gameObject.GetComponent<BoxCollider>().enabled = true;
+            }
+            if (gameObject.name == "Avant")
             {
                 gameObject.GetComponent<BoxCollider>().enabled = false;
             }
@@ -122,6 +160,10 @@ public class ScrollingManager : MonoBehaviour
             if (gameObject.name == "Avant")
             {
                 gameObject.GetComponent<BoxCollider>().enabled = true;
+            }
+            if (gameObject.tag == "interieur")
+            {
+                gameObject.GetComponent<BoxCollider>().enabled = false;
             }
 
         }

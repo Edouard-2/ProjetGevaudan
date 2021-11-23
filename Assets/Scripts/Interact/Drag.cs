@@ -44,6 +44,7 @@ public class Drag : MonoBehaviour
                 {
                     gameObject.GetComponent<InitData>().state = 4;
                     gameObject.transform.position = hit.transform.position;
+                    gameObject.transform.SetParent(hit.transform);
                 }
                 else
                 {

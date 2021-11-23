@@ -7,6 +7,8 @@ public class InitData : MonoBehaviour
     //Transform valeur
     public Vector3 initPosition;
     public Vector3 initScale;
+    public Vector3 facteurItem;
+    public Vector3 facteur;
 
     //Autre
     public float rotSpeed = 5f;

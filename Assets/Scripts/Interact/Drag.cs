@@ -55,7 +55,6 @@ public class Drag : MonoBehaviour
                     FindObjectOfType<InteractifObject>().rangerInventaire(gameObject.transform);
                 }
             }
-            
         }
         exitDrag = false;
     }

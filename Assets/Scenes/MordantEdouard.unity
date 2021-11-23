@@ -921,7 +921,7 @@ MonoBehaviour:
   state: 0
   activeMovement: 0
   facteurGrand: 0.15
-  facteurPetit: 0.01226575
+  facteurPetit: 0
   facteurItem: {x: 0.004, y: 0.004, z: 0.004}
   initPosition: {x: 0, y: 0, z: 0}
   initRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -2083,6 +2083,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: croix_part1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c0ce84ae7c9ac054681e3c98f2928649, type: 3}
+      propertyPath: m_TagString
+      value: Petit_Inventaire
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0ce84ae7c9ac054681e3c98f2928649, type: 3}
 --- !u!1 &281913482
@@ -2133,6 +2137,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initPosition: {x: 0, y: 0, z: 0}
   initScale: {x: 0, y: 0, z: 0}
+  facteurItem: {x: 0, y: 0, z: 0}
+  facteur: {x: 0, y: 0, z: 0}
   rotSpeed: 5
   initRotationValue: {x: 0, y: 0, z: 0}
   initRotation: {x: 0, y: 0, z: 0, w: 0}
@@ -7305,6 +7311,45 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 5828714007021999026, guid: b74ad4f85c3f1744ab47dbaa67ffa266, type: 3}
+--- !u!1 &1284231984 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c0ce84ae7c9ac054681e3c98f2928649, type: 3}
+  m_PrefabInstance: {fileID: 279061029}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1284231988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284231984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 921a74645473b8f4bb531ce29db2833b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initPosition: {x: 0, y: 0, z: 0}
+  initScale: {x: 0, y: 0, z: 0}
+  facteurItem: {x: 0.3, y: 0.3, z: 0.3}
+  facteur: {x: 0.7, y: 0.7, z: 0.7}
+  rotSpeed: 5
+  initRotationValue: {x: 0, y: 0, z: 0}
+  initRotation: {x: 0, y: 0, z: 0, w: 0}
+  state: 0
+  id: -1
+--- !u!65 &1284231989
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284231984}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 7.3459544, y: 5.9241066, z: 0.45832473}
+  m_Center: {x: 0.00000023841866, y: -0.00000011920933, z: 0.0000019073486}
 --- !u!1001 &1285586312
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7546,6 +7591,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initPosition: {x: 0, y: 0, z: 0}
   initScale: {x: 0, y: 0, z: 0}
+  facteurItem: {x: 0.005, y: 0.005, z: 0.005}
+  facteur: {x: 0.01226575, y: 0.01226575, z: 0.01226575}
   rotSpeed: 0
   initRotationValue: {x: -90, y: 180, z: -180}
   initRotation: {x: -0.11670624, y: 0.6974093, z: -0.6974093, w: -0.11670624}
@@ -8474,6 +8521,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initPosition: {x: 0, y: 0, z: 0}
   initScale: {x: 0, y: 0, z: 0}
+  facteurItem: {x: 0, y: 0, z: 0}
+  facteur: {x: 0, y: 0, z: 0}
   rotSpeed: 5
   initRotationValue: {x: 0, y: 0, z: 0}
   initRotation: {x: 0, y: 0, z: 0, w: 0}
@@ -11162,6 +11211,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initPosition: {x: 0, y: 0, z: 0}
   initScale: {x: 0, y: 0, z: 0}
+  facteurItem: {x: 0, y: 0, z: 0}
+  facteur: {x: 0, y: 0, z: 0}
   rotSpeed: 5
   initRotationValue: {x: 0, y: 0, z: 0}
   initRotation: {x: 0, y: 0, z: 0, w: 0}
@@ -12260,6 +12311,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initPosition: {x: 0, y: 0, z: 0}
   initScale: {x: 0, y: 0, z: 0}
+  facteurItem: {x: 0, y: 0, z: 0}
+  facteur: {x: 0, y: 0, z: 0}
   rotSpeed: 5
   initRotationValue: {x: 0, y: 0, z: 0}
   initRotation: {x: 0, y: 0, z: 0, w: 0}

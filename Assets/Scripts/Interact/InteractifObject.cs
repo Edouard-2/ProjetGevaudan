@@ -102,18 +102,18 @@ public class InteractifObject : MonoBehaviour
     public void Zoom()
     {
         curObject.position = Vector3.MoveTowards(curObject.position, positionFront.transform.position, Vector3.Distance(curObject.position, positionFront.transform.position) / speedPosition * Time.deltaTime);
-        curObject.localScale = Vector3.MoveTowards(curObject.localScale, facteur, Vector3.Distance(curObject.localScale, facteur) / speedPosition * Time.deltaTime);
+        curObject.localScale = Vector3.MoveTowards(curObject.localScale, curObject.GetComponent<InitData>().facteur, Vector3.Distance(curObject.localScale, curObject.GetComponent<InitData>().facteur) / speedPosition * Time.deltaTime);
         StartCoroutine(SecondStateInitData());
     }
 
     //DeZoom
     public void DeZoom()
     {
+        print("dezoom");
         curObject.position = Vector3.MoveTowards(curObject.position, initPosition, Vector3.Distance(curObject.position, initPosition) / speedPosition * Time.deltaTime);
         curObject.localScale = Vector3.MoveTowards(curObject.localScale, initScale, Vector3.Distance(curObject.localScale, initScale) / speedPosition * Time.deltaTime);
         curObject.rotation = initRotation;
         StartCoroutine(InitStateInitData());
-        
     }
 
     IEnumerator SecondStateInitData()
@@ -163,7 +163,7 @@ public class InteractifObject : MonoBehaviour
         _curObject.parent = FindObjectOfType<InventaireManager>().emplacementItems[id].transform;
         
         //Lui mettre la bonne taille
-        _curObject.localScale = facteurItem;
+        _curObject.localScale = _curObject.GetComponent<InitData>().facteurItem;
         
         //Verifier les collider des obj
         FindObjectOfType<InventaireManager>().verifColliderObj();
@@ -209,7 +209,6 @@ public class InteractifObject : MonoBehaviour
                         {
                             rangerInventaire(curObject);
                         }
-                        
                     }
 
                     //Enlever le flou
@@ -243,7 +242,7 @@ public class InteractifObject : MonoBehaviour
         _curObject.parent = FindObjectOfType<InventaireManager>().emplacementItems[id].transform;
 
         //Lui mettre la bonne taille
-        _curObject.localScale = facteurItem;
+        _curObject.localScale = _curObject.GetComponent<InitData>().facteurItem;
 
         //Verifier les collider des obj
         FindObjectOfType<InventaireManager>().verifColliderObj();

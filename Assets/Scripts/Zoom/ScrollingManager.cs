@@ -45,8 +45,6 @@ public class ScrollingManager : MonoBehaviour
     {
         if(activate && readyClick && (FindObjectOfType<GameManager>().gameState == 1 || FindObjectOfType<GameManager>().gameState == 2 || FindObjectOfType<GameManager>().gameState == 3))
         {
-            
-
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit))
@@ -75,7 +73,7 @@ public class ScrollingManager : MonoBehaviour
                         FindObjectOfType<GameManager>().switchZoom(3);
                     }
                 }
-                else if (FindObjectOfType<GameManager>().gameState == 3)
+                else if (FindObjectOfType<GameManager>().gameState == 3 || FindObjectOfType<GameManager>().gameState == 1)
                 {
                     FindObjectOfType<GameManager>().switchZoom(0);
                 }
@@ -153,7 +151,7 @@ public class ScrollingManager : MonoBehaviour
             {
                 gameObject.GetComponent<BoxCollider>().enabled = false;
             }
-            else
+            else if (gameObject.tag == "Seconde_Hitbox")
             {
                 gameObject.GetComponent<BoxCollider>().enabled = true;
             }

@@ -15,7 +15,7 @@ public class OpenTiroir : MonoBehaviour
             print(name);
             GetComponent<Animator>().SetTrigger("open");
             state = 1;
-            gameObject.GetComponent<ScrollingManager>().enabled = true;
+            /*gameObject.GetComponent<ScrollingManager>().enabled = true;*/
         }
     }
 

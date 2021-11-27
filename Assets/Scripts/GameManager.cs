@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
 
     public void switchZoom(int _nbr)
     {
+        
 
         if (_nbr > 2)
         {
@@ -24,6 +25,12 @@ public class GameManager : MonoBehaviour
             gameState = _nbr;
         }
 
+        else if (_nbr == -1) 
+        {
+            print("state");
+            prevGameState = gameState;
+            gameState = 0;
+        }
         else if ( gameState == 1) 
         { 
             prevGameState = gameState;
@@ -41,7 +48,7 @@ public class GameManager : MonoBehaviour
             gameState = 1;
         }
 
-        else if (gameState == 2)
+        else if (gameState == 2 )
         {
             prevGameState = gameState;
             gameState = 1;

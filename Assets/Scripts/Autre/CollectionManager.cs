@@ -26,7 +26,7 @@ public class CollectionManager : MonoBehaviour, IPointerClickHandler
             DesactiveDeZoom();
             activeDesactive(true);
 
-            FindObjectOfType<GameManager>().switchZoom(0);
+            FindObjectOfType<GameManager>().switchZoom(-1);
         }
     }
 

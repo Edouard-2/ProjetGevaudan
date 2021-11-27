@@ -30,6 +30,7 @@ public class OpenTiroir : MonoBehaviour
             GetComponent<Animator>().SetTrigger("open");
             state = 0;
             InitVariable();
+            MoveCamera(emptyCamera.transform.position, emptyCamera.transform.rotation);
             /*gameObject.GetComponent<ScrollingManager>().enabled = true;*/
         }
 

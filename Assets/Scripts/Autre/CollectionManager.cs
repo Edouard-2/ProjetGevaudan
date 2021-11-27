@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class CollectionManager : MonoBehaviour, IPointerClickHandler
 {
     //Liste des objets UI a faire apparaitre
     public List<GameObject> uiListObj;
+
+    public Sprite spriteState1;
+    public Sprite spriteState2;
 
     [System.Obsolete]
     public void OnPointerClick(PointerEventData eventData)
@@ -37,6 +41,8 @@ public class CollectionManager : MonoBehaviour, IPointerClickHandler
     {
         IsScrolling[] listObj = FindObjectsOfType<IsScrolling>();
 
+        gameObject.GetComponent<Image>().sprite = spriteState2;
+
         foreach (var item in listObj)
         {
             item.state = false;
@@ -45,6 +51,9 @@ public class CollectionManager : MonoBehaviour, IPointerClickHandler
     void activeDeZoom()
     {
         IsScrolling[] listObj = FindObjectsOfType<IsScrolling>();
+
+       
+        gameObject.GetComponent<Image>().sprite = spriteState1;
 
         foreach (var item in listObj)
         {

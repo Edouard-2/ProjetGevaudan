@@ -38,6 +38,13 @@ public class InteractifObject : MonoBehaviour
     //Ready inventaire
     public bool ReadyInventaire = true;
 
+    public InventaireManager myInventaireManager;
+
+    private void Awake()
+    {
+        myInventaireManager = FindObjectOfType<InventaireManager>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -57,7 +64,7 @@ public class InteractifObject : MonoBehaviour
         }
 
         //Si l'obj vne vas pas dans l'inventaire et retourne donc a sa position de base
-        else if (state == 0 && curObject.position != initPosition && curObject.transform.tag != "Petit_Inventaire" && curObject.transform.tag != "Petit_Drag")
+        else if (state == 0 && curObject.position != initPosition && curObject.transform.tag != "Petit_Inventaire" && curObject.transform.tag != "Petit_Drag" && curObject.transform.tag != "croix")
         {
             DeZoom();
         }
@@ -80,7 +87,7 @@ public class InteractifObject : MonoBehaviour
             Debug.Log(_hit.tag);
             facteur = new Vector3(facteurGrand, facteurGrand, facteurGrand);
         }
-        else if( _hit.tag == "Petit" || _hit.tag == "Petit_Inventaire" || _hit.tag == "Petit_Drag")
+        else if( _hit.tag == "Petit" || _hit.tag == "Petit_Inventaire" || _hit.tag == "Petit_Drag" || _hit.tag == "croix" )
         {
             facteur = new Vector3(facteurPetit, facteurPetit, facteurPetit);
         }
@@ -93,7 +100,7 @@ public class InteractifObject : MonoBehaviour
         {
             curObject = _hit;
             initPosition = curObject.GetComponent<InitData>().initPosition;
-            initScale = curObject.GetComponent<InitData>().initScale;
+            initScale = curObject.GetComponent<InitData>().facteur;
             initRotation = curObject.GetComponent<InitData>().initRotation;
         }
     }
@@ -102,7 +109,14 @@ public class InteractifObject : MonoBehaviour
     public void Zoom()
     {
         curObject.position = Vector3.MoveTowards(curObject.position, positionFront.transform.position, Vector3.Distance(curObject.position, positionFront.transform.position) / speedPosition * Time.deltaTime);
-        curObject.localScale = Vector3.MoveTowards(curObject.localScale, curObject.GetComponent<InitData>().facteur, Vector3.Distance(curObject.localScale, curObject.GetComponent<InitData>().facteur) / speedPosition * Time.deltaTime);
+        if(curObject.tag != "croix")
+        {
+            curObject.localScale = Vector3.MoveTowards(curObject.localScale, curObject.GetComponent<InitData>().facteur * 0.05f, Vector3.Distance(curObject.localScale, curObject.GetComponent<InitData>().facteur) / speedPosition * Time.deltaTime);
+        }
+        else
+        {
+            curObject.localScale = Vector3.MoveTowards(curObject.localScale, curObject.GetComponent<InitData>().facteur, Vector3.Distance(curObject.localScale, curObject.GetComponent<InitData>().facteur) / speedPosition * Time.deltaTime);
+        }
         StartCoroutine(SecondStateInitData());
     }
 
@@ -139,39 +153,45 @@ public class InteractifObject : MonoBehaviour
     //Mettre l'obj dans l'inventaire 
     public void GoInventaire(Transform _curObject)
     {
-        Debug.Log(_curObject.name);
+        int id;
+
         //Ajouter l'inventaire a la list
-        FindObjectOfType<InventaireManager>().listObj.Add(_curObject.gameObject);
+        myInventaireManager.listObj.Add(_curObject.gameObject);
 
         //Creation de l'id du joueur
-        int id = FindObjectOfType<InventaireManager>().listObj.IndexOf(_curObject.gameObject);
+        id = myInventaireManager.listObj.IndexOf(_curObject.gameObject);
 
         //Initialisation de l'id du joueur
         _curObject.GetComponent<InitData>().id = id;
 
         //Le changer d'état
-
         StartCoroutine(switchStateInventaireObj(_curObject));
-
+        
         //La bonne rotation
-        _curObject.rotation = FindObjectOfType<InventaireManager>().emplacementItems[id].transform.rotation;
+        _curObject.rotation = _curObject.GetComponent<InitData>().initRotation;
         
         //Le placer dans la case assigné
-        _curObject.position = FindObjectOfType<InventaireManager>().emplacementItems[id].transform.position;
+        _curObject.position = myInventaireManager.emplacementItems[_curObject.GetComponent<InitData>().id].transform.position;
         
         //Le mettre dans l'empty de la case a l'interieur de l'inventaire
-        _curObject.parent = FindObjectOfType<InventaireManager>().emplacementItems[id].transform;
+        _curObject.parent = myInventaireManager.emplacementItems[_curObject.GetComponent<InitData>().id].transform;
         
         //Lui mettre la bonne taille
         _curObject.localScale = _curObject.GetComponent<InitData>().facteurItem;
-        
+
         //Verifier les collider des obj
-        FindObjectOfType<InventaireManager>().verifColliderObj();
+        myInventaireManager.verifColliderObj();
+
+        if( _curObject.tag == "croix")
+        {
+            print("croixInventaire");
+            FindObjectOfType<CroixManager>().AddCroixEmpty(_curObject.gameObject);
+        }
 
         ReadyInventaire = false;
     }
 
-    //P
+
     public void RaycastHit()
     {
         //Lorsque le bouton gauche est appuyé
@@ -184,30 +204,40 @@ public class InteractifObject : MonoBehaviour
                 //Si c'est un obj qui ne va pas dans l'inventaire
                 if ( (hit.transform.tag == "Grand" || hit.transform.tag == "Petit" ) && state == 0 && FindObjectOfType<GameManager>().gameState != 1 && FindObjectOfType<GameManager>().gameState != 0)
                 {
+                    print("1");
                     CheckMovement(hit.transform);
                 }
 
                 //Si il va dans l'inventaire
-                else if ( ( hit.transform.tag == "Petit_Inventaire" || hit.transform.tag == "Petit_Drag") && hit.transform.GetComponent<InitData>().state == 0 && FindObjectOfType<GameManager>().gameState != 1 && FindObjectOfType<GameManager>().gameState != 0)
+                else if ( ( hit.transform.tag == "Petit_Inventaire" || hit.transform.tag == "Petit_Drag" || hit.transform.tag == "croix") && hit.transform.GetComponent<InitData>().state == 0 && FindObjectOfType<GameManager>().gameState != 1 && FindObjectOfType<GameManager>().gameState != 0)
                 {
+                    print("2");
                     CheckMovement(hit.transform);
                     ReadyInventaire = true;
                 }
 
                 //Si c'est le flou arrière
-                else if ( state == 1 && hit.transform.tag == "Flou" && FindObjectOfType<GameManager>().gameState != 0)
+                if ( state == 1 && hit.transform.tag == "Flou" && FindObjectOfType<GameManager>().gameState != 0)
                 {
+                    print("flou");
+                    ReadyInventaire = false;
                     //Si c'est un obj de inventaire les ombre porté sont toujours désactivé
-                    if(curObject.transform.tag != "Petit_Inventaire" && curObject.transform.tag != "Petit_Drag")
+                    if (curObject.transform.tag != "Petit_Inventaire" && curObject.transform.tag != "Petit_Drag" && curObject.transform.tag != "croix" )
                     {
-                        curObject.transform.GetComponent<Renderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
+                        print(curObject.transform.name +"ergerg");
+                        if (curObject.transform.GetComponent<Renderer>())
+                        {
+                            curObject.transform.GetComponent<Renderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
+                        }
+                        ReadyInventaire = true;
                     }
                     else
                     {
-                        Debug.Log("inventaire");
-                        if(ReadyInventaire == false)
+                        print("fct");
+                        if (ReadyInventaire == false)
                         {
-                            rangerInventaire(curObject);
+                            print("fctInventaire");
+                            GoInventaire(curObject);
                         }
                     }
 
@@ -220,33 +250,34 @@ public class InteractifObject : MonoBehaviour
             }
         }
     }
-
+/*
     public void rangerInventaire(Transform _curObject)
     {
+        print(_curObject.name);
         //Ajouter l'inventaire a la list
-        FindObjectOfType<InventaireManager>().listObj.Add(_curObject.gameObject);
+        myInventaireManager.listObj.Add(_curObject.gameObject);
 
         //Initialisation de l'id du joueur
          int id = _curObject.GetComponent<InitData>().id;
-
+        print(id);
         //Le changer d'état
         StartCoroutine(switchStateInventaireObj(_curObject));
 
         //La bonne rotation
-        _curObject.rotation = FindObjectOfType<InventaireManager>().emplacementItems[id].transform.rotation;
+        _curObject.rotation = myInventaireManager.emplacementItems[id].transform.rotation;
 
         //Le placer dans la case assigné
-        _curObject.position = FindObjectOfType<InventaireManager>().emplacementItems[id].transform.position;
+        _curObject.position = myInventaireManager.emplacementItems[id].transform.position;
 
         //Le mettre dans l'empty de la case a l'interieur de l'inventaire
-        _curObject.parent = FindObjectOfType<InventaireManager>().emplacementItems[id].transform;
+        _curObject.parent = myInventaireManager.emplacementItems[id].transform;
 
         //Lui mettre la bonne taille
         _curObject.localScale = _curObject.GetComponent<InitData>().facteurItem;
 
         //Verifier les collider des obj
-        FindObjectOfType<InventaireManager>().verifColliderObj();
-    }
+        myInventaireManager.verifColliderObj();
+    }*/
 
     //Faire toute les verifications / initialisation avant de le bouger
     public void CheckMovement(Transform _hit)
@@ -258,7 +289,11 @@ public class InteractifObject : MonoBehaviour
         initVariables(_hit);
 
         //Enlever les ombre porté
-        _hit.GetComponent<Renderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+        if (_hit.GetComponent<Renderer>())
+        {
+            _hit.GetComponent<Renderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+        }
+        
 
         //Activer le flou arrière
         flou.SetActive(true);

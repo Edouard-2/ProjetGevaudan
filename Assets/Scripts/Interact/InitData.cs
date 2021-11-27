@@ -18,10 +18,6 @@ public class InitData : MonoBehaviour
 
     public int state = 0;
 
-    //Drag and drop
-    private Vector3 mOffset;
-    private float mZCoord;
-
     //Id
     public int id = -1;
 
@@ -30,7 +26,9 @@ public class InitData : MonoBehaviour
     {
         //Initialisation
         initPosition = transform.position;
+
         initScale = transform.lossyScale;
+        
         initRotation =  Quaternion.Euler(initRotationValue);
     }
 
@@ -42,6 +40,7 @@ public class InitData : MonoBehaviour
         //Si l'obj est en position de zoom et que l'état est autre que zoom
         if ( transform.position != initPosition && state == 1 )
         {
+            print("erokjgeroigt");
             //Calcul des angle en fonction de la souris
             float rotX = Input.GetAxis("Mouse X") * rotSpeed * Mathf.Deg2Rad;
             float rotY = Input.GetAxis("Mouse Y") * rotSpeed * Mathf.Deg2Rad;
@@ -71,16 +70,17 @@ public class InitData : MonoBehaviour
         if ( state == 2 && FindObjectOfType<InteractifObject>().state == 0 && ready && FindObjectOfType<GameManager>().gameState != 0)
         {
             Debug.Log("hey");
-            //On le sort de l'inventaire
-            RemoveInventaire();
+            
 
             //Le mettre a l'endroit zoomé devant le joueur
             FindObjectOfType<InteractifObject>().CheckMovement(gameObject.transform);
+            //On le sort de l'inventaire
+            RemoveInventaire();
         }
     }
 
     //Sortir de l'inventaire
-    public void RemoveInventaire()
+    public void  RemoveInventaire()
     {
         FindObjectOfType<InventaireManager>().listObj.Remove(gameObject);
 

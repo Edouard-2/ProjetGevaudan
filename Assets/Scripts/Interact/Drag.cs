@@ -52,7 +52,7 @@ public class Drag : MonoBehaviour
                     gameObject.GetComponent<BoxCollider>().enabled = true;
                     gameObject.GetComponent<InitData>().state = 2;
                     
-                    FindObjectOfType<InteractifObject>().rangerInventaire(gameObject.transform);
+                    FindObjectOfType<InteractifObject>().GoInventaire(gameObject.transform);
                 }
             }
         }

@@ -47,7 +47,8 @@ public class OpenTiroir : MonoBehaviour
             {
                 MoveCamera(initPos, initRot);
                 state = Mathf.Abs(state - 1);
-                FindObjectOfType<GameManager>().gameState = FindObjectOfType<GameManager>().prevGameState;
+                FindObjectOfType<GameManager>().prevGameState = FindObjectOfType<GameManager>().prevGameState;
+                FindObjectOfType<GameManager>().gameState = 2;
             }
         }
     }

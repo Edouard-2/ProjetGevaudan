@@ -123,10 +123,12 @@ public class InteractifObject : MonoBehaviour
     //DeZoom
     public void DeZoom()
     {
-        print("dezoom");
         curObject.position = Vector3.MoveTowards(curObject.position, initPosition, Vector3.Distance(curObject.position, initPosition) / speedPosition * Time.deltaTime);
         curObject.localScale = Vector3.MoveTowards(curObject.localScale, initScale, Vector3.Distance(curObject.localScale, initScale) / speedPosition * Time.deltaTime);
-        curObject.rotation = initRotation;
+        if(curObject.GetComponent<InitData>().rotSpeed != 0)
+        {
+            curObject.rotation = initRotation;
+        }
         StartCoroutine(InitStateInitData());
     }
 
@@ -197,10 +199,12 @@ public class InteractifObject : MonoBehaviour
         //Lorsque le bouton gauche est appuyé
         if (Input.GetMouseButtonDown(0) )
         {
+            
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit))
             {
+                
                 //Si c'est un obj qui ne va pas dans l'inventaire
                 if ( (hit.transform.tag == "Grand" || hit.transform.tag == "Petit" ) && state == 0 && FindObjectOfType<GameManager>().gameState != 1 && FindObjectOfType<GameManager>().gameState != 0)
                 {
@@ -250,34 +254,6 @@ public class InteractifObject : MonoBehaviour
             }
         }
     }
-/*
-    public void rangerInventaire(Transform _curObject)
-    {
-        print(_curObject.name);
-        //Ajouter l'inventaire a la list
-        myInventaireManager.listObj.Add(_curObject.gameObject);
-
-        //Initialisation de l'id du joueur
-         int id = _curObject.GetComponent<InitData>().id;
-        print(id);
-        //Le changer d'état
-        StartCoroutine(switchStateInventaireObj(_curObject));
-
-        //La bonne rotation
-        _curObject.rotation = myInventaireManager.emplacementItems[id].transform.rotation;
-
-        //Le placer dans la case assigné
-        _curObject.position = myInventaireManager.emplacementItems[id].transform.position;
-
-        //Le mettre dans l'empty de la case a l'interieur de l'inventaire
-        _curObject.parent = myInventaireManager.emplacementItems[id].transform;
-
-        //Lui mettre la bonne taille
-        _curObject.localScale = _curObject.GetComponent<InitData>().facteurItem;
-
-        //Verifier les collider des obj
-        myInventaireManager.verifColliderObj();
-    }*/
 
     //Faire toute les verifications / initialisation avant de le bouger
     public void CheckMovement(Transform _hit)

@@ -9,10 +9,12 @@ public class CollectionManager : MonoBehaviour, IPointerClickHandler
     //Liste des objets UI a faire apparaitre
     public List<GameObject> uiListObj;
 
+    //Les différents sprite du bouton
     public Sprite spriteState1;
     public Sprite spriteState2;
 
     [System.Obsolete]
+    //Activer ou desactiver l''ui de la collection
     public void OnPointerClick(PointerEventData eventData)
     {
         if (uiListObj[0].active)
@@ -30,6 +32,7 @@ public class CollectionManager : MonoBehaviour, IPointerClickHandler
         }
     }
 
+    //Activation ou desactivation de l'ui de la collection
     public void activeDesactive(bool _bool)
     {
         for (int i = 0; i < uiListObj.Count; i++)
@@ -37,6 +40,8 @@ public class CollectionManager : MonoBehaviour, IPointerClickHandler
             uiListObj[i].SetActive(_bool);
         }
     }
+
+    //Desactiver les zoom in game 
     void DesactiveDeZoom()
     {
         IsScrolling[] listObj = FindObjectsOfType<IsScrolling>();
@@ -48,6 +53,8 @@ public class CollectionManager : MonoBehaviour, IPointerClickHandler
             item.state = false;
         }
     }
+
+    //Activer les zoom in game 
     void activeDeZoom()
     {
         IsScrolling[] listObj = FindObjectsOfType<IsScrolling>();

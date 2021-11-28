@@ -20,15 +20,16 @@ public class CaseDrag : MonoBehaviour
         myCoffreManager = FindObjectOfType<CoffreFortManager>();
     }
 
+    //Si le joueur appuiy sur cette case
     private void OnMouseUp()
     {
         if (myCoffreManager.state == 1)
         {
             initPoint = new Vector2(-10000, -100000);
         }
-
     }
 
+    //Deplacement de la case si il fait une distance pour déplacer la case
     private void OnMouseDrag()
     {
         if (myCoffreManager.state == 1)
@@ -45,6 +46,7 @@ public class CaseDrag : MonoBehaviour
 
             dir = (new Vector2(curPoint.x, curPoint.y) - new Vector2(initPoint.x, initPoint.y)).normalized;
 
+            //Verif de la distance
             if (curDistance / 150 >= 1)
             {
                 initPoint = curPoint;
@@ -52,6 +54,8 @@ public class CaseDrag : MonoBehaviour
             }
         }
     }
+
+    //Si la direction est positive ou negative
     public float CheckPositiveNegative(float _n)
     {
         if(_n > 0)
@@ -66,6 +70,7 @@ public class CaseDrag : MonoBehaviour
         return _n;
     }
 
+    //Selectionner la direction
     void ChoseDirection() 
     {
         if( Mathf.Abs(dir.x) > Mathf.Abs(dir.y))
@@ -81,6 +86,7 @@ public class CaseDrag : MonoBehaviour
         
     }
 
+    //Regarde si y a une bordure pour deplacer la case ou pas
     void RaycastCheckBordure()
     {
         RaycastHit hit;
@@ -95,6 +101,7 @@ public class CaseDrag : MonoBehaviour
         }
     }
 
+    //Bouger la case
     void MoveCase()
     {
         Vector3 pos = new Vector3(dir.x * 0.09f, dir.y * 0.08f, 0);
@@ -102,6 +109,7 @@ public class CaseDrag : MonoBehaviour
         VerifBonnePos();
     }
 
+    //Verification si la case est sur une bonne case
     void VerifBonnePos()
     {
         if( emptyWin.transform.position == gameObject.transform.position)

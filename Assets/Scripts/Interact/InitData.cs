@@ -30,6 +30,7 @@ public class InitData : MonoBehaviour
         initScale = transform.lossyScale;
         
         initRotation =  Quaternion.Euler(initRotationValue);
+        
     }
 
 
@@ -40,7 +41,6 @@ public class InitData : MonoBehaviour
         //Si l'obj est en position de zoom et que l'état est autre que zoom
         if ( transform.position != initPosition && state == 1 )
         {
-            print("erokjgeroigt");
             //Calcul des angle en fonction de la souris
             float rotX = Input.GetAxis("Mouse X") * rotSpeed * Mathf.Deg2Rad;
             float rotY = Input.GetAxis("Mouse Y") * rotSpeed * Mathf.Deg2Rad;

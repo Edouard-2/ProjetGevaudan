@@ -5,33 +5,43 @@ using UnityEngine;
 public class CroixManager : MonoBehaviour
 {
     public InventaireManager myInventaireManager;
+    public InitData myInitData;
 
     public bool ready = false;
 
     private void Awake()
     {
         myInventaireManager = FindObjectOfType<InventaireManager>();   
+        myInitData = gameObject.GetComponent<InitData>();   
     }
 
+    //Ajouter un morceau de croix a l'emplacement definie 
     public void AddCroixEmpty(GameObject _item)
     {
+        //Si aucun morceau de croix n'a encore était ramassé
         if (!ready)
         {
             ready = true;
-            gameObject.GetComponent<InitData>().enabled = true;
+            myInitData.enabled = true;
 
-            gameObject.GetComponent<InitData>().state = 2;
-            gameObject.GetComponent<InitData>().id = _item.GetComponent<InitData>().id;
+            myInitData.state = 2;
+            myInitData.id = _item.GetComponent<InitData>().id;
 
             gameObject.transform.position = _item.transform.position;
-            gameObject.transform.localRotation = Quaternion.Euler( gameObject.GetComponent<InitData>().initRotationValue);
+            gameObject.transform.localRotation = Quaternion.Euler(myInitData.initRotationValue);
             
-            gameObject.transform.SetParent(FindObjectOfType<InventaireManager>().emplacementItems[_item.GetComponent<InitData>().id].transform);
+            gameObject.transform.SetParent(myInventaireManager.emplacementItems[_item.GetComponent<InitData>().id].transform);
 
-            print(gameObject.GetComponent<InitData>().initScale);
+            print(myInitData.initScale);
+
+            myInventaireManager.listObj[_item.GetComponent<InitData>().id] = gameObject;
+        }
+        else
+        {
+            myInventaireManager.listObj.Remove(myInventaireManager.listObj[_item.GetComponent<InitData>().id]);
         }
 
-        FindObjectOfType<InventaireManager>().listObj[_item.GetComponent<InitData>().id] = gameObject;
+        //Ajout du morceau a l'empty parent 
 
         _item.GetComponent<BoxCollider>().enabled = false;
         _item.GetComponent<InitData>().enabled = false;

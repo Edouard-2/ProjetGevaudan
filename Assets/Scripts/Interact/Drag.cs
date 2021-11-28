@@ -11,11 +11,13 @@ public class Drag : MonoBehaviour
 
     private void OnMouseDrag()
     {
-        if((exitDrag || gameObject.GetComponent<InitData>().state == 3) && FindObjectOfType<GameManager>().gameState == 2)
+        downDrag = true;
+        if ((exitDrag || gameObject.GetComponent<InitData>().state == 3) && FindObjectOfType<GameManager>().gameState == 2)
         {
             DetachObj();
             gameObject.transform.localScale = gameObject.GetComponent<InitData>().initScale;
-            gameObject.transform.rotation = gameObject.GetComponent<InitData>().initRotation;
+            gameObject.transform.rotation = Quaternion.Euler(new Vector3(90, 180, 0));
+            /*gameObject.transform.rotation = gameObject.GetComponent<InitData>().initRotation;*/
 
             gameObject.transform.localPosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1));
         }
@@ -23,11 +25,11 @@ public class Drag : MonoBehaviour
 
     private void OnMouseExit()
     {
-        if (gameObject.GetComponent<InitData>().state == 2 && FindObjectOfType<GameManager>().gameState == 2)
+        if (downDrag && gameObject.GetComponent<InitData>().state == 2 && FindObjectOfType<GameManager>().gameState == 2)
         {
+            print("eokz,r");
             exitDrag = true;
         }
-        
     }
 
     private void OnMouseUp()
@@ -51,12 +53,13 @@ public class Drag : MonoBehaviour
                 {
                     gameObject.GetComponent<BoxCollider>().enabled = true;
                     gameObject.GetComponent<InitData>().state = 2;
-                    
+                    exitDrag = false;
                     FindObjectOfType<InteractifObject>().GoInventaire(gameObject.transform);
                 }
             }
         }
         exitDrag = false;
+        downDrag = false;
     }
 
     private void OnMouseOver()

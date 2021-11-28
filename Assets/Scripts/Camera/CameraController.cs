@@ -29,6 +29,7 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
+        //Si la position est différent de la prochaine pos
         if (NextPosition != Vector3.zero && gameObject.transform.position != NextPosition )
         {
             if(FindObjectOfType<GameManager>().gameState == 1 )
@@ -42,8 +43,6 @@ public class CameraController : MonoBehaviour
                 gameObject.transform.rotation = NextRotation;
             }
 
-            
-            /*gameObject.transform.rotation = Quaternion.RotateTowards(gameObject.transform.rotation, NextRotation, rotSpeed);*/
         }
 
         if( FindObjectOfType<GameManager>().gameState == 1)
@@ -59,6 +58,7 @@ public class CameraController : MonoBehaviour
         }
     }
 
+    //Changer la prochain position ou revenir en arrière avec la camera
     public void moveCamera(GameObject _hit, bool _switch)
     {
         if (_switch == true)
@@ -74,6 +74,7 @@ public class CameraController : MonoBehaviour
         }
     }
 
+    //Initialiser les variable d'avant mouvement
     void initVariables()
     {
         initPosition = transform.position;
@@ -81,6 +82,7 @@ public class CameraController : MonoBehaviour
         NextPosition = Vector3.zero;
     }
 
+    //Faire touner la camera sur elle meme si il est au centre de la pièce
     void DeplacementCamera()
     {
         
@@ -115,6 +117,7 @@ public class CameraController : MonoBehaviour
         }
     }
 
+    //Faire la rotation
     void rotate()
     {
         float rotateData = Input.GetAxis("Mouse X") * 5;

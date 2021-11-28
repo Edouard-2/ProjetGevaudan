@@ -30,6 +30,7 @@ public class CoffreFortManager : MonoBehaviour
         VerifCollider();
     }
 
+    //Si le joueur click dessus on zoom ou dezoom 
     private void OnMouseUpAsButton()
     {
         if(myGameManager.gameState == 3)
@@ -46,7 +47,7 @@ public class CoffreFortManager : MonoBehaviour
         }
     }
 
-
+    //Activer ou desactiver le collider en fonction de la state du jeu
     void VerifCollider()
     {
         if(myGameManager.gameState == 3 || state == 1)
@@ -59,6 +60,7 @@ public class CoffreFortManager : MonoBehaviour
         }
     }
 
+    //Ouvrir la porte si  toutes les cases sont au bonne endroit
     public void VerifOuverture()
     {
         int nbrWin = 0;

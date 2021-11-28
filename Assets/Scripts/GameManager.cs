@@ -15,10 +15,9 @@ public class GameManager : MonoBehaviour
         gameState = 1;
     }
 
+    // Changement de state
     public void switchZoom(int _nbr)
     {
-        
-
         if (_nbr > 2)
         {
             prevGameState = gameState;

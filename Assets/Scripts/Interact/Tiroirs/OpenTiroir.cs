@@ -16,50 +16,56 @@ public class OpenTiroir : MonoBehaviour
 
     CameraController camera;
 
+    GameManager myGameManager;
+
     private void Start()
     {
-
         camera = FindObjectOfType<CameraController>();
+        myGameManager = FindObjectOfType<GameManager>();
     }
 
+    //Si le joueur click alors la camera va au dessus ou en dessous / le tiroir s'ouvre s'il est fermé
     private void OnMouseUpAsButton()
     {
-        if( FindObjectOfType<GameManager>().gameState == 2 && !besoinClef && state == -1)
+        //Si le tiroir est fermé
+        if( myGameManager.gameState == 2 && !besoinClef && state == -1)
         {
             print(name);
             GetComponent<Animator>().SetTrigger("open");
-            state = 0;
+            state = 1;
             InitVariable();
             MoveCamera(emptyCamera.transform.position, emptyCamera.transform.rotation);
             /*gameObject.GetComponent<ScrollingManager>().enabled = true;*/
         }
 
-        else if( ( FindObjectOfType<GameManager>().gameState == 2 || FindObjectOfType<GameManager>().gameState == 4 ) && state != -1)
+        //Si le tiroir est ouvert on change les camera
+        else if( ( myGameManager.gameState == 2 || myGameManager.gameState == 4 ) && state != -1)
         {
-            print(name);
+            print(state);
             if (state == 0)
             {
                 MoveCamera(emptyCamera.transform.position, emptyCamera.transform.rotation);
                 state = Mathf.Abs(state - 1);
-                FindObjectOfType<GameManager>().prevGameState = FindObjectOfType<GameManager>().gameState;
-                FindObjectOfType<GameManager>().gameState = 4;
+                myGameManager.prevGameState = myGameManager.gameState;
+                myGameManager.gameState = 4;
             }
             else if (state == 1) 
             {
                 MoveCamera(initPos, initRot);
                 state = Mathf.Abs(state - 1);
-                FindObjectOfType<GameManager>().prevGameState = FindObjectOfType<GameManager>().prevGameState;
-                FindObjectOfType<GameManager>().gameState = 2;
+                myGameManager.prevGameState = myGameManager.prevGameState;
+                myGameManager.gameState = 2;
             }
         }
     }
 
     void InitVariable()
     {
-        initPos = FindObjectOfType<CameraController>().transform.position;
-        initRot = FindObjectOfType<CameraController>().transform.rotation;
+        initPos = camera.transform.position;
+        initRot = camera.transform.rotation;
     }
 
+    //Bouger la camera au dessus du tiroir
     void MoveCamera(Vector3 _positon, Quaternion _rotation)
     {
         camera.NextPosition = _positon;
@@ -67,6 +73,7 @@ public class OpenTiroir : MonoBehaviour
         camera.transform.rotation = _rotation;
     }
 
+    //Changement de state
     public void ChangeState()
     {
         besoinClef = false;

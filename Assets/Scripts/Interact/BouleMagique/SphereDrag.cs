@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SphereDrag : MonoBehaviour
 {
-    public int id = 0;
+    public int id;
 
     public bool solve = false;
 
@@ -17,12 +17,12 @@ public class SphereDrag : MonoBehaviour
     public SphereManager mySphereManager;
 
     public InitData myInitData;
+    public int goodId;
 
     // Start is called before the first frame update
     void Start()
     {
         initPoint = -1000000;
-        checkBonneEmplacement();
         mySphereManager = FindObjectOfType<SphereManager>();
     }
 
@@ -50,8 +50,9 @@ public class SphereDrag : MonoBehaviour
 
     public void checkBonneEmplacement()
     {
-        if(gameObject.transform.localRotation == Quaternion.Euler(new Vector3(-123.569f,0,0)))
+        if(id == goodId)
         {
+            print(name+" gagne");
             solve = true;
             mySphereManager.verifBonnePosition();
         }
@@ -61,14 +62,31 @@ public class SphereDrag : MonoBehaviour
     {
         if (Input.GetAxis("Mouse Y") > 0)
         {
+            id++;
             gameObject.transform.RotateAround(GetComponent<MeshRenderer>().bounds.center, Vector3.back, rotateData);
         }
+
         else if (Input.GetAxis("Mouse Y") < 0)
         {
+            id--;
             gameObject.transform.RotateAround(GetComponent<MeshRenderer>().bounds.center, Vector3.forward, rotateData);
-            
         }
+
+        verifOverId();
+
         checkBonneEmplacement();
         gameObject.transform.localPosition = Vector3.zero;
+    }
+
+    void verifOverId()
+    {
+        if(id > 12)
+        {
+            id = 1;
+        }
+        if(id < 1)
+        {
+            id = 12;
+        }
     }
 }

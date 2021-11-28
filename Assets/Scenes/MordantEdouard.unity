@@ -692,6 +692,7 @@ MonoBehaviour:
   rotateData: 30
   mySphereManager: {fileID: 0}
   myInitData: {fileID: 1307811312}
+  goodId: 2
 --- !u!64 &108401825
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4324,6 +4325,7 @@ MonoBehaviour:
   rotateData: 30
   mySphereManager: {fileID: 0}
   myInitData: {fileID: 1307811312}
+  goodId: 6
 --- !u!64 &578584787
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5826,6 +5828,7 @@ MonoBehaviour:
   rotateData: 30
   mySphereManager: {fileID: 0}
   myInitData: {fileID: 1307811312}
+  goodId: 9
 --- !u!64 &849472069
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6725,7 +6728,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.17606564, y: 0.0002712756, z: -0.000010529532, w: 0.9843784}
+  m_LocalRotation: {x: 0.12449589, y: 0.69621825, z: -0.12449853, w: 0.6959031}
   m_LocalPosition: {x: -17.46, y: 2.836, z: -5.51}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -6734,7 +6737,7 @@ Transform:
   - {fileID: 532971601}
   m_Father: {fileID: 0}
   m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 20.281, y: 0.032, z: 0.005}
+  m_LocalEulerAnglesHint: {x: 20.281, y: 90.027, z: 0.005}
 --- !u!114 &963194229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11396,6 +11399,7 @@ MonoBehaviour:
   rotateData: 30
   mySphereManager: {fileID: 0}
   myInitData: {fileID: 1307811312}
+  goodId: 6
 --- !u!64 &1679801747
 MeshCollider:
   m_ObjectHideFlags: 0

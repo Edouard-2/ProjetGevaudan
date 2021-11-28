@@ -16,26 +16,19 @@ public class SphereManager : MonoBehaviour
             if (item.GetComponent<SphereDrag>().solve == true)
             {
                 _nbr++;
-                print(_nbr);
             }
-            
+            print(item.GetComponent<SphereDrag>().solve);
         }
-
-        
         
         if( _nbr == 4)
         {
             foreach (GameObject item in listSphere)
             {
-                
                 item.GetComponent<SphereDrag>().block = true;
-
             }
 
             bonnePos = true;
             print("readyRecevoir");
         }
-        
-
     }
 }

@@ -14,6 +14,8 @@ public class OpenTiroir : MonoBehaviour
 
     public GameObject emptyCamera;
 
+    public BoxCollider exitCollider;
+
     CameraController camera;
 
     GameManager myGameManager;
@@ -22,6 +24,7 @@ public class OpenTiroir : MonoBehaviour
     {
         camera = FindObjectOfType<CameraController>();
         myGameManager = FindObjectOfType<GameManager>();
+        exitCollider.enabled = false;
     }
 
     //Si le joueur click alors la camera va au dessus ou en dessous / le tiroir s'ouvre s'il est fermé
@@ -35,7 +38,7 @@ public class OpenTiroir : MonoBehaviour
             state = 1;
             InitVariable();
             MoveCamera(emptyCamera.transform.position, emptyCamera.transform.rotation);
-            /*gameObject.GetComponent<ScrollingManager>().enabled = true;*/
+            exitCollider.enabled = true;
         }
 
         //Si le tiroir est ouvert on change les camera
@@ -48,6 +51,8 @@ public class OpenTiroir : MonoBehaviour
                 state = Mathf.Abs(state - 1);
                 myGameManager.prevGameState = myGameManager.gameState;
                 myGameManager.gameState = 4;
+
+                exitCollider.enabled = true;
             }
             else if (state == 1) 
             {
@@ -55,6 +60,8 @@ public class OpenTiroir : MonoBehaviour
                 state = Mathf.Abs(state - 1);
                 myGameManager.prevGameState = myGameManager.prevGameState;
                 myGameManager.gameState = 2;
+
+                exitCollider.enabled = false;
             }
         }
     }

@@ -16,6 +16,8 @@ public class ScrollingManager : MonoBehaviour
 
     public CameraController myCameraController;
 
+    public InventaireManager myInventaireManager;
+
     public BoxCollider myCollider;
 
     public GameObject cameraEmpty;
@@ -28,6 +30,7 @@ public class ScrollingManager : MonoBehaviour
         myCollider = gameObject.GetComponent<BoxCollider>();
         myScryotTextManager = FindObjectOfType<ScryptTextManager>();
         myCameraController = FindObjectOfType<CameraController>();
+        myInventaireManager = FindObjectOfType<InventaireManager>();
     }
 
     private void Update()
@@ -87,6 +90,7 @@ public class ScrollingManager : MonoBehaviour
                     {
                         myGameManager.switchZoom(3);
                     }
+                    myInventaireManager.Fermeture();
                 }
                 else if (myGameManager.gameState == 3 || myGameManager.gameState == 1)
                 {

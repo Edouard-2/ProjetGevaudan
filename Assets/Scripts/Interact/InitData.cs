@@ -16,6 +16,9 @@ public class InitData : MonoBehaviour
     public Vector3 initRotationValue;
     public Quaternion initRotation;
 
+    public InventaireManager myInventaireManager;
+    public InteractifObject myInteractifObject;
+
     public int state = 0;
 
     //Id
@@ -30,7 +33,10 @@ public class InitData : MonoBehaviour
         initScale = transform.lossyScale;
         
         initRotation =  Quaternion.Euler(initRotationValue);
-        
+
+        myInventaireManager = FindObjectOfType<InventaireManager>();
+
+        myInteractifObject = FindObjectOfType<InteractifObject>();
     }
 
 
@@ -67,25 +73,25 @@ public class InitData : MonoBehaviour
         }
 
         //Verifie qu'il est dans l'état inventaire
-        if ( state == 2 && FindObjectOfType<InteractifObject>().state == 0 && ready && FindObjectOfType<GameManager>().gameState != 0)
+        if ( state == 2 && myInteractifObject.state == 0 && ready && FindObjectOfType<GameManager>().gameState != 0)
         {
             Debug.Log("hey");
-            
-
             //Le mettre a l'endroit zoomé devant le joueur
-            FindObjectOfType<InteractifObject>().CheckMovement(gameObject.transform);
+            myInteractifObject.CheckMovement(gameObject.transform);
             //On le sort de l'inventaire
             RemoveInventaire();
+
+            myInventaireManager.Fermeture();
         }
     }
 
     //Sortir de l'inventaire
     public void  RemoveInventaire()
     {
-        FindObjectOfType<InventaireManager>().listObj.Remove(gameObject);
+        myInventaireManager.listObj.Remove(gameObject);
 
         //On lui change le parent
-        transform.parent = FindObjectOfType<InteractifObject>().transform;
+        transform.parent = myInteractifObject.transform;
 
     }
 }

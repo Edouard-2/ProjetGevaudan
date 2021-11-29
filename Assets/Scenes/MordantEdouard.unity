@@ -268,6 +268,7 @@ MonoBehaviour:
   myGameManager: {fileID: 0}
   myScryotTextManager: {fileID: 0}
   myCameraController: {fileID: 0}
+  myInventaireManager: {fileID: 0}
   myCollider: {fileID: 0}
   cameraEmpty: {fileID: 1475693658}
 --- !u!65 &46857124
@@ -605,6 +606,7 @@ MonoBehaviour:
   myGameManager: {fileID: 0}
   myScryotTextManager: {fileID: 0}
   myCameraController: {fileID: 0}
+  myInventaireManager: {fileID: 0}
   myCollider: {fileID: 0}
   cameraEmpty: {fileID: 1475693658}
 --- !u!65 &106829613
@@ -1642,6 +1644,7 @@ MonoBehaviour:
   myGameManager: {fileID: 0}
   myScryotTextManager: {fileID: 0}
   myCameraController: {fileID: 0}
+  myInventaireManager: {fileID: 0}
   myCollider: {fileID: 0}
   cameraEmpty: {fileID: 1475693658}
 --- !u!65 &222520894
@@ -1940,6 +1943,7 @@ MonoBehaviour:
   myGameManager: {fileID: 0}
   myScryotTextManager: {fileID: 0}
   myCameraController: {fileID: 0}
+  myInventaireManager: {fileID: 0}
   myCollider: {fileID: 0}
   cameraEmpty: {fileID: 839988928}
 --- !u!65 &247854029
@@ -2353,7 +2357,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 281913482}
   m_LocalRotation: {x: -0.44026414, y: -0.31355944, z: -0.20995994, w: 0.81471765}
-  m_LocalPosition: {x: -2.38, y: 1.95, z: -5.68}
+  m_LocalPosition: {x: -4.54, y: 1.95, z: -5.68}
   m_LocalScale: {x: 0.44962, y: 0.44961995, z: 0.4496201}
   m_Children: []
   m_Father: {fileID: 315305407}
@@ -2378,6 +2382,8 @@ MonoBehaviour:
   rotSpeed: 5
   initRotationValue: {x: 0, y: 0, z: 0}
   initRotation: {x: 0, y: 0, z: 0, w: 0}
+  myInventaireManager: {fileID: 0}
+  myInteractifObject: {fileID: 0}
   state: 0
   id: -1
 --- !u!65 &281913485
@@ -2749,7 +2755,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 349856611}
   m_LocalRotation: {x: -0.70710695, y: -0, z: -0, w: 0.7071066}
-  m_LocalPosition: {x: 0.27899957, y: 1.33, z: -10.676001}
+  m_LocalPosition: {x: 0.27899957, y: 1.33, z: -12.416}
   m_LocalScale: {x: -0.12678634, y: 0.108252436, z: 0.82337}
   m_Children: []
   m_Father: {fileID: 315305407}
@@ -3136,6 +3142,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   empty: {fileID: 249994940}
+--- !u!65 &373408534
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 373408532}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 48.296146, y: 25.088524, z: 1.6225426}
+  m_Center: {x: -2.722361, y: -5.568067, z: -2.802722}
 --- !u!4 &373408535 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 61e06b3a8a800ef409f8b8222b4b8fdb, type: 3}
@@ -3175,6 +3194,7 @@ MonoBehaviour:
   besoinClef: 1
   state: -1
   emptyCamera: {fileID: 2013520095}
+  exitCollider: {fileID: 373408534}
 --- !u!65 &373408539
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4002,6 +4022,8 @@ MonoBehaviour:
   rotSpeed: 5
   initRotationValue: {x: 0, y: 0, z: 0}
   initRotation: {x: 0, y: 0, z: 0, w: 0}
+  myInventaireManager: {fileID: 0}
+  myInteractifObject: {fileID: 0}
   state: 0
   id: -1
 --- !u!65 &561219127
@@ -4201,7 +4223,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 571710142}
   m_LocalRotation: {x: -0.38311797, y: -0.5749875, z: 0.4823077, w: 0.5385066}
-  m_LocalPosition: {x: 1.89, y: 1.38, z: -10.73}
+  m_LocalPosition: {x: 1.89, y: 1.38, z: -12.469999}
   m_LocalScale: {x: 0.61686, y: 0.027945606, z: 0.61686}
   m_Children: []
   m_Father: {fileID: 179575777}
@@ -4307,6 +4329,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ff02057bbdfe3a641a5429b34bf613a6, type: 3}
   m_PrefabInstance: {fileID: 365593192}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &578584784
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 578584783}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 73.85775, y: 154.3042, z: 154.30396}
+  m_Center: {x: 97.207565, y: -0.00048292783, z: 0.0000123953105}
 --- !u!114 &578584786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4326,20 +4361,6 @@ MonoBehaviour:
   mySphereManager: {fileID: 0}
   myInitData: {fileID: 1307811312}
   goodId: 6
---- !u!64 &578584787
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 578584783}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 7820853440821012603, guid: ff02057bbdfe3a641a5429b34bf613a6, type: 3}
 --- !u!1 &579775452
 GameObject:
   m_ObjectHideFlags: 0
@@ -4678,7 +4699,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 640841156}
   m_LocalRotation: {x: -0.70710695, y: -0, z: -0, w: 0.7071066}
-  m_LocalPosition: {x: -0.42800045, y: 1.33, z: -10.676001}
+  m_LocalPosition: {x: -0.42800045, y: 1.33, z: -12.416}
   m_LocalScale: {x: -0.12678634, y: 0.108252436, z: 0.82337}
   m_Children: []
   m_Father: {fileID: 315305407}
@@ -4826,7 +4847,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &648342783
 Transform:
   m_ObjectHideFlags: 0
@@ -4919,6 +4940,7 @@ MonoBehaviour:
   myGameManager: {fileID: 0}
   myScryotTextManager: {fileID: 0}
   myCameraController: {fileID: 0}
+  myInventaireManager: {fileID: 0}
   myCollider: {fileID: 0}
   cameraEmpty: {fileID: 853910570}
 --- !u!1 &670534515
@@ -5258,6 +5280,7 @@ MonoBehaviour:
   myGameManager: {fileID: 0}
   myScryotTextManager: {fileID: 0}
   myCameraController: {fileID: 0}
+  myInventaireManager: {fileID: 0}
   myCollider: {fileID: 0}
   cameraEmpty: {fileID: 1475693658}
 --- !u!65 &764012636
@@ -6160,6 +6183,8 @@ MonoBehaviour:
   rotSpeed: 5
   initRotationValue: {x: 0, y: 0, z: 0}
   initRotation: {x: 0, y: 0, z: 0, w: 0}
+  myInventaireManager: {fileID: 0}
+  myInteractifObject: {fileID: 0}
   state: 0
   id: -1
 --- !u!65 &862464903
@@ -6728,7 +6753,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.12449589, y: 0.69621825, z: -0.12449853, w: 0.6959031}
+  m_LocalRotation: {x: 0.17606564, y: 0.0004683286, z: -0.000045755878, w: 0.9843784}
   m_LocalPosition: {x: -17.46, y: 2.836, z: -5.51}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -6737,7 +6762,7 @@ Transform:
   - {fileID: 532971601}
   m_Father: {fileID: 0}
   m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 20.281, y: 90.027, z: 0.005}
+  m_LocalEulerAnglesHint: {x: 20.281, y: 0.055, z: 0.005}
 --- !u!114 &963194229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6856,6 +6881,8 @@ MonoBehaviour:
   rotSpeed: 5
   initRotationValue: {x: -90, y: -2, z: 2}
   initRotation: {x: 0, y: 0, z: 0, w: 0}
+  myInventaireManager: {fileID: 0}
+  myInteractifObject: {fileID: 0}
   state: 0
   id: -1
 --- !u!114 &967873959
@@ -7484,7 +7511,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1114388880}
   m_LocalRotation: {x: -0.5001155, y: 0.49988467, z: -0.4998844, w: 0.50011545}
-  m_LocalPosition: {x: -0.06900048, y: 1.6790001, z: -10.676001}
+  m_LocalPosition: {x: -0.06900048, y: 1.6790001, z: -12.416}
   m_LocalScale: {x: -0.12678634, y: 0.108252436, z: 0.82337}
   m_Children: []
   m_Father: {fileID: 315305407}
@@ -7725,6 +7752,8 @@ MonoBehaviour:
   rotSpeed: 5
   initRotationValue: {x: 0, y: 0, z: 0}
   initRotation: {x: 0, y: 0, z: 0, w: 0}
+  myInventaireManager: {fileID: 0}
+  myInteractifObject: {fileID: 0}
   state: 0
   id: -1
 --- !u!1001 &1127985804
@@ -8494,6 +8523,8 @@ MonoBehaviour:
   rotSpeed: 5
   initRotationValue: {x: 0, y: 0, z: 0}
   initRotation: {x: 0, y: 0, z: 0, w: 0}
+  myInventaireManager: {fileID: 0}
+  myInteractifObject: {fileID: 0}
   state: 0
   id: -1
 --- !u!65 &1284231989
@@ -8710,6 +8741,8 @@ MonoBehaviour:
   rotSpeed: 0
   initRotationValue: {x: 0, y: 0, z: 0}
   initRotation: {x: 0, y: 0, z: 0, w: 1}
+  myInventaireManager: {fileID: 0}
+  myInteractifObject: {fileID: 0}
   state: 0
   id: -1
 --- !u!114 &1307811313
@@ -8854,6 +8887,8 @@ MonoBehaviour:
   rotSpeed: 5
   initRotationValue: {x: 40, y: -1.6, z: 2.1}
   initRotation: {x: -0.11670624, y: 0.6974093, z: -0.6974093, w: -0.11670624}
+  myInventaireManager: {fileID: 0}
+  myInteractifObject: {fileID: 0}
   state: 0
   id: -1
 --- !u!1 &1333928933
@@ -8884,7 +8919,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1333928933}
   m_LocalRotation: {x: -0.70710695, y: -0, z: -0, w: 0.7071066}
-  m_LocalPosition: {x: -0.09, y: 1.33, z: -10.71}
+  m_LocalPosition: {x: -0.09, y: 1.33, z: -12.45}
   m_LocalScale: {x: 0.81309783, y: 0.05239458, z: 0.82337}
   m_Children: []
   m_Father: {fileID: 315305407}
@@ -9240,6 +9275,7 @@ MonoBehaviour:
   myGameManager: {fileID: 0}
   myScryotTextManager: {fileID: 0}
   myCameraController: {fileID: 0}
+  myInventaireManager: {fileID: 0}
   myCollider: {fileID: 0}
   cameraEmpty: {fileID: 1113470799}
 --- !u!65 &1359420972
@@ -9818,6 +9854,7 @@ MonoBehaviour:
   myGameManager: {fileID: 0}
   myScryotTextManager: {fileID: 0}
   myCameraController: {fileID: 0}
+  myInventaireManager: {fileID: 0}
   myCollider: {fileID: 0}
   cameraEmpty: {fileID: 1388442108}
 --- !u!65 &1423956784
@@ -9910,7 +9947,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1428899704}
   m_LocalRotation: {x: -0.036693268, y: -0.07758729, z: -0.00029707066, w: 0.9963101}
-  m_LocalPosition: {x: 7.97, y: 1.7490001, z: -5.57}
+  m_LocalPosition: {x: 10.05, y: 1.7490001, z: -5.57}
   m_LocalScale: {x: 0.44962004, y: 0.44962004, z: 0.44962}
   m_Children: []
   m_Father: {fileID: 315305407}
@@ -9935,6 +9972,8 @@ MonoBehaviour:
   rotSpeed: 5
   initRotationValue: {x: 0, y: 0, z: 0}
   initRotation: {x: 0, y: 0, z: 0, w: 0}
+  myInventaireManager: {fileID: 0}
+  myInteractifObject: {fileID: 0}
   state: 0
   id: -1
 --- !u!65 &1428899707
@@ -10460,7 +10499,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1512199211}
   m_LocalRotation: {x: -0.5001155, y: 0.49988467, z: -0.4998844, w: 0.50011545}
-  m_LocalPosition: {x: -0.06900048, y: 0.9490001, z: -10.676001}
+  m_LocalPosition: {x: -0.06900048, y: 0.9490001, z: -12.416}
   m_LocalScale: {x: -0.12678634, y: 0.108252436, z: 0.82337}
   m_Children: []
   m_Father: {fileID: 315305407}
@@ -11400,8 +11439,8 @@ MonoBehaviour:
   mySphereManager: {fileID: 0}
   myInitData: {fileID: 1307811312}
   goodId: 6
---- !u!64 &1679801747
-MeshCollider:
+--- !u!65 &1679801748
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -11410,10 +11449,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 1857916439425390961, guid: 442fab35fdf8d914586ae30176bb7561, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 75.735275, y: 154.3042, z: 154.30396}
+  m_Center: {x: -98.012856, y: -0.0004907122, z: 0.0000032704015}
 --- !u!1001 &1694928031
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11771,6 +11809,20 @@ MonoBehaviour:
   besoinClef: 0
   state: -1
   emptyCamera: {fileID: 564034700}
+  exitCollider: {fileID: 1734162782}
+--- !u!65 &1734162782
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1734162774}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 48.296146, y: 25.088524, z: 1.6225426}
+  m_Center: {x: -2.722361, y: -5.568067, z: -2.802722}
 --- !u!1 &1736699415
 GameObject:
   m_ObjectHideFlags: 0
@@ -12131,7 +12183,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f5067855fbd1b0a4d8a021af27a36acd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 750b500b2bc96694fb405740c4978879, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12403,6 +12455,7 @@ MonoBehaviour:
   myGameManager: {fileID: 0}
   myScryotTextManager: {fileID: 0}
   myCameraController: {fileID: 0}
+  myInventaireManager: {fileID: 0}
   myCollider: {fileID: 0}
   cameraEmpty: {fileID: 1475693658}
 --- !u!1 &1782046429
@@ -13042,6 +13095,8 @@ MonoBehaviour:
   rotSpeed: 5
   initRotationValue: {x: 0, y: 0, z: 0}
   initRotation: {x: 0, y: 0, z: 0, w: 0}
+  myInventaireManager: {fileID: 0}
+  myInteractifObject: {fileID: 0}
   state: 0
   id: -1
 --- !u!1 &1877148799
@@ -14181,6 +14236,8 @@ MonoBehaviour:
   rotSpeed: 5
   initRotationValue: {x: 0, y: 0, z: 0}
   initRotation: {x: 0, y: 0, z: 0, w: 0}
+  myInventaireManager: {fileID: 0}
+  myInteractifObject: {fileID: 0}
   state: 0
   id: -1
 --- !u!65 &2007676097
@@ -14880,7 +14937,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2072507315
 Transform:
   m_ObjectHideFlags: 0
@@ -14973,6 +15030,7 @@ MonoBehaviour:
   myGameManager: {fileID: 0}
   myScryotTextManager: {fileID: 0}
   myCameraController: {fileID: 0}
+  myInventaireManager: {fileID: 0}
   myCollider: {fileID: 0}
   cameraEmpty: {fileID: 871039031}
 --- !u!1001 &2080697410
@@ -15334,5 +15392,6 @@ MonoBehaviour:
   myGameManager: {fileID: 0}
   myScryotTextManager: {fileID: 0}
   myCameraController: {fileID: 0}
+  myInventaireManager: {fileID: 0}
   myCollider: {fileID: 0}
   cameraEmpty: {fileID: 839988928}

@@ -45,7 +45,9 @@ public class CameraController : MonoBehaviour
 
         }
 
-        if( FindObjectOfType<GameManager>().gameState == 1)
+        bool ready = VerifInitState();
+
+        if( FindObjectOfType<GameManager>().gameState == 1 && ready)
         {
             DeplacementCamera();
             gameObject.transform.position = startPosition;
@@ -56,6 +58,21 @@ public class CameraController : MonoBehaviour
         {
             readyClick = false;
         }
+    }
+
+    bool VerifInitState()
+    {
+        InitData[] listInit = FindObjectsOfType<InitData>();
+        bool ready = true;
+
+        for (int i = 0; i < listInit.Length; i++)
+        {
+            if(listInit[i].state == 1)
+            {
+                ready = false;
+            }
+        }
+        return ready;
     }
 
     //Changer la prochain position ou revenir en arrière avec la camera
@@ -120,7 +137,7 @@ public class CameraController : MonoBehaviour
     //Faire la rotation
     void rotate()
     {
-        float rotateData = Input.GetAxis("Mouse X") * 5;
+        float rotateData = Input.GetAxis("Mouse X") * 2;
 
         transform.Rotate(0, -rotateData, 0 ,Space.World);
 

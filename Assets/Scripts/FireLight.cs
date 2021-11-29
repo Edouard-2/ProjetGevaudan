@@ -6,8 +6,10 @@ public class FireLight : MonoBehaviour
 {
     public float minFlicker = 1f;
     public float maxFlicker = 1.2f;
+    public float nextLight = 0f;
 
     public float speed;
+    public float speedIntensity;
 
     Light myLight;
 
@@ -15,7 +17,12 @@ public class FireLight : MonoBehaviour
     {
         myLight = gameObject.GetComponent<Light>();
         InvokeRepeating("startLight", 0f, speed);
-        
+        nextLight = myLight.intensity;
+    }
+
+    private void Update()
+    {
+        myLight.intensity = Mathf.Lerp(myLight.intensity, nextLight, speedIntensity);
     }
 
     void startLight()
@@ -26,8 +33,7 @@ public class FireLight : MonoBehaviour
     IEnumerator lightEffect()
     {
         yield return new WaitForSeconds(speed);
-
-        myLight.intensity = Random.Range(minFlicker, maxFlicker);
+        nextLight = Random.Range(minFlicker, maxFlicker);
         StartCoroutine(lightEffect());
     }
 }

@@ -499,7 +499,6 @@ GameObject:
   - component: {fileID: 499521469}
   - component: {fileID: 499521468}
   - component: {fileID: 499521467}
-  - component: {fileID: 499521466}
   m_Layer: 0
   m_Name: Plane (7)
   m_TagString: Untagged
@@ -507,20 +506,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
---- !u!114 &499521466
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 499521465}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b00d23998e80e35449955b819727963e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DeZoom: 1
-  state: 1
 --- !u!64 &499521467
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -887,7 +872,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 645798235}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.1520002, y: 1.066, z: 2.567}
+  m_LocalPosition: {x: -2.4, y: 1.066, z: 2.567}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 279069620}
@@ -967,9 +952,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9848f34756dca14db9e037935989b11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minFlicker: 0.56
-  maxFlicker: 1.2
-  speed: 0.2
+  minFlicker: 1
+  maxFlicker: 1.7
+  nextLight: 1
+  speed: 0.25
+  speedIntensity: 0.03
 --- !u!1 &662591349
 GameObject:
   m_ObjectHideFlags: 0
@@ -1075,7 +1062,6 @@ GameObject:
   - component: {fileID: 775869216}
   - component: {fileID: 775869215}
   - component: {fileID: 775869214}
-  - component: {fileID: 775869213}
   m_Layer: 0
   m_Name: Plane (6)
   m_TagString: Untagged
@@ -1083,20 +1069,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
---- !u!114 &775869213
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 775869212}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b00d23998e80e35449955b819727963e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DeZoom: 1
-  state: 1
 --- !u!64 &775869214
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1735,7 +1707,6 @@ GameObject:
   - component: {fileID: 1562156009}
   - component: {fileID: 1562156008}
   - component: {fileID: 1562156007}
-  - component: {fileID: 1562156006}
   m_Layer: 0
   m_Name: Plane (5)
   m_TagString: Untagged
@@ -1743,20 +1714,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
---- !u!114 &1562156006
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1562156005}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b00d23998e80e35449955b819727963e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DeZoom: 1
-  state: 1
 --- !u!64 &1562156007
 MeshCollider:
   m_ObjectHideFlags: 0

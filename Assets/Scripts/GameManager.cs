@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         prevGameState = 0;
-        gameState = 1;
+        gameState = 0;
     }
 
     // Changement de state

@@ -13,6 +13,8 @@ public class InventaireManager : MonoBehaviour, /*IPointerClickHandler,*/ IDragH
 
     private bool close = true;
 
+    public bool activation = true;
+
     //Inventaire
     public GameObject caseInventaire;
 
@@ -37,7 +39,7 @@ public class InventaireManager : MonoBehaviour, /*IPointerClickHandler,*/ IDragH
     public void OnDrag(PointerEventData eventData)
     {
         //Si l'inventaire est sorti
-        if (state == 1 )
+        if (state == 1 && activation)
         {
             if (close)
             {
@@ -76,7 +78,7 @@ public class InventaireManager : MonoBehaviour, /*IPointerClickHandler,*/ IDragH
             initPoint = new Vector2(-1, -1);
         }
     }
-    
+
     //Changement de state
     public void switchState()
     {
@@ -84,8 +86,10 @@ public class InventaireManager : MonoBehaviour, /*IPointerClickHandler,*/ IDragH
         verifColliderObj();
 
         //Changement de positon
+        print("switchState");
         gameObject.GetComponent<InventaireMovement>().SwitchPosition(state);
         caseInventaire.GetComponent<InventaireMovement>().SwitchPosition(state);
+
     }
 
     //Fermeture de l'inventaire
@@ -93,9 +97,18 @@ public class InventaireManager : MonoBehaviour, /*IPointerClickHandler,*/ IDragH
     {
         if( state == 1)
         {
-            switchState();
-            downImage1.SetActive(false);
-            downImage2.SetActive(false);
+            //verifier si le curobj de intéractif n'est pas sphere
+            if (FindObjectOfType<InteractifObject>().state == 1 && FindObjectOfType<InteractifObject>().curObject.name == "sphere")
+            {
+
+            }
+            else
+            {
+                print("fermeture");
+                switchState();
+                downImage1.SetActive(false);
+                downImage2.SetActive(false);
+            }
         }
     } 
     public void Ouverture()

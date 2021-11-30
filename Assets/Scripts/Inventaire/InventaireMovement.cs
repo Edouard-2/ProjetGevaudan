@@ -28,6 +28,7 @@ public class InventaireMovement : MonoBehaviour
     {
         if (_state == 0)
         {
+            
             //Descendre
             transform.position = BasPos.transform.position;        
         }

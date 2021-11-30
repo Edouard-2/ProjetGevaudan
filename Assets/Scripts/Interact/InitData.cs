@@ -80,8 +80,11 @@ public class InitData : MonoBehaviour
             myInteractifObject.CheckMovement(gameObject.transform);
             //On le sort de l'inventaire
             RemoveInventaire();
-
-            myInventaireManager.Fermeture();
+            if( gameObject.name != "sphere")
+            {
+                print("sphere name");
+                myInventaireManager.Fermeture();
+            }
         }
     }
 

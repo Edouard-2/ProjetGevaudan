@@ -15,11 +15,21 @@ public class Drag : MonoBehaviour
         if ((exitDrag || gameObject.GetComponent<InitData>().state == 3) && FindObjectOfType<GameManager>().gameState == 2)
         {
             DetachObj();
-            gameObject.transform.localScale = gameObject.GetComponent<InitData>().initScale;
-            gameObject.transform.rotation = Quaternion.Euler(new Vector3(90, 180, 0));
+            
+            if( name == "cle_croix")
+            {
+                gameObject.transform.localScale = gameObject.GetComponent<InitData>().initScale;
+                gameObject.transform.localPosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1));
+                gameObject.transform.rotation = Quaternion.Euler(new Vector3(90, 180, 0));
+            }
+            else
+            {
+                gameObject.transform.localScale = gameObject.GetComponent<InitData>().facteur / 10;
+                gameObject.transform.localPosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0.4f));
+                gameObject.transform.rotation = Quaternion.Euler(new Vector3(270, -90, 0));
+            }
+            FindObjectOfType<InventaireManager>().activation = false;
             /*gameObject.transform.rotation = gameObject.GetComponent<InitData>().initRotation;*/
-
-            gameObject.transform.localPosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1));
         }
     }
 
@@ -27,7 +37,6 @@ public class Drag : MonoBehaviour
     {
         if (downDrag && gameObject.GetComponent<InitData>().state == 2 && FindObjectOfType<GameManager>().gameState == 2)
         {
-            print("eokz,r");
             exitDrag = true;
         }
     }
@@ -36,18 +45,36 @@ public class Drag : MonoBehaviour
     {
         if (gameObject.GetComponent<InitData>().state == 3)
         {
+            FindObjectOfType<InventaireManager>().activation = true;
             gameObject.GetComponent<BoxCollider>().enabled = false;
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit))
             {
-                Debug.Log(hit.transform.tag);
                 if (hit.transform.name == gameObject.name + "_Receptacle")
                 {
-                    gameObject.GetComponent<InitData>().state = 4;
-                    gameObject.transform.position = hit.transform.GetComponent<Receptacle>().empty.position;
-                    hit.transform.GetComponent<Receptacle>().ActiveBlock();
-                    gameObject.transform.SetParent(hit.transform);
+                    if (hit.transform.name == "piece_loup_Receptacle" && hit.transform.GetComponent<Receptacle>().verifRond())
+                    {
+                        gameObject.GetComponent<InitData>().state = 4;
+                        gameObject.transform.position = hit.transform.GetComponent<Receptacle>().empty.position;
+                        gameObject.transform.rotation = hit.transform.GetComponent<Receptacle>().empty.rotation;
+                        gameObject.transform.SetParent(hit.transform);
+                        gameObject.transform.localScale = Vector3.one;
+                    }
+                    else if (hit.transform.name == "piece_loup_Receptacle")
+                    {
+                        gameObject.GetComponent<BoxCollider>().enabled = true;
+                        gameObject.GetComponent<InitData>().state = 2;
+                        exitDrag = false;
+                        FindObjectOfType<InteractifObject>().GoInventaire(gameObject.transform);
+                    }
+                    else if(hit.transform.name == "cle_croix_Receptacle")
+                    {
+                        gameObject.GetComponent<InitData>().state = 4;
+                        gameObject.transform.position = hit.transform.GetComponent<Receptacle>().empty.position;
+                        hit.transform.GetComponent<Receptacle>().ActiveBlock();
+                        gameObject.transform.SetParent(hit.transform);
+                    }
                 }
                 else
                 {
@@ -82,7 +109,6 @@ public class Drag : MonoBehaviour
             //Ajouter l'inventaire a la list
             FindObjectOfType<InventaireManager>().listObj.Remove(gameObject);
 
-            FindObjectOfType<InventaireManager>().switchState();
         }
     }
 }

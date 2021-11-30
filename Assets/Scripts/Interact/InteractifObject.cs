@@ -161,22 +161,29 @@ public class InteractifObject : MonoBehaviour
         myInventaireManager.listObj.Add(_curObject.gameObject);
 
         //Creation de l'id du joueur
-        id = myInventaireManager.listObj.IndexOf(_curObject.gameObject);
-
-        //Initialisation de l'id du joueur
-        _curObject.GetComponent<InitData>().id = id;
+        if(_curObject.GetComponent<InitData>().id != -1)
+        {
+            //Initialisation de l'id du joueur
+            id = _curObject.GetComponent<InitData>().id;
+            
+        }
+        else
+        {
+            id = myInventaireManager.listObj.IndexOf(_curObject.gameObject);
+            _curObject.GetComponent<InitData>().id = id;
+        }
 
         //Le changer d'état
         StartCoroutine(switchStateInventaireObj(_curObject));
         
         //La bonne rotation
         _curObject.rotation = _curObject.GetComponent<InitData>().initRotation;
-        
+
         //Le placer dans la case assigné
-        _curObject.position = myInventaireManager.emplacementItems[_curObject.GetComponent<InitData>().id].transform.position;
+        _curObject.position = myInventaireManager.emplacementItems[id].transform.position;
         
         //Le mettre dans l'empty de la case a l'interieur de l'inventaire
-        _curObject.parent = myInventaireManager.emplacementItems[_curObject.GetComponent<InitData>().id].transform;
+        _curObject.parent = myInventaireManager.emplacementItems[id].transform;
         
         //Lui mettre la bonne taille
         _curObject.localScale = _curObject.GetComponent<InitData>().facteurItem;
@@ -228,7 +235,6 @@ public class InteractifObject : MonoBehaviour
                     //Si c'est un obj de inventaire les ombre porté sont toujours désactivé
                     if (curObject.transform.tag != "Petit_Inventaire" && curObject.transform.tag != "Petit_Drag" && curObject.transform.tag != "croix" )
                     {
-                        print(curObject.transform.name +"ergerg");
                         if (curObject.transform.GetComponent<Renderer>())
                         {
                             curObject.transform.GetComponent<Renderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
@@ -270,7 +276,6 @@ public class InteractifObject : MonoBehaviour
             _hit.GetComponent<Renderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
         }
         
-
         //Activer le flou arrière
         flou.SetActive(true);
 

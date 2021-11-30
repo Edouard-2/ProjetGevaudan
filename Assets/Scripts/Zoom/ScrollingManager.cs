@@ -85,12 +85,19 @@ public class ScrollingManager : MonoBehaviour
                     {
                         print("dezooù");
                         myGameManager.switchZoom(0);
+                        
+                        myInventaireManager.Fermeture();
+                        
                     }
                     else if (gameObject.tag == "interieur" || gameObject.tag == "Seconde_Hitbox")
                     {
+                        print("sphere name");
                         myGameManager.switchZoom(3);
+
+                        myInventaireManager.Fermeture();
                     }
-                    myInventaireManager.Fermeture();
+
+
                 }
                 else if (myGameManager.gameState == 3 || myGameManager.gameState == 1)
                 {
@@ -145,7 +152,11 @@ public class ScrollingManager : MonoBehaviour
             {
                 myCollider.enabled = true;
             }
-            else if(gameObject.tag == "First_Hitbox")
+            else if(gameObject.tag == "First_Hitbox" && name == "Bureau_HitBox")
+            {
+                myCollider.enabled = false;
+            }
+            else
             {
                 myCollider.enabled = true;
             }
@@ -169,7 +180,7 @@ public class ScrollingManager : MonoBehaviour
             {
                 myCollider.enabled = false;
             }
-            else if (gameObject.tag == "Seconde_Hitbox")
+            else if (gameObject.tag == "First_Hitbox")
             {
                 myCollider.enabled = true;
             }

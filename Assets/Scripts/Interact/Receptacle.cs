@@ -10,4 +10,17 @@ public class Receptacle : MonoBehaviour
     {
         gameObject.GetComponent<OpenTiroir>().ChangeState();
     }
+
+    public bool verifRond()
+    {
+        if( FindObjectOfType<SphereManager>().bonnePos )
+        {
+            FindObjectOfType<SphereManager>().addMorceau();
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }

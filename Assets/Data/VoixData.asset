@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b07909d15d31b44b8beed6a08430d51, type: 3}
+  m_Name: VoixData
+  m_EditorClassIdentifier: 
+  VerifA: 0
+  Enigme1: "En juin 1764, une habitante proche de Langogne rentre au village  et
+    affirme avoir vu une \u201CB\xEAte\u201D monstrueuse qui ressemblait fortement
+    \xE0 un loup."
+  VerifB: 0
+  Enigme2: "Le roi Louis XV s'impatiente et d\xE9cide donc d\u2019envoyer une cavalerie
+    avec  Fran\xE7ois-Antoine, son fils et de nombreux hommes."
+  VerifC: 0
+  Enigme3: "Apr\xE8s de nombreuses attaques le peuple est d\xE9muni,  ils d\xE9cident
+    de prier pour avoir une chance de s\u2019en sortir face \xE0 cette b\xEAte sauvage. "
+  VerifD: 0
+  Enigme3Bis: " A l\u2019\xE9poque ils n'avaient pas d\u2019\xE9lectricit\xE9, ils
+    utilisaient la bougie pour s\u2019\xE9clairer."
+  dialEnigme:
+  - "En juin 1764, une habitante proche de Langogne rentre au village  et affirme
+    avoir vu une \u201CB\xEAte\u201D monstrueuse qui ressemblait fortement \xE0 un
+    loup."
+  - "Le roi Louis XV s'impatiente et d\xE9cide donc d\u2019envoyer une cavalerie
+    avec  Fran\xE7ois-Antoine, son fils et de nombreux hommes."
+  - "Apr\xE8s de nombreuses attaques le peuple est d\xE9muni,  ils d\xE9cident de
+    prier pour avoir une chance de s\u2019en sortir face \xE0 cette b\xEAte sauvage. "
+  - " A l\u2019\xE9poque ils n'avaient pas d\u2019\xE9lectricit\xE9, ils utilisaient
+    la bougie pour s\u2019\xE9clairer."
+  dialIndice:
+  - "C\u2019est en septembre 1764 qu\u2019a eu lieu la premi\xE8re chasse pour retrouver
+    la b\xEAte. "
+  - "Une grande chasse \xE0 lieu \xE0 Pruni\xE8res pour r\xE9cup\xE9rer la prime."
+  - "C\u2019est en fin juin 1767 que l\u2019on consid\xE8re que la b\xEAte est abattue. 
+    Les autorit\xE9s de la r\xE9gion accordent des primes \xE0 tous les chasseurs
+    de cette derni\xE8re battue. "

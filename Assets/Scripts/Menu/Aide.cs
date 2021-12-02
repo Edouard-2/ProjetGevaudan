@@ -57,6 +57,12 @@ public class Aide : MonoBehaviour, IPointerClickHandler
                 StartCoroutine(activeClickReady());
             }
         }
+        else
+        {
+            readyClick = true;
+            StopAllCoroutines();
+            ActiveClickText();
+        }
     }
 
     void checkState()

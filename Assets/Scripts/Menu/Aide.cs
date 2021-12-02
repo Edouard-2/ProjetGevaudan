@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class Aide : MonoBehaviour, IPointerClickHandler
 {
@@ -18,13 +19,15 @@ public class Aide : MonoBehaviour, IPointerClickHandler
     public GameObject Aide1Obj;
     public GameObject Aide2Obj;
 
-    private GameObject Patientez;
-    private GameObject Passer;
+    public GameObject Patientez;
+    private TextMeshProUGUI textPatientez;
 
     // Start is called before the first frame update
     void Start()
     {
         state = 0;
+
+        textPatientez = Patientez.GetComponent<TextMeshProUGUI>();
 
         Aide1Obj.GetComponent<Animator>().SetTrigger("open");
 
@@ -48,7 +51,7 @@ public class Aide : MonoBehaviour, IPointerClickHandler
             state++;
             checkState();
             Aide1Obj.GetComponent<Image>().color = new Color(255, 255, 255, 1);
-            Fond.GetComponent<Image>().color = new Color(255, 255, 255, 1);
+            Fond.GetComponent<Image>().color = new Color(16, 12, 12, 1);
             if (state <= 1)
             {
                 StartCoroutine(activeClickReady());
@@ -65,7 +68,7 @@ public class Aide : MonoBehaviour, IPointerClickHandler
         }
         else if (state == 1)
         {
-
+            textPatientez.SetText("Veuillez Patienter");
             Aide1Obj.SetActive(false);
             Aide2Obj.SetActive(true);
         }
@@ -74,9 +77,11 @@ public class Aide : MonoBehaviour, IPointerClickHandler
             FindObjectOfType<GameManager>().switchZoom(0);
             boutonCollection.SetActive(true);
             boutonAide.SetActive(true);
-            Fond.SetActive(false);
             gameObject.SetActive(false);
-            Aide2Obj.SetActive(false);
+
+            Aide2Obj.GetComponent<Animator>().SetTrigger("open");
+            Fond.GetComponent<Animator>().SetTrigger("open");
+            Patientez.GetComponent<Animator>().SetTrigger("open");
         }
     }
 
@@ -96,7 +101,12 @@ public class Aide : MonoBehaviour, IPointerClickHandler
     IEnumerator activeClickReady()
     {
         yield return new WaitForSeconds(2f);
+        ActiveClickText();
         readyClick = true;
     }
 
+    void ActiveClickText()
+    {
+        textPatientez.SetText("Passer");
+    }
 }

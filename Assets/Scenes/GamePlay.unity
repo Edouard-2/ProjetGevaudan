@@ -3111,6 +3111,7 @@ GameObject:
   - component: {fileID: 363056657}
   - component: {fileID: 363056656}
   - component: {fileID: 363056658}
+  - component: {fileID: 363056659}
   m_Layer: 0
   m_Name: FondAide
   m_TagString: Untagged
@@ -3192,6 +3193,26 @@ MonoBehaviour:
   boutonAide: {fileID: 0}
   Aide1Obj: {fileID: 1331293100}
   Aide2Obj: {fileID: 1542687732}
+  Patientez: {fileID: 0}
+--- !u!95 &363056659
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 363056654}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1e26e7162b8a4dc45befd562667fa887, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &363835648
 GameObject:
   m_ObjectHideFlags: 0
@@ -7279,6 +7300,7 @@ MonoBehaviour:
   boutonAide: {fileID: 392327256}
   Aide1Obj: {fileID: 1331293100}
   Aide2Obj: {fileID: 1542687732}
+  Patientez: {fileID: 1574352716}
 --- !u!222 &928056297
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11876,7 +11898,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4dd64312ef6e84b478133e9923885839, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3fc2f7f69f6415d4c84a414315598853, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11930,7 +11952,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1546101094
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12174,13 +12196,14 @@ GameObject:
   - component: {fileID: 1574352717}
   - component: {fileID: 1574352719}
   - component: {fileID: 1574352718}
+  - component: {fileID: 1574352720}
   m_Layer: 0
   m_Name: Patienter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1574352717
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12197,7 +12220,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 590, y: -357}
+  m_AnchoredPosition: {x: 580, y: -357}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1574352718
@@ -12220,7 +12243,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Veuiller patienter ...
+  m_text: 'Veuillez Patienter '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8ef2655a1e6225243b7c7393f45625ee, type: 2}
   m_sharedMaterial: {fileID: -3610585862257130244, guid: 8ef2655a1e6225243b7c7393f45625ee, type: 2}
@@ -12297,6 +12320,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1574352716}
   m_CullTransparentMesh: 1
+--- !u!95 &1574352720
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1574352716}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f5e5524ca8c94784fa6971b2952c58cb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1593369999
 GameObject:
   m_ObjectHideFlags: 0

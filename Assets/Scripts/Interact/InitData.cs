@@ -91,7 +91,6 @@ public class InitData : MonoBehaviour
     //Sortir de l'inventaire
     public void  RemoveInventaire()
     {
-        myInventaireManager.listObj.Remove(gameObject);
 
         //On lui change le parent
         transform.parent = myInteractifObject.transform;

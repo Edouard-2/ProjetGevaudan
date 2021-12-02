@@ -14,7 +14,7 @@ public class MenuCamera : MonoBehaviour
     {
         if(readyTransition)
         {
-            myCamera.transform.position = Vector3.MoveTowards(myCamera.transform.position, emptyCamera.transform.position, 0.05f);
+            myCamera.transform.position = Vector3.MoveTowards(myCamera.transform.position, emptyCamera.transform.position, 4f * Time.deltaTime );
             if (myCamera.transform.position == emptyCamera.transform.position)
             {
                 SceneManager.LoadScene("GamePlay");

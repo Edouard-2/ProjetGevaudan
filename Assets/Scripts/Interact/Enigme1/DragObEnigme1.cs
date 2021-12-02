@@ -6,36 +6,37 @@ public class DragObEnigme1 : MonoBehaviour
 {
     public GameManager myGameManager;
 
-    public Rigidbody myRb;
-
     bool readyOver = false;
-    private float initPoint;
+    private float initPointy;
+    private float initPointx;
 
     // Start is called before the first frame update
     void Start()
     {
         myGameManager = FindObjectOfType<GameManager>();
 
-        initPoint = -1000000;
+        initPointx = -1000000;
     }
 
     private void OnMouseDrag()
     {
         if (FindObjectOfType<GameManager>().gameState == 2)
         {
-            if (initPoint == -1000000)
+            if (initPointx == -1000000)
             {
-                initPoint = Input.mousePosition.y;
+                initPointy = Input.mousePosition.y;
+                initPointx = Input.mousePosition.x;
             }
 
             //Calcul du point du doigt
             float curPoint = Input.mousePosition.y;
 
-            float curDistance = Vector3.Distance(new Vector3(0, curPoint, 0), new Vector3(0, initPoint, 0));
+            float curDistance = Vector3.Distance(new Vector3(Input.mousePosition.x, curPoint, 0), new Vector3(initPointx, initPointy, 0));
 
             if (curDistance / 50 >= 1)
             {
-                initPoint = curPoint;
+                initPointy = curPoint;
+                initPointx = Input.mousePosition.x;
                 moveObject();
             }
         }

@@ -18,6 +18,9 @@ public class Aide : MonoBehaviour, IPointerClickHandler
     public GameObject Aide1Obj;
     public GameObject Aide2Obj;
 
+    private GameObject Patientez;
+    private GameObject Passer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,18 +38,6 @@ public class Aide : MonoBehaviour, IPointerClickHandler
         StartCoroutine(activeClickReady());
     }
 
-    private void Update()
-    {
-        if( state == 0)
-        {
-
-        }
-        if( state == 1)
-        {
-
-        }
-    }
-
     public void OnPointerClick(PointerEventData eventData)
     {
         
@@ -56,7 +47,9 @@ public class Aide : MonoBehaviour, IPointerClickHandler
             readyClick = false;
             state++;
             checkState();
-            if(state <= 1)
+            Aide1Obj.GetComponent<Image>().color = new Color(255, 255, 255, 1);
+            Fond.GetComponent<Image>().color = new Color(255, 255, 255, 1);
+            if (state <= 1)
             {
                 StartCoroutine(activeClickReady());
             }
@@ -72,6 +65,7 @@ public class Aide : MonoBehaviour, IPointerClickHandler
         }
         else if (state == 1)
         {
+
             Aide1Obj.SetActive(false);
             Aide2Obj.SetActive(true);
         }

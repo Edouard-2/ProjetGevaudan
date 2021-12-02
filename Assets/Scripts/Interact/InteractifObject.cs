@@ -18,6 +18,8 @@ public class InteractifObject : MonoBehaviour
     //Facteur item (scale)
     public Vector3 facteurItem = new Vector3(1,1,1);
 
+    public GameObject myZoomLight;
+
     //Facteur zoom (scale)
     private Vector3 facteur;
 
@@ -157,20 +159,34 @@ public class InteractifObject : MonoBehaviour
     {
         int id;
 
-        //Ajouter l'inventaire a la list
-        myInventaireManager.listObj.Add(_curObject.gameObject);
-
         //Creation de l'id du joueur
         if(_curObject.GetComponent<InitData>().id != -1)
         {
             //Initialisation de l'id du joueur
             id = _curObject.GetComponent<InitData>().id;
-            
+            myInventaireManager.listObj[_curObject.GetComponent<InitData>().id] = _curObject.gameObject;
         }
         else
         {
-            id = myInventaireManager.listObj.IndexOf(_curObject.gameObject);
-            _curObject.GetComponent<InitData>().id = id;
+            //Ajouter l'inventaire a la list
+            int lenght = myInventaireManager.listObj.Length;
+            print(lenght);
+            bool insert = true;
+            for (int i = 0; i < lenght; i++)
+            {
+                print(i);
+                print(myInventaireManager.listObj[i]);
+                if ( myInventaireManager.listObj[i] == null && insert)
+                {
+                    insert = false;
+                    myInventaireManager.listObj[i] = _curObject.gameObject;
+
+                    _curObject.GetComponent<InitData>().id = i;
+                }
+            }
+            print(_curObject.GetComponent<InitData>().id);
+
+            id = lenght;
         }
 
         //Le changer d'état
@@ -254,6 +270,8 @@ public class InteractifObject : MonoBehaviour
                     //Enlever le flou
                     flou.SetActive(false);
 
+                    myZoomLight.SetActive(false);
+
                     //Changement de state
                     state = Mathf.Abs(state - 1);
                 }
@@ -278,6 +296,11 @@ public class InteractifObject : MonoBehaviour
         
         //Activer le flou arrière
         flou.SetActive(true);
+
+        if( curObject.name != "sphere")
+        {
+            myZoomLight.SetActive(true);
+        }
 
         //Changer de state
         state = Mathf.Abs(state - 1);

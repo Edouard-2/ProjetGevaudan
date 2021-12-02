@@ -25,8 +25,8 @@ public class InventaireManager : MonoBehaviour, /*IPointerClickHandler,*/ IDragH
     public List<GameObject> emplacementItems;
 
     //List des obj ds l'inventaire
-    public List<GameObject> listObj;
-
+    public GameObject[] listObj = new GameObject[8];
+    
     public Vector2 initPoint = new Vector2(-1, -1);
 
     // Start is called before the first frame update

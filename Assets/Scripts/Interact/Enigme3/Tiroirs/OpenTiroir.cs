@@ -42,7 +42,7 @@ public class OpenTiroir : MonoBehaviour
         }
 
         //Si le tiroir est ouvert on change les camera
-        else if( ( myGameManager.gameState == 2 || myGameManager.gameState == 4 ) && state != -1)
+        else if( ( myGameManager.gameState == 2 || myGameManager.gameState == 4) && state != -1)
         {
             print(state);
             if (state == 0)
@@ -58,7 +58,7 @@ public class OpenTiroir : MonoBehaviour
             {
                 MoveCamera(initPos, initRot);
                 state = Mathf.Abs(state - 1);
-                myGameManager.prevGameState = myGameManager.prevGameState;
+                myGameManager.prevGameState = myGameManager.gameState;
                 myGameManager.gameState = 2;
 
                 exitCollider.enabled = false;
@@ -75,6 +75,7 @@ public class OpenTiroir : MonoBehaviour
     //Bouger la camera au dessus du tiroir
     void MoveCamera(Vector3 _positon, Quaternion _rotation)
     {
+        print("camera");
         camera.NextPosition = _positon;
         camera.NextRotation = _rotation;
         camera.transform.rotation = _rotation;

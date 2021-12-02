@@ -16,11 +16,15 @@ public class Drag : MonoBehaviour
         {
             DetachObj();
             
-            if( name == "cle_croix")
-            {
+            if( name == "cle_croix" || name == "cle_dent")
+            {   
                 gameObject.transform.localScale = gameObject.GetComponent<InitData>().initScale;
                 gameObject.transform.localPosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1));
                 gameObject.transform.rotation = Quaternion.Euler(new Vector3(90, 180, 0));
+                if (name == "cle_dent")
+                {
+                    gameObject.transform.rotation = Quaternion.Euler(new Vector3(90, 0, 0));
+                }
             }
             else
             {
@@ -107,8 +111,8 @@ public class Drag : MonoBehaviour
             gameObject.transform.parent = FindObjectOfType<InteractifObject>().transform;
 
             //Ajouter l'inventaire a la list
-            FindObjectOfType<InventaireManager>().listObj.Remove(gameObject);
-
+            FindObjectOfType<InventaireManager>().listObj[gameObject.GetComponent<InitData>().id] = null;
+            
         }
     }
 }

@@ -25,7 +25,7 @@ public class InventaireManager : MonoBehaviour, /*IPointerClickHandler,*/ IDragH
     public List<GameObject> emplacementItems;
 
     //List des obj ds l'inventaire
-    public GameObject[] listObj = new GameObject[8];
+    public GameObject[] listObj;
     
     public Vector2 initPoint = new Vector2(-1, -1);
 
@@ -33,6 +33,8 @@ public class InventaireManager : MonoBehaviour, /*IPointerClickHandler,*/ IDragH
     void Start()
     {
         state = 0;
+        listObj = new GameObject[8];
+        print(listObj.Length);
     }
 
     [System.Obsolete]
@@ -130,7 +132,10 @@ public class InventaireManager : MonoBehaviour, /*IPointerClickHandler,*/ IDragH
             //Desactive du collider
             foreach (GameObject item in listObj)
             {
-                item.GetComponent<BoxCollider>().enabled = false;
+                if (item != null && item.GetComponent<InitData>().state == 0)
+                {
+                    item.GetComponent<BoxCollider>().enabled = false;
+                }
             }
         }
         //Si l'inventaire est active
@@ -139,7 +144,10 @@ public class InventaireManager : MonoBehaviour, /*IPointerClickHandler,*/ IDragH
             //Collider active
             foreach (GameObject item in listObj)
             {
-                item.GetComponent<BoxCollider>().enabled = true;
+                if (item != null)
+                {
+                    item.GetComponent<BoxCollider>().enabled = true;
+                }
             }
         }
     }

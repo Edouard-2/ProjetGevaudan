@@ -39,6 +39,7 @@ public class CroixManager : MonoBehaviour
         else
         {
             print(_item.GetComponent<InitData>().id);
+            myInventaireManager.listObj[_item.GetComponent<InitData>().id] = null;
         }
 
         //Ajout du morceau a l'empty parent 

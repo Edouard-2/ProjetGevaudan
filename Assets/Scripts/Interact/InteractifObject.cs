@@ -174,21 +174,22 @@ public class InteractifObject : MonoBehaviour
             bool insert = true;
             for (int i = 0; i < lenght; i++)
             {
-                print(i);
                 print(myInventaireManager.listObj[i]);
-                if ( myInventaireManager.listObj[i] == null && insert)
+                if ( !myInventaireManager.listObj[i] && insert)
                 {
+                    print("réussi");
                     insert = false;
                     myInventaireManager.listObj[i] = _curObject.gameObject;
 
                     _curObject.GetComponent<InitData>().id = i;
+                    
                 }
             }
             print(_curObject.GetComponent<InitData>().id);
 
-            id = lenght;
+            id = _curObject.GetComponent<InitData>().id;
         }
-
+        
         //Le changer d'état
         StartCoroutine(switchStateInventaireObj(_curObject));
         

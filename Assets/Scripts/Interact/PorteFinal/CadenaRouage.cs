@@ -2,16 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rouage : MonoBehaviour
+public class CadenaRouage : MonoBehaviour
 {
     public int id = 0;
-    public string actualLetter;
-    public List<string> letterList;
-    private int indexLetter = 0;
 
     public bool solve = false;
 
-    float rotateData = 60;
+    float rotateData = 36;
 
     float initPoint;
 
@@ -19,7 +16,7 @@ public class Rouage : MonoBehaviour
     void Start()
     {
         initPoint = -1000000;
-        actualiseLetter();
+        verifCode();
     }
 
     private void OnMouseDrag()
@@ -36,7 +33,7 @@ public class Rouage : MonoBehaviour
 
             float curDistance = Vector3.Distance(new Vector3(0, curPoint, 0), new Vector3(0, initPoint, 0));
 
-            if (curDistance / 50 >= 1 )
+            if (curDistance / 70 >= 1)
             {
                 initPoint = curPoint;
                 rotate();
@@ -44,37 +41,37 @@ public class Rouage : MonoBehaviour
         }
     }
 
-    void switchLetter(int _nbr)
+    void addNumber(int _nbr)
     {
-        indexLetter += _nbr;
-        if (indexLetter < 0)
+        id += _nbr;
+
+        if (id < 0)
         {
-            indexLetter = 5;
+            id = 9;
         }
-        else if (indexLetter > 5)
-        { 
-            indexLetter = 0;
+        else if (id > 9)
+        {
+            id = 0;
         }
-        
-        actualiseLetter();
+
+        verifCode();
     }
 
-    void actualiseLetter()
+    void verifCode()
     {
-        actualLetter = letterList[indexLetter];
-        FindObjectOfType<ScryptTextManager>().verifClef();
+        FindObjectOfType<CadenaManager>().verifCadena();
     }
 
     public void rotate()
     {
-        if( Input.GetAxis("Mouse Y") > 0)
+        if (Input.GetAxis("Mouse Y") > 0)
         {
-            switchLetter(-1);
+            addNumber(-1);
             gameObject.transform.RotateAround(GetComponent<Renderer>().bounds.center, Vector3.right, rotateData);
         }
-        else if( Input.GetAxis("Mouse Y") < 0)
+        else if (Input.GetAxis("Mouse Y") < 0)
         {
-            switchLetter(1);
+            addNumber(1);
             gameObject.transform.RotateAround(GetComponent<Renderer>().bounds.center, Vector3.left, rotateData);
         }
     }

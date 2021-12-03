@@ -50,9 +50,9 @@ public class SphereDrag : MonoBehaviour
 
     public void checkBonneEmplacement()
     {
-        if(id == goodId)
+        if (id == goodId)
         {
-            print(name+" gagne");
+            print(name + " gagne");
             solve = true;
             mySphereManager.verifBonnePosition();
         }
@@ -84,11 +84,11 @@ public class SphereDrag : MonoBehaviour
 
     void verifOverId()
     {
-        if(id > 12)
+        if (id > 12)
         {
             id = 1;
         }
-        if(id < 1)
+        if (id < 1)
         {
             id = 12;
         }

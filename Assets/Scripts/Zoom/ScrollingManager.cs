@@ -90,7 +90,6 @@ public class ScrollingManager : MonoBehaviour
                 {
                     if(gameObject.tag == "First_Hitbox" && (gameObject.name == "Avant" || gameObject.name == "Avant" + 2 || gameObject.name == "Avant" + 3 || gameObject.name == "Avant" + 4))
                     {
-                        print("dezooù");
                         myGameManager.switchZoom(0);
                         
                         myInventaireManager.Fermeture();
@@ -98,7 +97,6 @@ public class ScrollingManager : MonoBehaviour
                     }
                     else if (gameObject.tag == "interieur" || gameObject.tag == "Seconde_Hitbox")
                     {
-                        print("sphere name");
                         myGameManager.switchZoom(3);
 
                         myInventaireManager.Fermeture();

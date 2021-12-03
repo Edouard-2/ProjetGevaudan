@@ -56,6 +56,10 @@ public class SphereDrag : MonoBehaviour
             solve = true;
             mySphereManager.verifBonnePosition();
         }
+        else
+        {
+            solve = false;
+        }
     }
 
     public void rotate()

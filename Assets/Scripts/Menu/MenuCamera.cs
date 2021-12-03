@@ -30,7 +30,7 @@ public class MenuCamera : MonoBehaviour
 
     IEnumerator activeMovementCamera()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         readyTransition = true;
     }
 }

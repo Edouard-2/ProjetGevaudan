@@ -44,7 +44,6 @@ public class DragObEnigme1 : MonoBehaviour
 
     void moveObject()
     {
-        print("animation");
         GetComponent<Animator>().SetTrigger("open");
         GetComponent<BoxCollider>().enabled = false;
     }

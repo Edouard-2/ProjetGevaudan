@@ -7,10 +7,13 @@ public class CroixManager : MonoBehaviour
     public InventaireManager myInventaireManager;
     public InitData myInitData;
 
+    public VoixManager myVoixManager;
+
     public bool ready = false;
 
     private void Awake()
     {
+        myVoixManager = FindObjectOfType<VoixManager>();   
         myInventaireManager = FindObjectOfType<InventaireManager>();   
         myInitData = gameObject.GetComponent<InitData>();   
     }
@@ -18,7 +21,7 @@ public class CroixManager : MonoBehaviour
     //Ajouter un morceau de croix a l'emplacement definie 
     public void AddCroixEmpty(GameObject _item)
     {
-        //Si aucun morceau de croix n'a encore était ramassé
+        //Si aucun morceau de croix n'a encore ï¿½tait ramassï¿½
         if (!ready)
         {
             ready = true;
@@ -40,6 +43,11 @@ public class CroixManager : MonoBehaviour
         {
             print(_item.GetComponent<InitData>().id);
             myInventaireManager.listObj[_item.GetComponent<InitData>().id] = null;
+        }
+
+        if(gameObject.transform.childCount == 2){
+
+            myVoixManager.DeclencheDialogueIndice();
         }
 
         //Ajout du morceau a l'empty parent 

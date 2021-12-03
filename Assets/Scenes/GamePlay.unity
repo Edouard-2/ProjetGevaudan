@@ -325,6 +325,7 @@ MonoBehaviour:
   myCameraController: {fileID: 0}
   myInventaireManager: {fileID: 0}
   myCollider: {fileID: 0}
+  myVoixManager: {fileID: 0}
   cameraEmpty: {fileID: 1475693658}
 --- !u!65 &46857124
 BoxCollider:
@@ -663,6 +664,7 @@ MonoBehaviour:
   myCameraController: {fileID: 0}
   myInventaireManager: {fileID: 0}
   myCollider: {fileID: 0}
+  myVoixManager: {fileID: 0}
   cameraEmpty: {fileID: 1475693658}
 --- !u!65 &106829613
 BoxCollider:
@@ -1080,6 +1082,7 @@ MonoBehaviour:
   facteurPetit: 0
   facteurItem: {x: 0.004, y: 0.004, z: 0.004}
   myZoomLight: {fileID: 1781560845}
+  myVoixManager: {fileID: 0}
   initPosition: {x: 0, y: 0, z: 0}
   initRotation: {x: 0, y: 0, z: 0, w: 1}
   positionFront: {fileID: 2054794468}
@@ -1507,6 +1510,7 @@ RectTransform:
   - {fileID: 922047466}
   - {fileID: 1882569952}
   - {fileID: 392327257}
+  - {fileID: 1738089431}
   - {fileID: 1170291108}
   m_Father: {fileID: 0}
   m_RootOrder: 15
@@ -1835,6 +1839,7 @@ MonoBehaviour:
   myCameraController: {fileID: 0}
   myInventaireManager: {fileID: 0}
   myCollider: {fileID: 0}
+  myVoixManager: {fileID: 0}
   cameraEmpty: {fileID: 1475693658}
 --- !u!65 &222520894
 BoxCollider:
@@ -2142,6 +2147,7 @@ MonoBehaviour:
   myCameraController: {fileID: 0}
   myInventaireManager: {fileID: 0}
   myCollider: {fileID: 0}
+  myVoixManager: {fileID: 0}
   cameraEmpty: {fileID: 839988928}
 --- !u!65 &247854029
 BoxCollider:
@@ -3204,6 +3210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aeee6e8ae10d704e83308828fcb8338, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: -1
   Fond: {fileID: 363056654}
   boutonCollection: {fileID: 1882569951}
   boutonAide: {fileID: 0}
@@ -5589,6 +5596,7 @@ MonoBehaviour:
   myCameraController: {fileID: 0}
   myInventaireManager: {fileID: 0}
   myCollider: {fileID: 0}
+  myVoixManager: {fileID: 0}
   cameraEmpty: {fileID: 853910570}
 --- !u!1 &670534515
 GameObject:
@@ -5929,6 +5937,7 @@ MonoBehaviour:
   myCameraController: {fileID: 0}
   myInventaireManager: {fileID: 0}
   myCollider: {fileID: 0}
+  myVoixManager: {fileID: 0}
   cameraEmpty: {fileID: 1475693658}
 --- !u!65 &764012636
 BoxCollider:
@@ -6498,7 +6507,7 @@ MonoBehaviour:
   rotateData: 30
   mySphereManager: {fileID: 0}
   myInitData: {fileID: 1307811312}
-  goodId: 11
+  goodId: 10
 --- !u!64 &849472069
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7311,6 +7320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aeee6e8ae10d704e83308828fcb8338, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: -1
   Fond: {fileID: 363056654}
   boutonCollection: {fileID: 1882569951}
   boutonAide: {fileID: 392327256}
@@ -7658,6 +7668,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myInventaireManager: {fileID: 0}
   myInitData: {fileID: 0}
+  myVoixManager: {fileID: 0}
   ready: 0
 --- !u!1001 &977480048
 PrefabInstance:
@@ -9039,13 +9050,15 @@ GameObject:
   - component: {fileID: 1170291108}
   - component: {fileID: 1170291110}
   - component: {fileID: 1170291109}
+  - component: {fileID: 1170291111}
+  - component: {fileID: 1170291112}
   m_Layer: 0
   m_Name: VoixOff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1170291108
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9058,12 +9071,12 @@ RectTransform:
   m_LocalScale: {x: 0.6231362, y: 0.6231362, z: 0.6231362}
   m_Children: []
   m_Father: {fileID: 185247312}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0014522115, y: -187}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -0.0014648438, y: 309}
+  m_SizeDelta: {x: -1564, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1170291109
 MonoBehaviour:
@@ -9085,8 +9098,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New TextNew TextNew TextNew TextNew TextNew TextNew TextNew TextNew TextNew
-    TextNew Text
+  m_text: "C\u2019est en fin juin 1767 que l\u2019on consid\xE8re que la b\xEAte
+    est abattue.  Les autorit\xE9s de la r\xE9gion accordent des primes \xE0 tous
+    les chasseurs de cette derni\xE8re battue. "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8ef2655a1e6225243b7c7393f45625ee, type: 2}
   m_sharedMaterial: {fileID: -3610585862257130244, guid: 8ef2655a1e6225243b7c7393f45625ee, type: 2}
@@ -9095,8 +9109,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 16777215
+  m_fontColor: {r: 1, g: 1, b: 1, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -9163,6 +9177,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1170291107}
   m_CullTransparentMesh: 1
+--- !u!114 &1170291111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1170291107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0e01fd786d2eb94bbd995ccac2047fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  VoixData: {fileID: 11400000, guid: a820020c1f4390b4ebb90e9084bac9a5, type: 2}
+  fond: {fileID: 1738089430}
+  voixListIndice: []
+  voixListEnigme: []
+--- !u!95 &1170291112
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1170291107}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a81dc5f66b987d445b8cd79072f8cfc7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1172622427
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9898,6 +9947,7 @@ MonoBehaviour:
   enimge1: {fileID: 2034315058}
   clef: {fileID: 2070297544}
   dent: {fileID: 1088874196}
+  myVoixManager: {fileID: 0}
 --- !u!1001 &1316000321
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10507,6 +10557,7 @@ MonoBehaviour:
   myCameraController: {fileID: 0}
   myInventaireManager: {fileID: 0}
   myCollider: {fileID: 0}
+  myVoixManager: {fileID: 0}
   cameraEmpty: {fileID: 1113470799}
 --- !u!65 &1359420972
 BoxCollider:
@@ -11074,7 +11125,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1423956781}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.58, y: 0.847, z: -2.07}
+  m_LocalPosition: {x: 1.58, y: 0.847, z: -1.981}
   m_LocalScale: {x: 0.6048989, y: 0.57324135, z: 0.19293755}
   m_Children: []
   m_Father: {fileID: 315305407}
@@ -11098,6 +11149,7 @@ MonoBehaviour:
   myCameraController: {fileID: 0}
   myInventaireManager: {fileID: 0}
   myCollider: {fileID: 0}
+  myVoixManager: {fileID: 0}
   cameraEmpty: {fileID: 1388442108}
 --- !u!65 &1423956784
 BoxCollider:
@@ -13190,6 +13242,7 @@ MonoBehaviour:
   hitBoxActive: {fileID: 1359420969}
   hitBoxDesactive: {fileID: 1423956781}
   camera: {fileID: 963194225}
+  myVoixManager: {fileID: 0}
   antiHit: {fileID: 1963348855}
   hit: {fileID: 46857121}
   done: 0
@@ -13480,6 +13533,101 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9b5a1bd26fb3704eb95af93bb1df13f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1738089430
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1738089431}
+  - component: {fileID: 1738089433}
+  - component: {fileID: 1738089432}
+  - component: {fileID: 1738089434}
+  m_Layer: 0
+  m_Name: FondDialogue
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1738089431
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738089430}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2.4044757, y: 4.468306, z: 2.4044757}
+  m_Children: []
+  m_Father: {fileID: 185247312}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.001482, y: -181}
+  m_SizeDelta: {x: 788, y: 120}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1738089432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738089430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 6f21f38d9e9c94343ac2c533ecb6e337, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1738089433
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738089430}
+  m_CullTransparentMesh: 1
+--- !u!95 &1738089434
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738089430}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bd5b380b0e52a61498493d0aab7037d0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1747588801
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13951,8 +14099,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 1.0744371}
+  m_Center: {x: 0, y: 0, z: -0.037218492}
 --- !u!23 &1774620134
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -14020,6 +14168,7 @@ MonoBehaviour:
   myCameraController: {fileID: 0}
   myInventaireManager: {fileID: 0}
   myCollider: {fileID: 0}
+  myVoixManager: {fileID: 0}
   cameraEmpty: {fileID: 1475693658}
 --- !u!1 &1781560845
 GameObject:
@@ -15000,6 +15149,7 @@ MonoBehaviour:
   - {fileID: 922047462}
   spriteState1: {fileID: 21300000, guid: 629e713db58218b4f973dcec03bcb1d6, type: 3}
   spriteState2: {fileID: 21300000, guid: eb4df6ebf56195440adff11f85cc710f, type: 3}
+  boutonAide: {fileID: 392327256}
 --- !u!1001 &1883427071
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16830,6 +16980,7 @@ MonoBehaviour:
   myCameraController: {fileID: 0}
   myInventaireManager: {fileID: 0}
   myCollider: {fileID: 0}
+  myVoixManager: {fileID: 0}
   cameraEmpty: {fileID: 871039031}
 --- !u!1001 &2080697410
 PrefabInstance:
@@ -17246,4 +17397,5 @@ MonoBehaviour:
   myCameraController: {fileID: 0}
   myInventaireManager: {fileID: 0}
   myCollider: {fileID: 0}
+  myVoixManager: {fileID: 0}
   cameraEmpty: {fileID: 839988928}

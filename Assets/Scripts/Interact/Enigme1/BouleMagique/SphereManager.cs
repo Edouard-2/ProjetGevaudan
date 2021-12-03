@@ -15,6 +15,13 @@ public class SphereManager : MonoBehaviour
     public GameObject clef;
     public GameObject dent;
 
+    public VoixManager myVoixManager;
+
+    private void Start()
+    {
+        myVoixManager = FindObjectOfType<VoixManager>();
+    }
+
     public void verifBonnePosition()
     {
         int _nbr = 0;
@@ -76,6 +83,7 @@ public class SphereManager : MonoBehaviour
         FindObjectOfType<InteractifObject>().GoInventaire(clef.transform);
         FindObjectOfType<InteractifObject>().flou.SetActive(false);
         FindObjectOfType<InteractifObject>().state = Mathf.Abs(FindObjectOfType<InteractifObject>().state - 1);
-        
+
+        myVoixManager.DeclencheDialogueIndice();
     }
 }

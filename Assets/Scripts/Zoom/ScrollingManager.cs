@@ -20,12 +20,15 @@ public class ScrollingManager : MonoBehaviour
 
     public BoxCollider myCollider;
 
+    public VoixManager myVoixManager;
+
     public GameObject cameraEmpty;
 
     private void Awake()
     {
         //Initialisation des variables
 
+        myVoixManager = FindObjectOfType<VoixManager>();
         myGameManager = FindObjectOfType<GameManager>();
         myCollider = gameObject.GetComponent<BoxCollider>();
         myScryotTextManager = FindObjectOfType<ScryptTextManager>();
@@ -76,6 +79,10 @@ public class ScrollingManager : MonoBehaviour
             {
                 if (( (gameObject.tag == "Seconde_Hitbox" || gameObject.tag == "interieur") && myGameManager.gameState == 2) || (gameObject.tag == "First_Hitbox" && (myGameManager.gameState == 1|| myGameManager.gameState == 3)) )
                 {
+                    if (hit.transform.name == "Cryptex_HitBox")
+                    {
+                        myVoixManager.DeclencheDialogueEnigme(4);
+                    }
                     myCameraController.moveCamera(cameraEmpty, true);
                 }
 

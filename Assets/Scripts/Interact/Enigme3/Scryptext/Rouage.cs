@@ -11,7 +11,7 @@ public class Rouage : MonoBehaviour
 
     public bool solve = false;
 
-    float rotateData;
+    float rotateData = 60;
 
     float initPoint;
 
@@ -70,13 +70,11 @@ public class Rouage : MonoBehaviour
         if( Input.GetAxis("Mouse Y") > 0)
         {
             switchLetter(1);
-            rotateData += 60;
             gameObject.transform.RotateAround(GetComponent<Renderer>().bounds.center, Vector3.right, rotateData);
         }
         else if( Input.GetAxis("Mouse Y") < 0)
         {
             switchLetter(-1);
-            rotateData -= 60;
             gameObject.transform.RotateAround(GetComponent<Renderer>().bounds.center, Vector3.left, rotateData);
         }
     }

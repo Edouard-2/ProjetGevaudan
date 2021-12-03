@@ -20,6 +20,8 @@ public class InteractifObject : MonoBehaviour
 
     public GameObject myZoomLight;
 
+    public VoixManager myVoixManager;
+
     //Facteur zoom (scale)
     private Vector3 facteur;
 
@@ -50,6 +52,7 @@ public class InteractifObject : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        myVoixManager = FindObjectOfType<VoixManager>();
         curObject = transform;
     }
 
@@ -170,11 +173,10 @@ public class InteractifObject : MonoBehaviour
         {
             //Ajouter l'inventaire a la list
             int lenght = myInventaireManager.listObj.Length;
-            print(lenght);
+
             bool insert = true;
             for (int i = 0; i < lenght; i++)
             {
-                print(myInventaireManager.listObj[i]);
                 if ( !myInventaireManager.listObj[i] && insert)
                 {
                     print("réussi");
@@ -185,7 +187,6 @@ public class InteractifObject : MonoBehaviour
                     
                 }
             }
-            print(_curObject.GetComponent<InitData>().id);
 
             id = _curObject.GetComponent<InitData>().id;
         }
@@ -239,6 +240,10 @@ public class InteractifObject : MonoBehaviour
                 //Si il va dans l'inventaire
                 else if ( ( hit.transform.tag == "Petit_Inventaire" || hit.transform.tag == "Petit_Drag" || hit.transform.tag == "croix") && hit.transform.GetComponent<InitData>().state == 0 && FindObjectOfType<GameManager>().gameState != 1 && FindObjectOfType<GameManager>().gameState != 0)
                 {
+                    if( hit.transform.name == "piece_loup")
+                    {
+                        myVoixManager.DeclencheDialogueEnigme(1);
+                    }
                     print("2");
                     CheckMovement(hit.transform);
                     ReadyInventaire = true;

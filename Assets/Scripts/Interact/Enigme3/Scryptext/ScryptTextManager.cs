@@ -13,6 +13,7 @@ public class ScryptTextManager : MonoBehaviour
     public GameObject hitBoxDesactive;
 
     public GameObject camera;
+    public VoixManager myVoixManager;
 
     public GameObject antiHit;
     public GameObject hit;
@@ -25,6 +26,7 @@ public class ScryptTextManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        myVoixManager = FindObjectOfType<VoixManager>();
         verifClef();
         print(rouageWord);
     }
@@ -69,7 +71,7 @@ public class ScryptTextManager : MonoBehaviour
     IEnumerator activeAnimation()
     {
         FindObjectOfType<GameManager>().gameState = -1;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.3f);
         gameObject.GetComponent<Animator>().SetTrigger("open");
         StartCoroutine(activePorteAnimation());
     }
@@ -82,5 +84,6 @@ public class ScryptTextManager : MonoBehaviour
         porteDroite.GetComponent<Animator>().SetTrigger("open");
         yield return new WaitForSeconds(0.5f);
         FindObjectOfType<GameManager>().gameState = 3;
+        myVoixManager.DeclencheDialogueEnigme(3);
     }
 }

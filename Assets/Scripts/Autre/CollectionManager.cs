@@ -13,6 +13,8 @@ public class CollectionManager : MonoBehaviour, IPointerClickHandler
     public Sprite spriteState1;
     public Sprite spriteState2;
 
+    public GameObject boutonAide;
+
     [System.Obsolete]
     //Activer ou desactiver l''ui de la collection
     public void OnPointerClick(PointerEventData eventData)
@@ -21,13 +23,14 @@ public class CollectionManager : MonoBehaviour, IPointerClickHandler
         {
             activeDeZoom();
             activeDesactive(false);
+            boutonAide.SetActive(true);
             FindObjectOfType<GameManager>().switchZoom(0);
         }
         else
         {
             DesactiveDeZoom();
             activeDesactive(true);
-
+            boutonAide.SetActive(false);
             FindObjectOfType<GameManager>().switchZoom(-1);
         }
     }

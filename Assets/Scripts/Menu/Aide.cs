@@ -7,7 +7,7 @@ using TMPro;
 
 public class Aide : MonoBehaviour, IPointerClickHandler
 {
-    private int state = -1;
+    public int state = -1;
 
     private bool readyClick = false;
 
@@ -25,6 +25,7 @@ public class Aide : MonoBehaviour, IPointerClickHandler
     // Start is called before the first frame update
     void Start()
     {
+        //Initialisation des variables / objets / texte
         state = 0;
 
         textPatientez = Patientez.GetComponent<TextMeshProUGUI>();
@@ -41,9 +42,10 @@ public class Aide : MonoBehaviour, IPointerClickHandler
         StartCoroutine(activeClickReady());
     }
 
+    //Dès qu'on click sur l'objet
     public void OnPointerClick(PointerEventData eventData)
     {
-        
+        //Si le texte est en mode Passer
         if (readyClick)
         {
             print("ezf");
@@ -57,6 +59,8 @@ public class Aide : MonoBehaviour, IPointerClickHandler
                 StartCoroutine(activeClickReady());
             }
         }
+
+        //Si le joueur n'a pas attendu
         else
         {
             readyClick = true;
@@ -65,19 +69,25 @@ public class Aide : MonoBehaviour, IPointerClickHandler
         }
     }
 
+    //Changement de state
     void checkState()
     {
+        //Lancement du menu aide
         if (state == 0)
         {
             Aide1Obj.SetActive(true);
             Aide2Obj.SetActive(false);
         }
+
+        //Affichage de la deuxième aide
         else if (state == 1)
         {
             textPatientez.SetText("Veuillez Patienter");
             Aide1Obj.SetActive(false);
             Aide2Obj.SetActive(true);
         }
+
+        //Fermeture de l'aide
         else if (state > 1)
         {
             FindObjectOfType<GameManager>().switchZoom(0);
@@ -95,22 +105,44 @@ public class Aide : MonoBehaviour, IPointerClickHandler
     {
         readyClick = false;
         state = 0;
+
+        //Changement de la state du Jeu
         FindObjectOfType<GameManager>().switchZoom(-1);
+
+        //Reactivation et désactivation de tout les objets necessaire
         boutonCollection.SetActive(false);
         boutonAide.SetActive(false);
         Fond.SetActive(true);
-        gameObject.SetActive(true);
         Aide1Obj.SetActive(true);
+        gameObject.SetActive(true);
+        Patientez.SetActive(true);
+
+        //Mettre le non texte pour Patienter
+        textPatientez.SetText("Veuillez Patienter");
+
+        //Lancement des animations
+        Fond.GetComponent<Animator>().SetTrigger("close");
+        Aide2Obj.GetComponent<Animator>().SetTrigger("close");
+        Patientez.GetComponent<Animator>().SetTrigger("close");
+
+        //Mettre le fond en non transparent
+        Fond.GetComponent<Image>().color = new Color(16, 12, 12, 1);
+        Aide2Obj.GetComponent<Image>().color = new Color(255, 255, 255, 1);
+
+        //Lancer les fonction pour le menu aide
+        checkState();
         StartCoroutine(activeClickReady());
     }
 
     IEnumerator activeClickReady()
     {
+        //Activation du "Passer" pour le joueur
         yield return new WaitForSeconds(2f);
         ActiveClickText();
         readyClick = true;
     }
 
+    //Mettre le texte Patientez en "Passer"
     void ActiveClickText()
     {
         textPatientez.SetText("Passer");

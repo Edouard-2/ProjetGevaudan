@@ -406,3 +406,392 @@ Total: 2.213600 ms (FindLiveObjects: 0.291900 ms CreateObjectMapping: 0.053100 m
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
+========================================================================
+Received Import Request.
+  Time since last request: 4273.957091 seconds.
+  path: Assets/Import/game essais/enigme2/Mesh/cle_lys.fbx
+  artifactKey: Guid(0ccf9d23826f9954f8392864bd23bb7c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import/game essais/enigme2/Mesh/cle_lys.fbx using Guid(0ccf9d23826f9954f8392864bd23bb7c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f5bcce9982be951eca8d0af18c86dabe') in 0.220671 seconds
+  Import took 0.224841 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.019867 seconds.
+  path: Assets/Import/game essais/enigme2/Mesh/morceau1.fbx
+  artifactKey: Guid(4d11ee2635a809249b3208937f6b9d2b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import/game essais/enigme2/Mesh/morceau1.fbx using Guid(4d11ee2635a809249b3208937f6b9d2b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '962a757c9a65bf87bec231e88aa2c7f7') in 0.019106 seconds
+  Import took 0.022930 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.040472 seconds.
+  path: Assets/Scripts/Inventaire/InventaireManager.cs
+  artifactKey: Guid(6b6560edd4308fd4dbad7d71000381be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Inventaire/InventaireManager.cs using Guid(6b6560edd4308fd4dbad7d71000381be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a0939b6fddd719fe59ce7fcb7b7e056b') in 0.004397 seconds
+  Import took 0.008434 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.004565 seconds.
+  path: Assets/Import/game essais/enigme2/Mesh/morceau3.fbx
+  artifactKey: Guid(81df271078107ab43a0437eacce94ce5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import/game essais/enigme2/Mesh/morceau3.fbx using Guid(81df271078107ab43a0437eacce94ce5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9fc569d891c228df67034c48b0bd2b03') in 0.014140 seconds
+  Import took 0.018239 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.044057 seconds.
+  path: Assets/Import/game essais/enigme2/materials/bureau.mat
+  artifactKey: Guid(118ab85592cf83a4a9094d40d3ecb518) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import/game essais/enigme2/materials/bureau.mat using Guid(118ab85592cf83a4a9094d40d3ecb518) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '34930aee649b267ef755d29569ea04d5') in 0.033663 seconds
+  Import took 0.037670 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.011165 seconds.
+  path: Assets/Scripts/Interact/Enigme1/BouleMagique/SphereDrag.cs
+  artifactKey: Guid(3278e4d545bd3b946939e9227b3797bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Interact/Enigme1/BouleMagique/SphereDrag.cs using Guid(3278e4d545bd3b946939e9227b3797bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a1549fa0dff891420b162867529755f6') in 0.004537 seconds
+  Import took 0.008292 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.004397 seconds.
+  path: Assets/Scripts/Autre/VoixManager.cs
+  artifactKey: Guid(a0e01fd786d2eb94bbd995ccac2047fe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Autre/VoixManager.cs using Guid(a0e01fd786d2eb94bbd995ccac2047fe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a7faed0a0c958f6f185d3afdf3cca257') in 0.004122 seconds
+  Import took 0.007942 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.046145 seconds.
+  path: Assets/Scripts/Inventaire/InventaireMovement.cs
+  artifactKey: Guid(9c9b3508afe5b5f44ac8dfb07f112e25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Inventaire/InventaireMovement.cs using Guid(9c9b3508afe5b5f44ac8dfb07f112e25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2f0edfe138946489e78fcf0c162d05be') in 0.003923 seconds
+  Import took 0.007603 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.032646 seconds.
+  path: Assets/Import/game essais/enigme2/materials/livre.mat
+  artifactKey: Guid(765de4a8cec676940a73585feed71013) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import/game essais/enigme2/materials/livre.mat using Guid(765de4a8cec676940a73585feed71013) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '673faa90f8ff8b0f05ec1f1b22d02ebe') in 0.011609 seconds
+  Import took 0.015852 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.068615 seconds.
+  path: Assets/Scripts/Interact/InteractifObject.cs
+  artifactKey: Guid(58d6512baec928844b755a12e4702a78) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Interact/InteractifObject.cs using Guid(58d6512baec928844b755a12e4702a78) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dc3051d5d3335a666bd3d328b7a09cc3') in 0.004605 seconds
+  Import took 0.008539 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.003368 seconds.
+  path: Assets/Import/game essais/enigme2/animations
+  artifactKey: Guid(35829472b79ccce48a146eda3efc3341) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import/game essais/enigme2/animations using Guid(35829472b79ccce48a146eda3efc3341) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '923de6eb63ff420c42c7dab3755f1755') in 0.004101 seconds
+  Import took 0.007553 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.022507 seconds.
+  path: Assets/Scripts/Interact/PorteFinal/CadenaManager.cs
+  artifactKey: Guid(110a05c68517c16458443375e80d24f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Interact/PorteFinal/CadenaManager.cs using Guid(110a05c68517c16458443375e80d24f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2783fb021cc682e2e5255ea83f262d70') in 0.003941 seconds
+  Import took 0.007525 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.004060 seconds.
+  path: Assets/Import/game essais/enigme2/Mesh/morceau2.fbx
+  artifactKey: Guid(a87a769f0d9ecec479caf2f0a046ff7b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import/game essais/enigme2/Mesh/morceau2.fbx using Guid(a87a769f0d9ecec479caf2f0a046ff7b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '950501c288b96d0ff8b2bc01670c0b4e') in 0.013733 seconds
+  Import took 0.017781 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.030833 seconds.
+  path: Assets/Scripts/Zoom/ScrollingManager.cs
+  artifactKey: Guid(dc9a94e9c382a4f4a9dd9da14d06da52) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Zoom/ScrollingManager.cs using Guid(dc9a94e9c382a4f4a9dd9da14d06da52) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '497745cd1a0869b415e52ba68dcbaea5') in 0.004640 seconds
+  Import took 0.008342 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.141562 seconds.
+  path: Assets/Scripts/Interact/Enigme3/CroixManager.cs
+  artifactKey: Guid(d9374d64ab3de0f4ba0cb950847556e2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Interact/Enigme3/CroixManager.cs using Guid(d9374d64ab3de0f4ba0cb950847556e2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '12c05f8caad5ac4e8b603df3e07bbb05') in 0.004281 seconds
+  Import took 0.007977 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.020954 seconds.
+  path: Assets/Animations/enigme3/tiroir/tiroir_com_g.controller
+  artifactKey: Guid(410a62f604089e8438a8da617f0e8cb1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/enigme3/tiroir/tiroir_com_g.controller using Guid(410a62f604089e8438a8da617f0e8cb1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a64bb665e82c8cd2e62d5caa59f31644') in 0.009206 seconds
+  Import took 0.013231 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.036513 seconds.
+  path: Assets/Import/game essais/enigme2/Mesh/bureau.fbx
+  artifactKey: Guid(da16f8db852e569448a44fcbd999cfdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import/game essais/enigme2/Mesh/bureau.fbx using Guid(da16f8db852e569448a44fcbd999cfdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5ffb35a52fd38f1f4c66835271648b4e') in 0.015289 seconds
+  Import took 0.019767 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.008824 seconds.
+  path: Assets/Import/game essais/enigme2/materials/tissus.mat
+  artifactKey: Guid(11143060d58a2f04f90406823ff028e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import/game essais/enigme2/materials/tissus.mat using Guid(11143060d58a2f04f90406823ff028e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '899e39f20a601b9002c06767c429b483') in 0.013454 seconds
+  Import took 0.017385 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.021565 seconds.
+  path: Assets/Import/game essais/enigme2/Mesh/dessus_bureau.fbx
+  artifactKey: Guid(c7acc95f4f82540459c94f46e6103c53) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import/game essais/enigme2/Mesh/dessus_bureau.fbx using Guid(c7acc95f4f82540459c94f46e6103c53) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4314268ffdb6d126520847b9a2b92230') in 0.014080 seconds
+  Import took 0.018461 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.035969 seconds.
+  path: Assets/Scripts/Interact/Drag.cs
+  artifactKey: Guid(769d862d8fcb7d5408e0ed4560627ead) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Interact/Drag.cs using Guid(769d862d8fcb7d5408e0ed4560627ead) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7f440ad84a51dd5b480b91b6d4b08871') in 0.004091 seconds
+  Import took 0.008071 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.013988 seconds.
+  path: Assets/Import/game essais/enigme2/animations/dessus_bureau.controller
+  artifactKey: Guid(ee65d0b3685818e418dee0b46f906f91) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import/game essais/enigme2/animations/dessus_bureau.controller using Guid(ee65d0b3685818e418dee0b46f906f91) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1ab33c5a819625636eafbf1f12f21242') in 0.005656 seconds
+  Import took 0.009634 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.006187 seconds.
+  path: Assets/Import/game essais/enigme2/materials/morceaux.mat
+  artifactKey: Guid(ace2fd2dea58028449962365f4f8dc0e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import/game essais/enigme2/materials/morceaux.mat using Guid(ace2fd2dea58028449962365f4f8dc0e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cd369338800fa28cf311025761f3ad56') in 0.012568 seconds
+  Import took 0.016328 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.011263 seconds.
+  path: Assets/Import/game essais/enigme2/materials/haut.mat
+  artifactKey: Guid(8af5addbb5cbb6845873732696d5e259) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import/game essais/enigme2/materials/haut.mat using Guid(8af5addbb5cbb6845873732696d5e259) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7e455c7c0e7cc56c056a6a4ce994175c') in 0.012654 seconds
+  Import took 0.016713 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.012273 seconds.
+  path: Assets/Import/game essais/enigme2/animations/tiroirG_bureau.controller
+  artifactKey: Guid(2ad21dd1b05699f46b2aeb58b0527bc5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import/game essais/enigme2/animations/tiroirG_bureau.controller using Guid(2ad21dd1b05699f46b2aeb58b0527bc5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '39b435c330846a57787034b83df3ee0f') in 0.004958 seconds
+  Import took 0.008669 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.063910 seconds.
+  path: Assets/Animations/enigme3/tiroir/tiroirG_commode.anim
+  artifactKey: Guid(aa5a2872845c3ea40ba825d106b09977) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/enigme3/tiroir/tiroirG_commode.anim using Guid(aa5a2872845c3ea40ba825d106b09977) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '431ff2d07d9a1fcfb23e4e1fdb7ebcda') in 0.006022 seconds
+  Import took 0.009755 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.030711 seconds.
+  path: Assets/Import/game essais/enigme2/materials
+  artifactKey: Guid(cb351b3f89a5d6f45868f2dd47f4cdeb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import/game essais/enigme2/materials using Guid(cb351b3f89a5d6f45868f2dd47f4cdeb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f7e4187bf59d4e0f9698794d1526691b') in 0.004706 seconds
+  Import took 0.008564 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.026873 seconds.
+  path: Assets/Import/game essais/enigme2/Mesh/labyrinthe.fbx
+  artifactKey: Guid(993cbb42f91b335438166eaecbc8a722) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import/game essais/enigme2/Mesh/labyrinthe.fbx using Guid(993cbb42f91b335438166eaecbc8a722) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b5fa751eff8c994a2cfa06aa9dc56f66') in 0.037429 seconds
+  Import took 0.042136 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.005474 seconds.
+  path: Assets/Animations/enigme3/portes_commode/porte_com_g.controller
+  artifactKey: Guid(51cd96ff7211a914ab02c14efd94ca14) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/enigme3/portes_commode/porte_com_g.controller using Guid(51cd96ff7211a914ab02c14efd94ca14) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4f8db93683a8089ca6e46a9c4cae8698') in 0.005080 seconds
+  Import took 0.009142 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.034716 seconds.
+  path: Assets/Animations/enigme3/portes_commode/porte_com_d.controller
+  artifactKey: Guid(e377308f5aab2b34081343c200d50cbc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/enigme3/portes_commode/porte_com_d.controller using Guid(e377308f5aab2b34081343c200d50cbc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3c4fcd6cefbf80db76450c5429c7ebeb') in 0.004859 seconds
+  Import took 0.008925 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.021826 seconds.
+  path: Assets/Import/game essais/enigme2/Mesh/tissus_lys.fbx
+  artifactKey: Guid(8d6033d11cd1b444b98de22a070aebe2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import/game essais/enigme2/Mesh/tissus_lys.fbx using Guid(8d6033d11cd1b444b98de22a070aebe2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5c2bd6c7d493143d70bd23249327ddaa') in 0.016743 seconds
+  Import took 0.020536 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.009333 seconds.
+  path: Assets/Animations/enigme3/cryptex/cryptex_tube.controller
+  artifactKey: Guid(3d659ecfc5774aa4da8a463fe2c61b56) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/enigme3/cryptex/cryptex_tube.controller using Guid(3d659ecfc5774aa4da8a463fe2c61b56) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1aa32b70069b4637242c09b4b247db32') in 0.005152 seconds
+  Import took 0.008829 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.006719 seconds.
+  path: Assets/Import/game essais/enigme2/materials/tirroirs.mat
+  artifactKey: Guid(0df19d20f6a4f114fbfba1960b6e2476) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import/game essais/enigme2/materials/tirroirs.mat using Guid(0df19d20f6a4f114fbfba1960b6e2476) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c3bb507f58c2a0f48022ce9e4009b08a') in 0.012230 seconds
+  Import took 0.016265 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.057918 seconds.
+  path: Assets/Animations/enigme3/tiroir/tiroir_com_d.controller
+  artifactKey: Guid(a016c54b5104a304597bd6cf476b8b61) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/enigme3/tiroir/tiroir_com_d.controller using Guid(a016c54b5104a304597bd6cf476b8b61) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a70e41d25a7d5b1c71eff4ea40195329') in 0.005154 seconds
+  Import took 0.009015 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.027821 seconds.
+  path: Assets/Scripts/Menu/Aide.cs
+  artifactKey: Guid(5aeee6e8ae10d704e83308828fcb8338) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Menu/Aide.cs using Guid(5aeee6e8ae10d704e83308828fcb8338) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e705338894741ae0b67eb0d1bf2c348f') in 0.004065 seconds
+  Import took 0.007866 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.029985 seconds.
+  path: Assets/Import/game essais/enigme2/Mesh
+  artifactKey: Guid(e2bee4ce4e5ab4f4fa996e02fe4475e7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import/game essais/enigme2/Mesh using Guid(e2bee4ce4e5ab4f4fa996e02fe4475e7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0011b915af44fc4de00a00e62d5e8719') in 0.004693 seconds
+  Import took 0.008276 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.004606 seconds.
+  path: Assets/Scripts/Camera/CameraController.cs
+  artifactKey: Guid(b5866d603bed57f429255a46ccb24499) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Camera/CameraController.cs using Guid(b5866d603bed57f429255a46ccb24499) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3353a0941b695fe8f69eb8155c94e88d') in 0.005015 seconds
+  Import took 0.009164 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.013592 seconds.
+  path: Assets/Import/game essais/enigme2/animations/translatetirroirbureauG.anim
+  artifactKey: Guid(f398013fffe010846b1eec91bfa356da) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import/game essais/enigme2/animations/translatetirroirbureauG.anim using Guid(f398013fffe010846b1eec91bfa356da) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a223a9e5ad4516d57529d9b27f3db458') in 0.005468 seconds
+  Import took 0.009448 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.107243 seconds.
+  path: Assets/Animations/enigme3/tiroir/tiroirD_commode.anim
+  artifactKey: Guid(a9fb1dd047244e34ba4fb04531a64c75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/enigme3/tiroir/tiroirD_commode.anim using Guid(a9fb1dd047244e34ba4fb04531a64c75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '763ff58feb71c0a20fe2df613bb31365') in 0.004931 seconds
+  Import took 0.009116 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.090591 seconds.
+  path: Assets/Scripts/Interact/Enigme1/BouleMagique/SphereManager.cs
+  artifactKey: Guid(bb6e943dc85582b43b1e19cdace45c22) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Interact/Enigme1/BouleMagique/SphereManager.cs using Guid(bb6e943dc85582b43b1e19cdace45c22) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fc0853358ba8f2006f1d10a977ed0f58') in 0.004245 seconds
+  Import took 0.007976 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.029007 seconds.
+  path: Assets/Animations/enigme3/coffre_porte/open.anim
+  artifactKey: Guid(d5f903da208697d49a8fb4418f7cd2ed) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/enigme3/coffre_porte/open.anim using Guid(d5f903da208697d49a8fb4418f7cd2ed) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8bbbe38c0c7f07c790e2e457e1f3e596') in 0.004894 seconds
+  Import took 0.009269 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.011078 seconds.
+  path: Assets/Scripts/Interact/Receptacle.cs
+  artifactKey: Guid(010d43bd41face046bc42d8147b7b48c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Interact/Receptacle.cs using Guid(010d43bd41face046bc42d8147b7b48c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd0d578dea5e3416c24b92492ce35cb66') in 0.004374 seconds
+  Import took 0.008732 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.063921 seconds.
+  path: Assets/Import/game essais/enigme2/Mesh/tiroirG_bureau.fbx
+  artifactKey: Guid(feb9a7ca53e3d0443853eaad3b392daa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import/game essais/enigme2/Mesh/tiroirG_bureau.fbx using Guid(feb9a7ca53e3d0443853eaad3b392daa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1b42cf2c2f4d4e4f9845a82eff651fb3') in 0.015591 seconds
+  Import took 0.019657 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.014348 seconds.
+  path: Assets/Import/game essais/enigme2/Mesh/tiroirD_bureau.fbx
+  artifactKey: Guid(dc1b6f56c3e80804abcd752313e5c4d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import/game essais/enigme2/Mesh/tiroirD_bureau.fbx using Guid(dc1b6f56c3e80804abcd752313e5c4d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e2c8f119501861e85c488d1d6701c312') in 0.015942 seconds
+  Import took 0.020153 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.005558 seconds.
+  path: Assets/Scenes/GamePlay.unity
+  artifactKey: Guid(7422830bfffa08d49bcb259e6b304f73) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/GamePlay.unity using Guid(7422830bfffa08d49bcb259e6b304f73) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '96c59a4fba7ca1a29688d8d29b825bab') in 0.005253 seconds
+  Import took 0.009039 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.024867 seconds.
+  path: Assets/Import/game essais/enigme2/Mesh/livre.fbx
+  artifactKey: Guid(d7790620136c57a4cb91fed37697a0c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import/game essais/enigme2/Mesh/livre.fbx using Guid(d7790620136c57a4cb91fed37697a0c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00a8dc0927141efc2dee6c0b63fd1bdc') in 0.017727 seconds
+  Import took 0.021483 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.015201 seconds.
+  path: Assets/Import/game essais/enigme2/animations/tiroirD_bureau.controller
+  artifactKey: Guid(ff78e910a87f0aa4da67d8a099a6477d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import/game essais/enigme2/animations/tiroirD_bureau.controller using Guid(ff78e910a87f0aa4da67d8a099a6477d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cd5e3b0148e732a73de21ffb25c7162e') in 0.005648 seconds
+  Import took 0.009749 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.048032 seconds.
+  path: Assets/Scripts/Interact/Enigme2/BoutLabyrinthDrag.cs
+  artifactKey: Guid(048cdedbe1c47064a89cf1703a732840) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Interact/Enigme2/BoutLabyrinthDrag.cs using Guid(048cdedbe1c47064a89cf1703a732840) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '929f2d717c9269c73ea908e73f23addc') in 0.004127 seconds
+  Import took 0.008081 seconds .
+
+========================================================================
+Received Prepare
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 1.22 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 69.0 MB.
+System memory in use after: 69.2 MB.
+
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 3067.
+Total: 2.741400 ms (FindLiveObjects: 0.346900 ms CreateObjectMapping: 0.063500 ms MarkObjects: 2.263400 ms  DeleteObjects: 0.066600 ms)
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file

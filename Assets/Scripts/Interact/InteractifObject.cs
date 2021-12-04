@@ -114,7 +114,11 @@ public class InteractifObject : MonoBehaviour
     public void Zoom()
     {
         curObject.position = Vector3.MoveTowards(curObject.position, positionFront.transform.position, Vector3.Distance(curObject.position, positionFront.transform.position) / speedPosition * Time.deltaTime);
-        if(curObject.tag != "croix")
+        if (curObject.name == "morceau1" || curObject.name == "morceau2" || curObject.name == "morceau3")
+        {
+            curObject.localScale = Vector3.MoveTowards(curObject.localScale, curObject.GetComponent<InitData>().facteur, Vector3.Distance(curObject.lossyScale, curObject.GetComponent<InitData>().facteur) / speedPosition * Time.deltaTime);
+        }
+        else if(curObject.tag != "croix" )
         {
             curObject.localScale = Vector3.MoveTowards(curObject.localScale, curObject.GetComponent<InitData>().facteur * 0.05f, Vector3.Distance(curObject.localScale, curObject.GetComponent<InitData>().facteur) / speedPosition * Time.deltaTime);
         }
@@ -218,6 +222,26 @@ public class InteractifObject : MonoBehaviour
         ReadyInventaire = false;
     }
 
+    //Verification si le joueur à plus de 8 objet dans son inventaire
+    bool verifFullInventaire()
+    {
+        int id = 0;
+        foreach (GameObject item in myInventaireManager.listObj)
+        {
+            if( item == null)
+            {
+                id++;
+            }
+        }
+        if( id > 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
     public void RaycastHit()
     {
@@ -238,7 +262,7 @@ public class InteractifObject : MonoBehaviour
                 }
 
                 //Si il va dans l'inventaire
-                else if ( ( hit.transform.tag == "Petit_Inventaire" || hit.transform.tag == "Petit_Drag" || hit.transform.tag == "croix") && hit.transform.GetComponent<InitData>().state == 0 && FindObjectOfType<GameManager>().gameState != 1 && FindObjectOfType<GameManager>().gameState != 0)
+                else if (  verifFullInventaire() && (hit.transform.tag == "Petit_Inventaire" || hit.transform.tag == "Petit_Drag" || hit.transform.tag == "croix") && hit.transform.GetComponent<InitData>().state == 0 && FindObjectOfType<GameManager>().gameState != 1 && FindObjectOfType<GameManager>().gameState != 0)
                 {
                     if( hit.transform.name == "piece_loup")
                     {

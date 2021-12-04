@@ -88,7 +88,6 @@ public class InventaireManager : MonoBehaviour, /*IPointerClickHandler,*/ IDragH
         verifColliderObj();
 
         //Changement de positon
-        print("switchState");
         gameObject.GetComponent<InventaireMovement>().SwitchPosition(state);
         caseInventaire.GetComponent<InventaireMovement>().SwitchPosition(state);
 
@@ -106,7 +105,6 @@ public class InventaireManager : MonoBehaviour, /*IPointerClickHandler,*/ IDragH
             }
             else
             {
-                print("fermeture");
                 switchState();
                 downImage1.SetActive(false);
                 downImage2.SetActive(false);

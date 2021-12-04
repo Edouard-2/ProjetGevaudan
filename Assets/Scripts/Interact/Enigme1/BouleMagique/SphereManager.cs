@@ -39,6 +39,9 @@ public class SphereManager : MonoBehaviour
             foreach (GameObject item in listSphere)
             {
                 item.GetComponent<SphereDrag>().block = true;
+
+                item.transform.localRotation = Quaternion.Euler(new Vector3(-123.569f, 0, 0));
+                item.transform.localPosition = Vector3.zero;
             }
 
             bonnePos = true;
@@ -83,6 +86,8 @@ public class SphereManager : MonoBehaviour
         FindObjectOfType<InteractifObject>().GoInventaire(clef.transform);
         FindObjectOfType<InteractifObject>().flou.SetActive(false);
         FindObjectOfType<InteractifObject>().state = Mathf.Abs(FindObjectOfType<InteractifObject>().state - 1);
+
+        FindObjectOfType<CadenaManager>().addIndexIndice();
 
         myVoixManager.DeclencheDialogueIndice();
     }

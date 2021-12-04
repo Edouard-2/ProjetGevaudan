@@ -9,6 +9,7 @@ public class CameraController : MonoBehaviour
     public Vector3 NextPosition;
     Quaternion initRotation;
     public Quaternion NextRotation;
+    public Quaternion startRotation;
 
     private float rotSpeed = 10f;
     private float posSpeed = 0.5f;
@@ -23,6 +24,7 @@ public class CameraController : MonoBehaviour
     {
         initPosition = transform.position;
         startPosition = transform.position;
+        startRotation = transform.rotation;
         initRotation = transform.rotation;
         NextPosition = Vector3.zero;
     }
@@ -35,7 +37,7 @@ public class CameraController : MonoBehaviour
             if(FindObjectOfType<GameManager>().gameState == 1 )
             {
                 gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, startPosition, posSpeed);
-                gameObject.transform.rotation = NextRotation;
+                gameObject.transform.rotation = startRotation;
             }
             else 
             {
@@ -94,6 +96,11 @@ public class CameraController : MonoBehaviour
     //Initialiser les variable d'avant mouvement
     void initVariables()
     {
+        if(FindObjectOfType<GameManager>().gameState == 1)
+        {
+            print("rotatStart");
+            startRotation = transform.rotation;
+        }
         initPosition = transform.position;
         initRotation = transform.rotation;
         NextPosition = Vector3.zero;

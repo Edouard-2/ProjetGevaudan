@@ -47,14 +47,11 @@ public class InventaireMovement : MonoBehaviour
         if (Input.GetAxis("Mouse X") < 0 || (Input.GetAxis("Mouse Y") > 0 && Input.mousePosition.x > canvasSize.x / 2 ) )
         {
             rotateData += 45f;
-            Debug.Log(Input.mousePosition.x);
-            Debug.Log(canvasSize.x);
         }
         //Si le joueur va de Gauche à Droite ou de bas en haut a Droite de l'écran
         else if (Input.GetAxis("Mouse X") > 0 || (Input.GetAxis("Mouse Y") > 0 && Input.mousePosition.x < canvasSize.x / 2))
         {
             rotateData -= 45f;
-            Debug.Log(canvasSize.x);
         }
 
         //Faire la rotation

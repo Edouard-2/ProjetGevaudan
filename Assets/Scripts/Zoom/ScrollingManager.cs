@@ -83,6 +83,10 @@ public class ScrollingManager : MonoBehaviour
                     {
                         myVoixManager.DeclencheDialogueEnigme(4);
                     }
+                    else if (hit.transform.name == "CadenaPorte_HitBox")
+                    {
+                        FindObjectOfType<CadenaManager>().verifCadena();
+                    }
                     myCameraController.moveCamera(cameraEmpty, true);
                 }
 
@@ -145,7 +149,7 @@ public class ScrollingManager : MonoBehaviour
                 myCollider.enabled = false;
             }
 
-            if (gameObject.name == "Avant")
+            if (gameObject.name == "Avant" || gameObject.name == "Avant" + 2 || gameObject.name == "Avant" + 3 || gameObject.name == "Avant" + 4)
             {
                 myCollider.enabled = false;
             }

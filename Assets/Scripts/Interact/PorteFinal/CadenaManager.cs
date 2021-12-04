@@ -13,6 +13,8 @@ public class CadenaManager : MonoBehaviour
 
     public bool done = false;
 
+    int indexIndice = 0;
+
     int correctCode = 124;
 
     // Start is called before the first frame update
@@ -23,22 +25,30 @@ public class CadenaManager : MonoBehaviour
 
     public void verifCadena()
     {
-
-        if ((listCode[0].id*100 + listCode[1].id*10 + listCode[2].id) == correctCode)
+        print("verifCadena");
+        if( indexIndice == 2)
         {
-            foreach (CadenaRouage item in listCode)
+            if ((listCode[0].id * 100 + listCode[1].id * 10 + listCode[2].id) == correctCode)
             {
-                item.solve = true;
-                item.transform.SetParent(gameObject.transform);
+                foreach (CadenaRouage item in listCode)
+                {
+                    item.solve = true;
+                    item.transform.SetParent(gameObject.transform);
+                }
+
+                StartCoroutine(activeAnimation());
+
+                done = true;
+                FindObjectOfType<CameraController>().moveCamera(hitBoxCadena.GetComponent<ScrollingManager>().cameraEmpty, true);
+
+                hitBoxCadena.SetActive(false);
             }
-
-            StartCoroutine(activeAnimation());
-
-            done = true;
-            FindObjectOfType<CameraController>().moveCamera(hitBoxCadena.GetComponent<ScrollingManager>().cameraEmpty, true);
-
-            hitBoxCadena.SetActive(false);
         }
+    }
+
+    public void addIndexIndice()
+    {
+        indexIndice++;
     }
 
     IEnumerator activeAnimation()

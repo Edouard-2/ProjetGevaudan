@@ -7,12 +7,13 @@ public class Drag : MonoBehaviour
 
     public bool downDrag = false;
     public bool exitDrag = false;
+    public bool readyDrag = true;
 
 
     private void OnMouseDrag()
     {
         downDrag = true;
-        if ((exitDrag || gameObject.GetComponent<InitData>().state == 3) && FindObjectOfType<GameManager>().gameState == 2)
+        if ((exitDrag || gameObject.GetComponent<InitData>().state == 3) && FindObjectOfType<GameManager>().gameState >= 2)
         {
             DetachObj();
             
@@ -21,14 +22,10 @@ public class Drag : MonoBehaviour
                 gameObject.transform.localScale = gameObject.GetComponent<InitData>().initScale;
                 gameObject.transform.localPosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1));
                 gameObject.transform.rotation = Quaternion.Euler(new Vector3(90, 180, 0));
-                if (name == "cle_dent")
-                {
-                    gameObject.transform.rotation = Quaternion.Euler(new Vector3(90, 0, 0));
-                }
             }
             else
             {
-                gameObject.transform.localScale = gameObject.GetComponent<InitData>().facteur / 10;
+                gameObject.transform.localScale = gameObject.GetComponent<InitData>().facteur / 2;
                 gameObject.transform.localPosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0.4f));
                 gameObject.transform.rotation = Quaternion.Euler(new Vector3(270, -90, 0));
             }
@@ -39,7 +36,7 @@ public class Drag : MonoBehaviour
 
     private void OnMouseExit()
     {
-        if (downDrag && gameObject.GetComponent<InitData>().state == 2 && FindObjectOfType<GameManager>().gameState == 2)
+        if (downDrag && gameObject.GetComponent<InitData>().state == 2 && FindObjectOfType<GameManager>().gameState >= 2)
         {
             exitDrag = true;
         }
@@ -47,7 +44,7 @@ public class Drag : MonoBehaviour
 
     private void OnMouseUp()
     {
-        if (gameObject.GetComponent<InitData>().state == 3)
+        if (gameObject.GetComponent<InitData>().state == 3 && readyDrag)
         {
             FindObjectOfType<InventaireManager>().activation = true;
             gameObject.GetComponent<BoxCollider>().enabled = false;
@@ -79,6 +76,22 @@ public class Drag : MonoBehaviour
                         hit.transform.GetComponent<Receptacle>().ActiveBlock();
                         gameObject.transform.SetParent(hit.transform);
                     }
+                }
+                else if (hit.transform.name == "morceau_Receptacle" && (gameObject.name == "morceau1" || gameObject.name == "morceau2" || gameObject.name == "morceau3") && 
+                    (hit.transform.GetComponent<Receptacle>().id == 0))
+                {
+                    hit.transform.GetComponent<Receptacle>().id = 1;
+                    gameObject.GetComponent<InitData>().state = 4;
+                    gameObject.transform.position = hit.transform.GetComponent<Receptacle>().empty.position;
+
+                    gameObject.transform.SetParent(FindObjectOfType<LabyrinthManager>().gameObject.transform);
+
+                    gameObject.transform.rotation = FindObjectOfType<LabyrinthManager>().gameObject.transform.rotation;
+                    gameObject.transform.localScale = gameObject.transform.localScale * 3.2f;
+                    gameObject.GetComponent<BoutLabyrinthDrag>().state = 1;
+                    gameObject.GetComponent<BoutLabyrinthDrag>().receptacle = hit.transform.gameObject;
+                    gameObject.GetComponent<BoxCollider>().enabled = true;
+                    readyDrag = false;
                 }
                 else
                 {

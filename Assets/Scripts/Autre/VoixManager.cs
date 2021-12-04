@@ -17,6 +17,7 @@ public class VoixManager : MonoBehaviour
     private Animator fondAnimator;
 
     private string actualDialogue;
+    private int state = 0;
 
     private int indexIndice = 0;
     private int indexEnigme = 0;
@@ -44,59 +45,67 @@ public class VoixManager : MonoBehaviour
     //Declencher le dialogue de l'enigme _i
     public void DeclencheDialogueEnigme(int _i)
     {
-        if(_i == 4 && !VoixData.VerifEnigme3Bis)
+        if( state != 0)
         {
-            VoixData.VerifEnigme3Bis = true;
-            //Lancer dialogue D
-            LancementDial(voixListEnigme.Count-1);
+
+            StartCoroutine(waitForNextDialEnigme(_i));
         }
-        else if (_i != 4)
+        else
         {
-            if ((indexEnigme == 0 && !VoixData.VerifA) || indexEnigme == 2)
+            if (_i == 4 && !VoixData.VerifEnigme3Bis)
             {
-                if(_i == 1)
-                {
-                    VoixData.VerifEnigme1 = true;
-                }
-                else if(_i == 1)
-                {
-                    VoixData.VerifEnigme2 = true;
-                }
-                else
-                {
-                    VoixData.VerifEnigme3 = true;
-                }
-                //Lancer dialogue A
-                VoixData.VerifA = true;
-                LancementDial(0);
-                indexEnigme++;
+                VoixData.VerifEnigme3Bis = true;
+                //Lancer dialogue D
+                LancementDial(voixListEnigme.Count - 1);
             }
-            else if (indexEnigme == 1)
+            else if (_i != 4)
             {
-                if (((_i == 1 && !VoixData.VerifEnigme1) || (_i == 2 && !VoixData.VerifEnigme2)) && !VoixData.VerifB)
+                if ((indexEnigme == 0 && !VoixData.VerifA) || indexEnigme == 2)
                 {
                     if (_i == 1)
                     {
                         VoixData.VerifEnigme1 = true;
                     }
-                    else
+                    else if (_i == 2)
                     {
                         VoixData.VerifEnigme2 = true;
                     }
-
-                    //Lancer dialogue B
-                    VoixData.VerifB = true;
+                    else
+                    {
+                        VoixData.VerifEnigme3 = true;
+                    }
+                    //Lancer dialogue A
+                    VoixData.VerifA = true;
                     LancementDial(0);
                     indexEnigme++;
                 }
-                else if (_i == 3 && !VoixData.VerifC && !VoixData.VerifEnigme3)
+                else if (indexEnigme == 1)
                 {
-                    //Lancer dialogue C
-                    VoixData.VerifC = true;
-                    VoixData.VerifEnigme3 = true;
-                    LancementDial(1);
-                    indexEnigme++;
+                    if (((_i == 1 && !VoixData.VerifEnigme1) || (_i == 2 && !VoixData.VerifEnigme2)) && !VoixData.VerifB)
+                    {
+                        if (_i == 1)
+                        {
+                            VoixData.VerifEnigme1 = true;
+                        }
+                        else
+                        {
+                            VoixData.VerifEnigme2 = true;
+                        }
 
+                        //Lancer dialogue B
+                        VoixData.VerifB = true;
+                        LancementDial(0);
+                        indexEnigme++;
+                    }
+                    else if (_i == 3 && !VoixData.VerifC && !VoixData.VerifEnigme3)
+                    {
+                        //Lancer dialogue C
+                        VoixData.VerifC = true;
+                        VoixData.VerifEnigme3 = true;
+                        LancementDial(1);
+                        indexEnigme++;
+
+                    }
                 }
             }
         }
@@ -105,6 +114,7 @@ public class VoixManager : MonoBehaviour
     //Initialisation du dialogue choisis et lancement de l'affichage
     private void LancementDial(int _i)
     {
+        state++;
         //Actualisation du dialogue actuel
         actualDialogue = voixListEnigme[_i];
 
@@ -116,11 +126,30 @@ public class VoixManager : MonoBehaviour
     //Lancer le changement de dialogue Indice
     public void DeclencheDialogueIndice()
     {
-        indexIndice++;
-        actualDialogue = voixListIndice[indexIndice];
-        StartCoroutine(DisplayDialogue(actualDialogue));
+        if (state != 0)
+        {
+            StartCoroutine(waitForNextDialIndice());
+        }
+        else
+        {
+            state++;
+            indexIndice++;
+            actualDialogue = voixListIndice[indexIndice];
+            StartCoroutine(DisplayDialogue(actualDialogue));
+        }
     }
 
+    IEnumerator waitForNextDialEnigme(int _i)
+    {
+        yield return new WaitForSeconds(15f * state);
+        DeclencheDialogueEnigme(_i);
+    }
+    
+    IEnumerator waitForNextDialIndice()
+    {
+        yield return new WaitForSeconds(15f * state);
+        DeclencheDialogueIndice();
+    }
     //Affichage du Dialogue Indice avec un peut de délai
     IEnumerator DisplayDialogue(string dialogue)
     {
@@ -139,5 +168,6 @@ public class VoixManager : MonoBehaviour
         fondAnimator.SetTrigger("close");
         fond.GetComponent<Image>().color = new Color(255, 255, 255, 0);
         myAnimator.SetTrigger("close");
+        state = 0;
     }
 }

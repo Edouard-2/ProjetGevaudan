@@ -6,6 +6,8 @@ public class Receptacle : MonoBehaviour
 {
     public Transform empty;
 
+    public int id = 0;
+
     public void ActiveBlock()
     {
         gameObject.GetComponent<OpenTiroir>().ChangeState();

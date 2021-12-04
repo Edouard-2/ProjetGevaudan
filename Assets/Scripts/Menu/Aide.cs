@@ -45,27 +45,31 @@ public class Aide : MonoBehaviour, IPointerClickHandler
     //Dès qu'on click sur l'objet
     public void OnPointerClick(PointerEventData eventData)
     {
-        //Si le texte est en mode Passer
-        if (readyClick)
-        {
-            print("ezf");
-            readyClick = false;
-            state++;
-            checkState();
-            Aide1Obj.GetComponent<Image>().color = new Color(255, 255, 255, 1);
-            Fond.GetComponent<Image>().color = new Color(16, 12, 12, 1);
-            if (state <= 1)
-            {
-                StartCoroutine(activeClickReady());
-            }
-        }
 
-        //Si le joueur n'a pas attendu
-        else
+        if (Patientez.activeSelf)
         {
-            readyClick = true;
-            StopAllCoroutines();
-            ActiveClickText();
+            //Si le texte est en mode Passer
+            if (readyClick)
+            {
+                print("ezf");
+                readyClick = false;
+                state++;
+                checkState();
+                Aide1Obj.GetComponent<Image>().color = new Color(255, 255, 255, 1);
+                Fond.GetComponent<Image>().color = new Color(16, 12, 12, 1);
+                if (state <= 1)
+                {
+                    StartCoroutine(activeClickReady());
+                }
+            }
+
+            //Si le joueur n'a pas attendu
+            else
+            {
+                readyClick = true;
+                StopAllCoroutines();
+                ActiveClickText();
+            }
         }
     }
 

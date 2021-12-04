@@ -45,8 +45,9 @@ public class CroixManager : MonoBehaviour
             myInventaireManager.listObj[_item.GetComponent<InitData>().id] = null;
         }
 
-        if(gameObject.transform.childCount == 2){
-
+        if(gameObject.transform.childCount == 2)
+        {
+            FindObjectOfType<CadenaManager>().addIndexIndice();
             myVoixManager.DeclencheDialogueIndice();
         }
 

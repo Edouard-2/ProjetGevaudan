@@ -67,18 +67,28 @@ public class SphereDrag : MonoBehaviour
         if (Input.GetAxis("Mouse Y") > 0)
         {
             id++;
-            gameObject.transform.RotateAround(GetComponent<MeshRenderer>().bounds.center, Vector3.back, rotateData);
+
+            verifOverId();
+            checkBonneEmplacement();
+            if (!block)
+            {
+                gameObject.transform.RotateAround(GetComponent<MeshRenderer>().bounds.center, Vector3.back, rotateData);
+            }
         }
 
         else if (Input.GetAxis("Mouse Y") < 0)
         {
             id--;
-            gameObject.transform.RotateAround(GetComponent<MeshRenderer>().bounds.center, Vector3.forward, rotateData);
+
+            verifOverId();
+            checkBonneEmplacement();
+            if (!block)
+            {
+                gameObject.transform.RotateAround(GetComponent<MeshRenderer>().bounds.center, Vector3.forward, rotateData);
+            }
+            
         }
 
-        verifOverId();
-
-        checkBonneEmplacement();
         gameObject.transform.localPosition = Vector3.zero;
     }
 

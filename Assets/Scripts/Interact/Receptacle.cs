@@ -13,6 +13,11 @@ public class Receptacle : MonoBehaviour
         gameObject.GetComponent<OpenTiroir>().ChangeState();
     }
 
+    public void ActiveAnimationBureau()
+    {
+        FindObjectOfType<LabyrinthManager>().porteDessus.GetComponent<Animator>().SetTrigger("open");
+    }
+
     public bool verifRond()
     {
         if( FindObjectOfType<SphereManager>().bonnePos )

@@ -160,6 +160,13 @@ public class InteractifObject : MonoBehaviour
 
         _curObject.GetComponent<InitData>().state = 2;
     }
+    
+    IEnumerator ChangeCurrObj(Transform _curObject)
+    {
+        yield return new WaitForSeconds(0.2f);
+        CheckMovement(_curObject);
+
+    }
 
     //Mettre l'obj dans l'inventaire 
     public void GoInventaire(Transform _curObject)
@@ -258,6 +265,12 @@ public class InteractifObject : MonoBehaviour
                 if ( (hit.transform.tag == "Grand" || hit.transform.tag == "Petit" ) && state == 0 && FindObjectOfType<GameManager>().gameState != 1 && FindObjectOfType<GameManager>().gameState != 0)
                 {
                     print("1");
+                    if(hit.transform.name == "livre")
+                    {
+                        GameObject lys = GameObject.Find("tissus_lys");
+                        lys.GetComponent<BoxCollider>().enabled = true;
+                        lys.GetComponent<InitData>().enabled = true;
+                    }
                     CheckMovement(hit.transform);
                 }
 
@@ -268,9 +281,34 @@ public class InteractifObject : MonoBehaviour
                     {
                         myVoixManager.DeclencheDialogueEnigme(1);
                     }
-                    print("2");
-                    CheckMovement(hit.transform);
-                    ReadyInventaire = true;
+                    else if(hit.transform.name == "tissus_lys" && curObject != hit.transform)
+                    {
+                        //Verifier le tag pour le facteur
+                        verifTag(hit.transform);
+
+                        hit.transform.SetParent(gameObject.transform);
+                        //Enlever les ombre porté
+                        if (hit.transform.GetComponent<Renderer>())
+                        {
+                            hit.transform.GetComponent<Renderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+                        }
+
+                        if (curObject.name != "sphere")
+                        {
+                            myZoomLight.SetActive(true);
+                        }
+
+                        //Changer de state
+                        state = Mathf.Abs(state - 1);
+
+                        StartCoroutine(ChangeCurrObj(hit.transform));
+                    }
+                    else
+                    {
+                        print("2");
+                        CheckMovement(hit.transform);
+                        ReadyInventaire = true;
+                    }
                 }
 
                 //Si c'est le flou arrière

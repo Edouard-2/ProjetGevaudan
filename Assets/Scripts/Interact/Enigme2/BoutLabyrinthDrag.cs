@@ -6,10 +6,18 @@ public class BoutLabyrinthDrag : MonoBehaviour
 {
     public int state = 0;
 
+    int idCentre = 0;
+    public int goodIdFinal = 0;
+
     public bool readyClick = false;
     public bool up = false;
 
     public GameObject receptacle;
+
+    public LabyrinthManager myLabyrinthManager;
+
+    public BoutLabyrinthDrag autreBout1;
+    public BoutLabyrinthDrag autreBout2;
 
     private Vector2 initPoint;
     private Vector2 dir;
@@ -17,6 +25,7 @@ public class BoutLabyrinthDrag : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        myLabyrinthManager = FindObjectOfType<LabyrinthManager>();
         initPoint = new Vector2(-10000, -100000);
     }
 
@@ -34,7 +43,7 @@ public class BoutLabyrinthDrag : MonoBehaviour
     //Deplacement de la case si il fait une distance pour déplacer la case
     private void OnMouseDrag()
     {
-        if (state >= 1)
+        if (state >= 1 && FindObjectOfType<GameManager>().gameState == 3)
         {
             state = 2;
 
@@ -63,11 +72,13 @@ public class BoutLabyrinthDrag : MonoBehaviour
     //Si le joueur click dessus
     private void OnMouseUpAsButton()
     {
-        if (state >= 1 && readyClick)
+        if (state >= 1 && readyClick && FindObjectOfType<GameManager>().gameState == 3)
         {
             state = 0;
+            idCentre = 0;
             receptacle.GetComponent<Receptacle>().id = 0;
             gameObject.GetComponent<Drag>().readyDrag = true;
+            gameObject.GetComponent<BoxCollider>().size = new Vector3(gameObject.GetComponent<BoxCollider>().size.x, gameObject.GetComponent<BoxCollider>().size.y, 2.2f);
             FindObjectOfType<InteractifObject>().GoInventaire(gameObject.transform);
             print("récup");
         }
@@ -112,22 +123,108 @@ public class BoutLabyrinthDrag : MonoBehaviour
         {
             dirZ = 0.72f * -dir.y;
         }
-        if (Physics.Raycast(transform.position, new Vector3(dirZ, dir.y, dir.x), out hit, 0.15f))
+        if (Physics.Raycast(transform.position, new Vector3(dirZ, dir.y, dir.x), out hit, 0.15f) )
         {
-            Debug.DrawRay(transform.position, new Vector3(dirZ, dir.y, dir.x), Color.yellow, 3);
-            print("Mur Bloqué");
+            if( hit.transform.tag == "Centre_Labyrinthe" || ( (idCentre == 2 || idCentre == 3 ) && dir.y == 1 )|| ( idCentre == 1 && dir.y == -1 ) )
+            {
+                print("centre");
+
+                //Si il est a côté du centre
+                if (idCentre == 0 && autreBout1.idCentre != 1 && 
+
+                    //Verif des autres poistions des bouts
+                    autreBout2.idCentre != 1)
+                {
+                    idCentre = 1;
+                    gameObject.transform.position = new Vector3(gameObject.transform.position.x - 0.01f * -1, gameObject.transform.position.y + -1 * 0.01f, gameObject.transform.position.z - 1 * 0.12f);
+
+                }
+
+                //Si il en haut et qu'il veut déscendre
+                else if ( idCentre == 1  && dir.y == -1)
+                {
+                    if(autreBout1.idCentre != 2 && autreBout2.idCentre != 2)
+                    {
+                        idCentre = 2;
+
+                        gameObject.transform.position = new Vector3(gameObject.transform.position.x - 0.06f * -1, gameObject.transform.position.y + -1 * 0.08f, gameObject.transform.position.z + -1 * 0.0475f);
+                    }
+                    else if (autreBout1.idCentre != 3 && autreBout2.idCentre != 3)
+                    {
+                        idCentre = 3;
+                        gameObject.transform.position = new Vector3(gameObject.transform.position.x - 0.06f * -1, gameObject.transform.position.y + -1 * 0.08f, gameObject.transform.position.z + 1 * 0.0475f);
+                    }
+                }
+
+                //Si il est en bas et qu'il veut monter
+                else if ( ( idCentre == 2 || idCentre == 3 ) && dir.y == 1 &&
+
+                    //Verif des autres poistions des bouts
+                    autreBout1.idCentre != 1 && autreBout2.idCentre != 1)
+                {
+                    if(idCentre == 2)
+                    {
+                        gameObject.transform.position = new Vector3(gameObject.transform.position.x - 0.06f * 1, gameObject.transform.position.y + 1 * 0.08f, gameObject.transform.position.z + 1 * 0.0475f);
+
+                    }
+                    else
+                    {
+                        gameObject.transform.position = new Vector3(gameObject.transform.position.x - 0.06f * 1, gameObject.transform.position.y + 1 * 0.08f, gameObject.transform.position.z -1 * 0.0475f);
+                    }
+
+                    idCentre = 1;
+                }
+
+                //Si il est a en bas a gauche et qu'il veut aller a droite
+                else if ( idCentre == 2 && dir.x == 1 &&
+
+                    //Verif des autres poistions des bouts
+                    autreBout1.idCentre !=3 && autreBout2.idCentre != 3)
+                {
+                    idCentre = 3;
+                    gameObject.transform.position = new Vector3(gameObject.transform.position.x , gameObject.transform.position.y , gameObject.transform.position.z +1 * 0.095f);
+
+                }
+
+                //Si il est a en bas a droite et qu'il veut aller a gauche
+                else if (idCentre == 3 && dir.x == -1 &&
+
+                    //Verif des autres poistions des bouts
+                    autreBout2.idCentre != 2 && autreBout2.idCentre != 2)
+                {
+                    idCentre = 2;
+                    gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z - 1 * 0.095f);
+                }
+                print(idCentre);
+                VerifBonnePos();
+            }
+            else
+            {
+                Debug.DrawRay(transform.position, new Vector3(dirZ, dir.y, dir.x), Color.yellow, 3);
+                print("Mur Bloqué");
+            }
         }
         else
         {
-            print("oiuherggnerqg");
-            MoveCase();
+            if(idCentre == 1)
+            {
+                idCentre = 0;
+                gameObject.transform.position = new Vector3(gameObject.transform.position.x - 0.01f * 1, gameObject.transform.position.y + 1 * 0.02f, gameObject.transform.position.z + 1 * 0.12f);
+
+            }
+            else
+            {
+                MoveCase(0);
+            }
         }
     }
 
     //Bouger la case
-    void MoveCase()
+    void MoveCase(float _i)
     {
+
         Vector3 pos = new Vector3(0, dir.y * 0.107f, dir.x * 0.13f);
+
         if (pos.y != 0)
         {
             gameObject.transform.position = new Vector3(gameObject.transform.position.x - 0.08f * dir.y, gameObject.transform.position.y + pos.y, gameObject.transform.position.z + pos.z);
@@ -136,12 +233,15 @@ public class BoutLabyrinthDrag : MonoBehaviour
         {
             gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + pos.y, gameObject.transform.position.z + pos.z);
         }
-        VerifBonnePos();
     }
 
     //Verification si la case est sur une bonne case
     void VerifBonnePos()
     {
-        
+        if (goodIdFinal == idCentre && autreBout1.goodIdFinal == autreBout1.idCentre && autreBout2.goodIdFinal == autreBout2.idCentre)
+        {
+            print("bravo");
+            myLabyrinthManager.finishLabyrinth();
+        }
     }
 }

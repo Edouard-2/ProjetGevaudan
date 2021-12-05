@@ -16,15 +16,15 @@ PlayerSettings:
   productName: Alpha Gevaudan
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
-  m_SplashScreenBackgroundColor: {r: 0.23584908, g: 0.08070153, b: 0.034487363, a: 1}
+  m_SplashScreenBackgroundColor: {r: 0.005241092, g: 0, b: 0.047169805, a: 1}
   m_ShowUnitySplashScreen: 1
   m_ShowUnitySplashLogo: 1
   m_SplashScreenOverlayOpacity: 1
-  m_SplashScreenAnimation: 1
+  m_SplashScreenAnimation: 2
   m_SplashScreenLogoStyle: 1
   m_SplashScreenDrawMode: 0
   m_SplashScreenBackgroundAnimationZoom: 1
-  m_SplashScreenLogoAnimationZoom: 1
+  m_SplashScreenLogoAnimationZoom: 0.36
   m_SplashScreenBackgroundLandscapeAspect: 1
   m_SplashScreenBackgroundPortraitAspect: 1
   m_SplashScreenBackgroundLandscapeUvs:
@@ -40,8 +40,8 @@ PlayerSettings:
     width: 1
     height: 1
   m_SplashScreenLogos:
-  - logo: {fileID: 21300000, guid: 94181c5c26a470d42a333929b39d53eb, type: 3}
-    duration: 3
+  - logo: {fileID: 21300000, guid: 7f858feebfb5e084db5c8283386de941, type: 3}
+    duration: 4
   m_VirtualRealitySplashScreen: {fileID: 0}
   m_HolographicTrackingLossScreen: {fileID: 0}
   defaultScreenWidth: 1920
@@ -293,7 +293,8 @@ PlayerSettings:
       m_Height: 81
       m_Kind: 2
       m_SubKind: 
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 2800000, guid: 787ad6f147825bb4cb250fb1e853d3fe, type: 3}
       m_Width: 192
       m_Height: 192
       m_Kind: 0
@@ -323,7 +324,8 @@ PlayerSettings:
       m_Height: 36
       m_Kind: 0
       m_SubKind: 
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 2800000, guid: 787ad6f147825bb4cb250fb1e853d3fe, type: 3}
       m_Width: 192
       m_Height: 192
       m_Kind: 1

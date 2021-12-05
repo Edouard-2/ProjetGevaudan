@@ -16,18 +16,26 @@ public class Drag : MonoBehaviour
         if ((exitDrag || gameObject.GetComponent<InitData>().state == 3) && FindObjectOfType<GameManager>().gameState >= 2)
         {
             DetachObj();
-            
-            if( name == "cle_croix" || name == "cle_dent")
+            FindObjectOfType<InventaireManager>().Fermeture();
+            if ( name == "cle_croix" || name == "cle_dent" || name == "cle_bureau" )
             {   
                 gameObject.transform.localScale = gameObject.GetComponent<InitData>().initScale;
                 gameObject.transform.localPosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1));
-                gameObject.transform.rotation = Quaternion.Euler(new Vector3(90, 180, 0));
+                if (name == "cle_dent" || name == "cle_bureau")
+                {
+                    gameObject.transform.rotation = Quaternion.Euler(new Vector3(270, -90, 0));
+                }
+                else
+                {
+
+                    gameObject.transform.rotation = Quaternion.Euler(new Vector3(90, 180, 0));
+                }
             }
             else
             {
                 gameObject.transform.localScale = gameObject.GetComponent<InitData>().facteur / 2;
                 gameObject.transform.localPosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0.4f));
-                gameObject.transform.rotation = Quaternion.Euler(new Vector3(270, -90, 0));
+                gameObject.transform.rotation = Quaternion.Euler(new Vector3(270, 90, 0));
             }
             FindObjectOfType<InventaireManager>().activation = false;
             /*gameObject.transform.rotation = gameObject.GetComponent<InitData>().initRotation;*/
@@ -69,11 +77,19 @@ public class Drag : MonoBehaviour
                         exitDrag = false;
                         FindObjectOfType<InteractifObject>().GoInventaire(gameObject.transform);
                     }
-                    else if(hit.transform.name == "cle_croix_Receptacle")
+                    else if(hit.transform.name == "cle_croix_Receptacle" || hit.transform.name == "cle_bureau_Receptacle" || hit.transform.name == "cle_dent_Receptacle")
                     {
                         gameObject.GetComponent<InitData>().state = 4;
                         gameObject.transform.position = hit.transform.GetComponent<Receptacle>().empty.position;
-                        hit.transform.GetComponent<Receptacle>().ActiveBlock();
+
+                        if(hit.transform.name != "cle_bureau_Receptacle")
+                        {
+                            hit.transform.GetComponent<Receptacle>().ActiveBlock();
+                        }
+                        else
+                        {
+                            hit.transform.GetComponent<Receptacle>().ActiveAnimationBureau();
+                        }
                         gameObject.transform.SetParent(hit.transform);
                     }
                 }
@@ -91,6 +107,7 @@ public class Drag : MonoBehaviour
                     gameObject.GetComponent<BoutLabyrinthDrag>().state = 1;
                     gameObject.GetComponent<BoutLabyrinthDrag>().receptacle = hit.transform.gameObject;
                     gameObject.GetComponent<BoxCollider>().enabled = true;
+                    gameObject.GetComponent<BoxCollider>().size = new Vector3(gameObject.GetComponent<BoxCollider>().size.x, gameObject.GetComponent<BoxCollider>().size.y, 6);
                     readyDrag = false;
                 }
                 else

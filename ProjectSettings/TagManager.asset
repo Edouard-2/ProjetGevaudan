@@ -14,6 +14,9 @@ TagManager:
   - First_Hitbox
   - Seconde_Hitbox
   - interieur
+  - bordure
+  - croix
+  - Centre_Labyrinthe
   layers:
   - Default
   - TransparentFX

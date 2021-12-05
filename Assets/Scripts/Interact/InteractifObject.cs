@@ -164,6 +164,7 @@ public class InteractifObject : MonoBehaviour
     IEnumerator ChangeCurrObj(Transform _curObject)
     {
         yield return new WaitForSeconds(0.2f);
+        myVoixManager.DeclencheDialogueIndice();
         CheckMovement(_curObject);
 
     }
@@ -280,6 +281,8 @@ public class InteractifObject : MonoBehaviour
                     if( hit.transform.name == "piece_loup")
                     {
                         myVoixManager.DeclencheDialogueEnigme(1);
+                        CheckMovement(hit.transform);
+                        ReadyInventaire = true;
                     }
                     else if(hit.transform.name == "tissus_lys" && curObject != hit.transform)
                     {

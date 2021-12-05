@@ -18,6 +18,8 @@ public class CameraController : MonoBehaviour
 
     public bool readyRotate = false;
 
+    public bool readyActive = true;
+
     public bool readyClick = false;
 
     private void Start()
@@ -32,7 +34,7 @@ public class CameraController : MonoBehaviour
     private void Update()
     {
         //Si la position est différent de la prochaine pos
-        if (NextPosition != Vector3.zero && gameObject.transform.position != NextPosition )
+        if (NextPosition != Vector3.zero && gameObject.transform.position != NextPosition && readyActive)
         {
             if(FindObjectOfType<GameManager>().gameState == 1 )
             {

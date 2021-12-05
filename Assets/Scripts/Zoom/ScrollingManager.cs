@@ -83,6 +83,10 @@ public class ScrollingManager : MonoBehaviour
                     {
                         myVoixManager.DeclencheDialogueEnigme(4);
                     }
+                    else if (hit.transform.name == "Labyrinth_HitBox")
+                    {
+                        myVoixManager.DeclencheDialogueEnigme(2);
+                    }
                     else if (hit.transform.name == "CadenaPorte_HitBox")
                     {
                         FindObjectOfType<CadenaManager>().verifCadena();
@@ -112,7 +116,7 @@ public class ScrollingManager : MonoBehaviour
                 {
                     myGameManager.switchZoom(0);
                 }
-                else if(hit.transform.tag != "Untagged" && hit.transform.tag != "interieur")
+                else if(hit.transform.tag != "Untagged" && hit.transform.tag != "interieur"&& hit.transform.name != "AntiHitbox")
                 {
                     Debug.Log(hit.transform.name);
                     myGameManager.switchZoom(0);

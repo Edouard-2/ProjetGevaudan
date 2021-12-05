@@ -24,7 +24,7 @@ public class MenuCamera : MonoBehaviour
 
     private void OnMouseUpAsButton()
     {
-        GetComponent<Animator>().SetTrigger("Open");
+        GetComponent<Animator>().SetTrigger("open");
         StartCoroutine(activeMovementCamera());
     }
 

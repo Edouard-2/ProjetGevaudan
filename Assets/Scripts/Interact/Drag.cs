@@ -18,10 +18,11 @@ public class Drag : MonoBehaviour
             DetachObj();
             FindObjectOfType<InventaireManager>().Fermeture();
             if ( name == "cle_croix" || name == "cle_dent" || name == "cle_bureau" )
-            {   
+            {
+                print("bureau");
                 gameObject.transform.localScale = gameObject.GetComponent<InitData>().initScale;
                 gameObject.transform.localPosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1));
-                if (name == "cle_dent" || name == "cle_bureau")
+                if ( name == "cle_bureau")
                 {
                     gameObject.transform.rotation = Quaternion.Euler(new Vector3(270, -90, 0));
                 }
@@ -33,9 +34,17 @@ public class Drag : MonoBehaviour
             }
             else
             {
-                gameObject.transform.localScale = gameObject.GetComponent<InitData>().facteur / 2;
+                if(name == "piece_loup")
+                {
+                    gameObject.transform.localScale = gameObject.GetComponent<InitData>().facteur / 10;
+                }
+                else
+                {
+                    gameObject.transform.localScale = gameObject.GetComponent<InitData>().facteur / 2;
+                }
+                
                 gameObject.transform.localPosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0.4f));
-                gameObject.transform.rotation = Quaternion.Euler(new Vector3(270, 90, 0));
+                gameObject.transform.rotation = Quaternion.Euler(new Vector3(270, -90, 0));
             }
             FindObjectOfType<InventaireManager>().activation = false;
             /*gameObject.transform.rotation = gameObject.GetComponent<InitData>().initRotation;*/

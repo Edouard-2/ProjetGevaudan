@@ -130,8 +130,9 @@ public class InventaireManager : MonoBehaviour, /*IPointerClickHandler,*/ IDragH
             //Desactive du collider
             foreach (GameObject item in listObj)
             {
-                if (item != null && item.GetComponent<InitData>().state == 0)
+                if (item != null && item.GetComponent<InitData>().state == 2)
                 {
+                    
                     item.GetComponent<BoxCollider>().enabled = false;
                 }
             }

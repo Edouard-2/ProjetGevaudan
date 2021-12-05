@@ -17027,15 +17027,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0ccf9d23826f9954f8392864bd23bb7c, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.020871393
+      value: 0.01226575
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0ccf9d23826f9954f8392864bd23bb7c, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.020871393
+      value: 0.01226575
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0ccf9d23826f9954f8392864bd23bb7c, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.020871395
+      value: 0.01226575
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0ccf9d23826f9954f8392864bd23bb7c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -17642,7 +17642,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 0df19d20f6a4f114fbfba1960b6e2476, type: 2}
     - target: {fileID: 919132149155446097, guid: feb9a7ca53e3d0443853eaad3b392daa, type: 3}
       propertyPath: m_Name
-      value: cle_dent_Receptable
+      value: cle_dent_Receptacle
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: feb9a7ca53e3d0443853eaad3b392daa, type: 3}
       propertyPath: m_TagString

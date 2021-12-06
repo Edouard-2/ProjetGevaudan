@@ -174,34 +174,26 @@ public class InteractifObject : MonoBehaviour
     {
         int id;
 
-        //Creation de l'id du joueur
-        if(_curObject.GetComponent<InitData>().id != -1)
-        {
-            //Initialisation de l'id du joueur
-            id = _curObject.GetComponent<InitData>().id;
-            myInventaireManager.listObj[_curObject.GetComponent<InitData>().id] = _curObject.gameObject;
-        }
-        else
-        {
-            //Ajouter l'inventaire a la list
-            int lenght = myInventaireManager.listObj.Length;
 
-            bool insert = true;
-            for (int i = 0; i < lenght; i++)
+        //Ajouter l'inventaire a la list
+        int lenght = myInventaireManager.listObj.Length;
+
+        bool insert = true;
+        for (int i = 0; i < lenght; i++)
+        {
+            if ( !myInventaireManager.listObj[i] && insert)
             {
-                if ( !myInventaireManager.listObj[i] && insert)
-                {
-                    print("réussi");
-                    insert = false;
-                    myInventaireManager.listObj[i] = _curObject.gameObject;
+                print("réussi");
+                insert = false;
+                myInventaireManager.listObj[i] = _curObject.gameObject;
 
-                    _curObject.GetComponent<InitData>().id = i;
+                _curObject.GetComponent<InitData>().id = i;
                     
-                }
             }
-
-            id = _curObject.GetComponent<InitData>().id;
         }
+
+        id = _curObject.GetComponent<InitData>().id;
+
         
         //Le changer d'état
         StartCoroutine(switchStateInventaireObj(_curObject));

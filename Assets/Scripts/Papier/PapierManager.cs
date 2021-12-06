@@ -41,6 +41,7 @@ public class PapierManager : MonoBehaviour
                 //On verifie qu'il n'est pas déja en avancé
                 if (hit.transform.tag == "Papier" && zoom && raycastReady) 
                 {
+                    hit.transform.SetParent(gameObject.transform);
                     // On change son état
                     hit.transform.GetComponent<PapierMovement>().state = 1;
                     //On enlève les ombre

@@ -28,6 +28,7 @@ public class CadenaManager : MonoBehaviour
         print("verifCadena");
         if( indexIndice == 2)
         {
+            print(listCode[0].id * 100 + listCode[1].id * 10 + listCode[2].id);
             if ((listCode[0].id * 100 + listCode[1].id * 10 + listCode[2].id) == correctCode)
             {
                 foreach (CadenaRouage item in listCode)

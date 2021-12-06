@@ -66,13 +66,13 @@ public class CadenaRouage : MonoBehaviour
     {
         if (Input.GetAxis("Mouse Y") > 0)
         {
-            addNumber(-1);
-            gameObject.transform.RotateAround(GetComponent<Renderer>().bounds.center, Vector3.right, rotateData);
+            addNumber(1);
+            gameObject.transform.RotateAround(GetComponent<Renderer>().bounds.center, Vector3.left, rotateData);
         }
         else if (Input.GetAxis("Mouse Y") < 0)
         {
-            addNumber(1);
-            gameObject.transform.RotateAround(GetComponent<Renderer>().bounds.center, Vector3.left, rotateData);
+            addNumber(-1);
+            gameObject.transform.RotateAround(GetComponent<Renderer>().bounds.center, Vector3.right, rotateData);
         }
     }
 }

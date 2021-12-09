@@ -16,6 +16,8 @@ public class SphereDrag : MonoBehaviour
 
     public SphereManager mySphereManager;
 
+    public AudioSource myAudioSource;
+
     public InitData myInitData;
     public int goodId;
 
@@ -64,26 +66,29 @@ public class SphereDrag : MonoBehaviour
 
     public void rotate()
     {
+        myAudioSource.Play();
         if (Input.GetAxis("Mouse Y") > 0)
         {
-            id++;
+            if (!block)
+            {
+                id++;
 
             verifOverId();
             checkBonneEmplacement();
-            if (!block)
-            {
+            
                 gameObject.transform.RotateAround(GetComponent<MeshRenderer>().bounds.center, Vector3.back, rotateData);
             }
         }
 
         else if (Input.GetAxis("Mouse Y") < 0)
         {
+            if (!block)
+            {
             id--;
 
             verifOverId();
             checkBonneEmplacement();
-            if (!block)
-            {
+            
                 gameObject.transform.RotateAround(GetComponent<MeshRenderer>().bounds.center, Vector3.forward, rotateData);
             }
             

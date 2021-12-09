@@ -12,6 +12,9 @@ public class SphereManager : MonoBehaviour
 
     public GameObject enimge1;
 
+    public AudioSource myAudioFinal;
+    public AudioSource myAudioSemi;
+
     public GameObject clef;
     public GameObject dent;
 
@@ -36,16 +39,22 @@ public class SphereManager : MonoBehaviour
         
         if( _nbr == 4)
         {
-            foreach (GameObject item in listSphere)
-            {
-                item.GetComponent<SphereDrag>().block = true;
-
-                item.transform.localRotation = Quaternion.Euler(new Vector3(-123.569f, 0, 0));
-                item.transform.localPosition = Vector3.zero;
-            }
-
+            StartCoroutine(BonneEmplacement());
+            myAudioSemi.Play();
             bonnePos = true;
             print("readyRecevoir");
+        }
+    }
+
+    IEnumerator BonneEmplacement()
+    {
+        yield return new WaitForSeconds(0.1f);
+        foreach (GameObject item in listSphere)
+        {
+            item.GetComponent<SphereDrag>().block = true;
+
+            item.transform.localRotation = Quaternion.Euler(new Vector3(-123.569f, 0, 0));
+            item.transform.localPosition = Vector3.zero;
         }
     }
 
@@ -64,9 +73,10 @@ public class SphereManager : MonoBehaviour
 
     IEnumerator DesactiveAll()
     {
+        myAudioFinal.Play();
         yield return new WaitForSeconds(0.5f);
 
-        gameObject.SetActive(false);
+        gameObject.transform.position = new Vector3(3000, 3000, 3000);
         gameObject.GetComponent<BoxCollider>().enabled = false;
         foreach (GameObject item in listSphere)
         {

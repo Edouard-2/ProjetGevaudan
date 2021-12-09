@@ -6,7 +6,10 @@ public class DragObEnigme1 : MonoBehaviour
 {
     public GameManager myGameManager;
 
+    public AudioSource myAudioSource;
+
     bool readyOver = false;
+    bool active = true;
     private float initPointy;
     private float initPointx;
 
@@ -33,9 +36,9 @@ public class DragObEnigme1 : MonoBehaviour
 
             float curDistance = Vector3.Distance(new Vector3(Input.mousePosition.x, curPoint, 0), new Vector3(initPointx, initPointy, 0));
 
-            if (curDistance / 50 >= 1)
+            if (curDistance / 50 >= 1 && active)
             {
-                initPointy = curPoint;
+                active = false;
                 initPointx = Input.mousePosition.x;
                 moveObject();
             }
@@ -44,6 +47,8 @@ public class DragObEnigme1 : MonoBehaviour
 
     void moveObject()
     {
+
+        myAudioSource.Play();
         GetComponent<Animator>().SetTrigger("open");
         GetComponent<BoxCollider>().enabled = false;
     }

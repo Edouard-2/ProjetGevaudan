@@ -127,12 +127,12 @@ public class InventaireManager : MonoBehaviour, /*IPointerClickHandler,*/ IDragH
         //Verification si l'inventaire est plié
         if (state == 0)
         {
+            print("jeanr");
             //Desactive du collider
             foreach (GameObject item in listObj)
             {
-                if (item != null && item.GetComponent<InitData>().state == 2)
+                if (item != null && item.GetComponent<InitData>().state > 0 && item.GetComponent<InitData>().state < 4)
                 {
-                    
                     item.GetComponent<BoxCollider>().enabled = false;
                 }
             }

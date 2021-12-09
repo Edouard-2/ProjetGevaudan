@@ -13,6 +13,8 @@ public class Aide : MonoBehaviour, IPointerClickHandler
 
     public GameObject Fond;
 
+    public AudioSource audioSource;
+
     public GameObject boutonCollection;
     public GameObject boutonAide;
 
@@ -48,6 +50,8 @@ public class Aide : MonoBehaviour, IPointerClickHandler
 
         if (Patientez.activeSelf)
         {
+            audioSource.Play();
+
             //Si le texte est en mode Passer
             if (readyClick)
             {
@@ -107,6 +111,8 @@ public class Aide : MonoBehaviour, IPointerClickHandler
 
     public void ClickAideButton()
     {
+        audioSource.Play();
+
         readyClick = false;
         state = 0;
 

@@ -11,6 +11,8 @@ public class AddPapierGUI : MonoBehaviour
     //Data des papier
     public PapierData data;
 
+    public AudioSource myAudioSource;
+
     private void Update()
     {
         //Si le joueur click et que aucun autres objet est en vu frontale (zoomé)
@@ -24,6 +26,9 @@ public class AddPapierGUI : MonoBehaviour
                 if( hit.transform.tag == "Flou" && FindObjectOfType<PapierManager>().zoom )
                 {
                     int length = listPapier.Count;
+
+
+                    myAudioSource.Play();
 
                     for (int i = 0; i < length; i++)
                     {

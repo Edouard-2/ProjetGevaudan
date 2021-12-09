@@ -11,6 +11,9 @@ public class GUIPapierMovement : MonoBehaviour, IPointerClickHandler
     //Manager des papier UI
     public GameObject GUIpapierManager;
 
+    public AudioSource soundFermeture;
+    public AudioSource soundOuverture;
+
     //autres
     public int state;
 
@@ -36,7 +39,7 @@ public class GUIPapierMovement : MonoBehaviour, IPointerClickHandler
         //Mettre en avant
         if (state == 0 && zoom)
         {
-
+            soundOuverture.Play();
             gameObject.transform.SetAsLastSibling();
             gameObject.transform.position = centre.transform.position;
             gameObject.transform.localScale = centre.transform.localScale;
@@ -45,6 +48,7 @@ public class GUIPapierMovement : MonoBehaviour, IPointerClickHandler
         //Reculer
         else
         {
+            soundFermeture.Play();
             gameObject.transform.position = initPosition;
             gameObject.transform.localScale = initScale;
         }

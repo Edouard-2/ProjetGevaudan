@@ -95,5 +95,8 @@ public class InitData : MonoBehaviour
         //On lui change le parent
         transform.parent = myInteractifObject.transform;
 
+        //Ajouter l'inventaire a la list
+        FindObjectOfType<InventaireManager>().listObj[id] = null;
+
     }
 }

@@ -24,13 +24,21 @@ public class MenuCamera : MonoBehaviour
 
     private void OnMouseUpAsButton()
     {
-        GetComponent<Animator>().SetTrigger("open");
+
+        StartCoroutine(activeSound());
         StartCoroutine(activeMovementCamera());
+        GetComponent<BoxCollider>().enabled = false;
     }
 
+    IEnumerator activeSound()
+    {
+        GetComponent<AudioSource>().Play();
+        yield return new WaitForSeconds(0.3f);
+        GetComponent<Animator>().SetTrigger("open");
+    }
     IEnumerator activeMovementCamera()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.3f);
         readyTransition = true;
     }
 }

@@ -20,6 +20,8 @@ public class InteractifObject : MonoBehaviour
 
     public GameObject myZoomLight;
 
+    AudioSource myAudioSource;
+
     public VoixManager myVoixManager;
 
     //Facteur zoom (scale)
@@ -32,6 +34,8 @@ public class InteractifObject : MonoBehaviour
 
     //Position front camera
     public GameObject positionFront;
+
+    public AudioSource unciversalClick;
 
     //Fond Flou
     public GameObject flou;
@@ -52,6 +56,7 @@ public class InteractifObject : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        myAudioSource = GetComponent<AudioSource>();
         myVoixManager = FindObjectOfType<VoixManager>();
         curObject = transform;
     }
@@ -174,7 +179,6 @@ public class InteractifObject : MonoBehaviour
     {
         int id;
 
-
         //Ajouter l'inventaire a la list
         int lenght = myInventaireManager.listObj.Length;
 
@@ -219,6 +223,8 @@ public class InteractifObject : MonoBehaviour
             FindObjectOfType<CroixManager>().AddCroixEmpty(_curObject.gameObject);
         }
 
+        myInventaireManager.verifColliderObj();
+
         ReadyInventaire = false;
     }
 
@@ -257,8 +263,9 @@ public class InteractifObject : MonoBehaviour
                 //Si c'est un obj qui ne va pas dans l'inventaire
                 if ( (hit.transform.tag == "Grand" || hit.transform.tag == "Petit" ) && state == 0 && FindObjectOfType<GameManager>().gameState != 1 && FindObjectOfType<GameManager>().gameState != 0)
                 {
+                    unciversalClick.Play();
                     print("1");
-                    if(hit.transform.name == "livre")
+                    if(hit.transform.name == "livre" && GameObject.Find("tissus_lys").GetComponent<InitData>().state != 0)
                     {
                         GameObject lys = GameObject.Find("tissus_lys");
                         lys.GetComponent<BoxCollider>().enabled = true;
@@ -270,7 +277,8 @@ public class InteractifObject : MonoBehaviour
                 //Si il va dans l'inventaire
                 else if (  verifFullInventaire() && (hit.transform.tag == "Petit_Inventaire" || hit.transform.tag == "Petit_Drag" || hit.transform.tag == "croix") && hit.transform.GetComponent<InitData>().state == 0 && FindObjectOfType<GameManager>().gameState != 1 && FindObjectOfType<GameManager>().gameState != 0)
                 {
-                    if( hit.transform.name == "piece_loup")
+                    unciversalClick.Play();
+                    if ( hit.transform.name == "piece_loup")
                     {
                         myVoixManager.DeclencheDialogueEnigme(1);
                         CheckMovement(hit.transform);
@@ -313,6 +321,7 @@ public class InteractifObject : MonoBehaviour
                 //Si c'est le flou arrière
                 if ( state == 1 && hit.transform.tag == "Flou" && FindObjectOfType<GameManager>().gameState != 0)
                 {
+                    myAudioSource.Play();
                     print("flou");
                     ReadyInventaire = false;
                     //Si c'est un obj de inventaire les ombre porté sont toujours désactivé

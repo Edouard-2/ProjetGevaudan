@@ -6,6 +6,8 @@ public class CaseDrag : MonoBehaviour
 {
     public CoffreFortManager myCoffreManager;
 
+    public AudioSource myAudioSource;
+
     public Vector2 initPoint;
 
     Vector2 dir;
@@ -104,6 +106,7 @@ public class CaseDrag : MonoBehaviour
     //Bouger la case
     void MoveCase()
     {
+        launchAudio();
         Vector3 pos = new Vector3(dir.x * 0.09f, dir.y * 0.08f, 0);
         gameObject.transform.position = new Vector3(gameObject.transform.position.x + pos.x, gameObject.transform.position.y + pos.y, gameObject.transform.position.z);
         VerifBonnePos();
@@ -121,6 +124,15 @@ public class CaseDrag : MonoBehaviour
         else
         {
             win = false;
+        }
+    }
+
+    void launchAudio()
+    {
+
+        if (myAudioSource.time > 0.2f || !myAudioSource.isPlaying)
+        {
+            myAudioSource.Play();
         }
     }
 }

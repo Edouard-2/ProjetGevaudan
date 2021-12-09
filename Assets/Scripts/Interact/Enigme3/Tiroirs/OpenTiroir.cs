@@ -14,6 +14,8 @@ public class OpenTiroir : MonoBehaviour
 
     public GameObject emptyCamera;
 
+    public AudioSource openSound;
+
     public BoxCollider exitCollider;
 
     CameraController camera;
@@ -22,9 +24,16 @@ public class OpenTiroir : MonoBehaviour
 
     private void Start()
     {
+        openSound = GetComponent<AudioSource>();
         camera = FindObjectOfType<CameraController>();
         myGameManager = FindObjectOfType<GameManager>();
         exitCollider.enabled = false;
+    }
+
+    IEnumerator playAudio()
+    {
+        yield return new WaitForSeconds(0.05f);
+        openSound.Play();
     }
 
     //Si le joueur click alors la camera va au dessus ou en dessous / le tiroir s'ouvre s'il est fermé
@@ -34,6 +43,7 @@ public class OpenTiroir : MonoBehaviour
         if( myGameManager.gameState == 2 && !besoinClef && state == -1)
         {
             print(name);
+            StartCoroutine(playAudio());
             GetComponent<Animator>().SetTrigger("open");
             state = 1;
             InitVariable();

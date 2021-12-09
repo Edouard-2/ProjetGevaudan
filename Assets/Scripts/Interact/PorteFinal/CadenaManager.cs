@@ -9,6 +9,8 @@ public class CadenaManager : MonoBehaviour
     public GameObject porteFinale;
     public GameObject barreFer;
 
+    public AudioSource myAudioSource;
+
     public GameObject hitBoxCadena;
 
     public bool done = false;
@@ -26,7 +28,7 @@ public class CadenaManager : MonoBehaviour
     public void verifCadena()
     {
         print("verifCadena");
-        if( indexIndice == 2)
+        if( indexIndice == 1)
         {
             print(listCode[0].id * 100 + listCode[1].id * 10 + listCode[2].id);
             if ((listCode[0].id * 100 + listCode[1].id * 10 + listCode[2].id) == correctCode)
@@ -56,6 +58,7 @@ public class CadenaManager : MonoBehaviour
     {
         FindObjectOfType<GameManager>().gameState = -1;
         yield return new WaitForSeconds(0.3f);
+        myAudioSource.Play();
         gameObject.GetComponent<Animator>().SetTrigger("play");
         StartCoroutine(activePorteAnimation());
     }
@@ -65,8 +68,10 @@ public class CadenaManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         barreFer.GetComponent<Animator>().SetTrigger("play");
         yield return new WaitForSeconds(2f);
+        GetComponent<AudioSource>().Play();
+        yield return new WaitForSeconds(0.3f);
         porteFinale.GetComponent<Animator>().SetTrigger("play");
-        yield return new WaitForSeconds(0.5f);
-        FindObjectOfType<GameManager>().gameState = 2;
+        yield return new WaitForSeconds(2f);
+        FindObjectOfType<RedirectToCredit>().activeCredit();
     }
 }

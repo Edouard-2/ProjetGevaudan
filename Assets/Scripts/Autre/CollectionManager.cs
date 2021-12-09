@@ -19,6 +19,7 @@ public class CollectionManager : MonoBehaviour, IPointerClickHandler
     //Activer ou desactiver l''ui de la collection
     public void OnPointerClick(PointerEventData eventData)
     {
+        GetComponent<AudioSource>().Play();
         if (uiListObj[0].active)
         {
             activeDeZoom();

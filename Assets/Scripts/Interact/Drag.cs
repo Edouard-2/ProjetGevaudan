@@ -9,6 +9,7 @@ public class Drag : MonoBehaviour
     public bool exitDrag = false;
     public bool readyDrag = true;
 
+    public AudioSource myAudioSource;
 
     private void OnMouseDrag()
     {
@@ -73,6 +74,7 @@ public class Drag : MonoBehaviour
                 {
                     if (hit.transform.name == "piece_loup_Receptacle" && hit.transform.GetComponent<Receptacle>().verifRond())
                     {
+                        myAudioSource.Play();
                         gameObject.GetComponent<InitData>().state = 4;
                         gameObject.transform.position = hit.transform.GetComponent<Receptacle>().empty.position;
                         gameObject.transform.rotation = hit.transform.GetComponent<Receptacle>().empty.rotation;
@@ -88,6 +90,7 @@ public class Drag : MonoBehaviour
                     }
                     else if(hit.transform.name == "cle_croix_Receptacle" || hit.transform.name == "cle_bureau_Receptacle" || hit.transform.name == "cle_dent_Receptacle")
                     {
+                        myAudioSource.Play();
                         gameObject.GetComponent<InitData>().state = 4;
                         gameObject.transform.position = hit.transform.GetComponent<Receptacle>().empty.position;
 
@@ -105,6 +108,7 @@ public class Drag : MonoBehaviour
                 else if (hit.transform.name == "morceau_Receptacle" && (gameObject.name == "morceau1" || gameObject.name == "morceau2" || gameObject.name == "morceau3") && 
                     (hit.transform.GetComponent<Receptacle>().id == 0))
                 {
+                    myAudioSource.Play();
                     hit.transform.GetComponent<Receptacle>().id = 1;
                     gameObject.GetComponent<InitData>().state = 4;
                     gameObject.transform.position = hit.transform.GetComponent<Receptacle>().empty.position;

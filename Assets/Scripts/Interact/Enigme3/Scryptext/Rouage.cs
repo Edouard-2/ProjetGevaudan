@@ -9,6 +9,8 @@ public class Rouage : MonoBehaviour
     public List<string> letterList;
     private int indexLetter = 0;
 
+    AudioSource myAudioSource;
+
     public bool solve = false;
 
     float rotateData = 60;
@@ -18,6 +20,7 @@ public class Rouage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        myAudioSource = FindObjectOfType<ScryptTextManager>().GetComponent<AudioSource>();
         initPoint = -1000000;
         actualiseLetter();
     }
@@ -70,11 +73,13 @@ public class Rouage : MonoBehaviour
         if( Input.GetAxis("Mouse Y") > 0)
         {
             switchLetter(-1);
+            myAudioSource.Play();
             gameObject.transform.RotateAround(GetComponent<Renderer>().bounds.center, Vector3.right, rotateData);
         }
         else if( Input.GetAxis("Mouse Y") < 0)
         {
             switchLetter(1);
+            myAudioSource.Play();
             gameObject.transform.RotateAround(GetComponent<Renderer>().bounds.center, Vector3.left, rotateData);
         }
     }

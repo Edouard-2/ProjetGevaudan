@@ -16,6 +16,9 @@ public class BoutLabyrinthDrag : MonoBehaviour
 
     public LabyrinthManager myLabyrinthManager;
 
+    public AudioSource myAudioSource;
+
+
     public BoutLabyrinthDrag autreBout1;
     public BoutLabyrinthDrag autreBout2;
 
@@ -26,6 +29,7 @@ public class BoutLabyrinthDrag : MonoBehaviour
     void Start()
     {
         myLabyrinthManager = FindObjectOfType<LabyrinthManager>();
+        myAudioSource = myLabyrinthManager.GetComponent<AudioSource>();
         initPoint = new Vector2(-10000, -100000);
     }
 
@@ -136,6 +140,8 @@ public class BoutLabyrinthDrag : MonoBehaviour
                     autreBout2.idCentre != 1)
                 {
                     idCentre = 1;
+
+                    launchAudio();
                     gameObject.transform.position = new Vector3(gameObject.transform.position.x - 0.01f * -1, gameObject.transform.position.y + -1 * 0.01f, gameObject.transform.position.z - 1 * 0.12f);
 
                 }
@@ -146,12 +152,13 @@ public class BoutLabyrinthDrag : MonoBehaviour
                     if(autreBout1.idCentre != 2 && autreBout2.idCentre != 2)
                     {
                         idCentre = 2;
-
+                        launchAudio();
                         gameObject.transform.position = new Vector3(gameObject.transform.position.x - 0.06f * -1, gameObject.transform.position.y + -1 * 0.08f, gameObject.transform.position.z + -1 * 0.0475f);
                     }
                     else if (autreBout1.idCentre != 3 && autreBout2.idCentre != 3)
                     {
                         idCentre = 3;
+                        launchAudio();
                         gameObject.transform.position = new Vector3(gameObject.transform.position.x - 0.06f * -1, gameObject.transform.position.y + -1 * 0.08f, gameObject.transform.position.z + 1 * 0.0475f);
                     }
                 }
@@ -162,7 +169,8 @@ public class BoutLabyrinthDrag : MonoBehaviour
                     //Verif des autres poistions des bouts
                     autreBout1.idCentre != 1 && autreBout2.idCentre != 1)
                 {
-                    if(idCentre == 2)
+                    launchAudio();
+                    if (idCentre == 2)
                     {
                         gameObject.transform.position = new Vector3(gameObject.transform.position.x - 0.06f * 1, gameObject.transform.position.y + 1 * 0.08f, gameObject.transform.position.z + 1 * 0.0475f);
 
@@ -181,6 +189,7 @@ public class BoutLabyrinthDrag : MonoBehaviour
                     //Verif des autres poistions des bouts
                     autreBout1.idCentre !=3 && autreBout2.idCentre != 3)
                 {
+                    launchAudio();
                     idCentre = 3;
                     gameObject.transform.position = new Vector3(gameObject.transform.position.x , gameObject.transform.position.y , gameObject.transform.position.z +1 * 0.095f);
 
@@ -192,6 +201,7 @@ public class BoutLabyrinthDrag : MonoBehaviour
                     //Verif des autres poistions des bouts
                     autreBout2.idCentre != 2 && autreBout2.idCentre != 2)
                 {
+                    launchAudio();
                     idCentre = 2;
                     gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z - 1 * 0.095f);
                 }
@@ -208,8 +218,9 @@ public class BoutLabyrinthDrag : MonoBehaviour
         {
             if(idCentre == 1)
             {
+                launchAudio();
                 idCentre = 0;
-                gameObject.transform.position = new Vector3(gameObject.transform.position.x - 0.01f * 1, gameObject.transform.position.y + 1 * 0.02f, gameObject.transform.position.z + 1 * 0.12f);
+                gameObject.transform.position = new Vector3(gameObject.transform.position.x - 0.01f * 1, gameObject.transform.position.y + 1 * 0.01f, gameObject.transform.position.z + 1 * 0.12f);
 
             }
             else
@@ -222,7 +233,7 @@ public class BoutLabyrinthDrag : MonoBehaviour
     //Bouger la case
     void MoveCase(float _i)
     {
-
+        launchAudio();
         Vector3 pos = new Vector3(0, dir.y * 0.107f, dir.x * 0.13f);
 
         if (pos.y != 0)
@@ -242,6 +253,15 @@ public class BoutLabyrinthDrag : MonoBehaviour
         {
             print("bravo");
             myLabyrinthManager.finishLabyrinth();
+        }
+    }
+
+    void launchAudio()
+    {
+
+        if (myAudioSource.time > 0.2f || !myAudioSource.isPlaying)
+        {
+            myAudioSource.Play();
         }
     }
 }

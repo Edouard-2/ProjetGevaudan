@@ -8,6 +8,8 @@ public class CadenaRouage : MonoBehaviour
 
     public bool solve = false;
 
+    AudioSource myAudioSource;
+
     float rotateData = 36;
 
     float initPoint;
@@ -15,6 +17,7 @@ public class CadenaRouage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        myAudioSource = GetComponent<AudioSource>();
         initPoint = -1000000;
         verifCode();
     }
@@ -67,11 +70,15 @@ public class CadenaRouage : MonoBehaviour
         if (Input.GetAxis("Mouse Y") > 0)
         {
             addNumber(1);
+
+            myAudioSource.Play();
             gameObject.transform.RotateAround(GetComponent<Renderer>().bounds.center, Vector3.left, rotateData);
         }
         else if (Input.GetAxis("Mouse Y") < 0)
         {
             addNumber(-1);
+
+            myAudioSource.Play();
             gameObject.transform.RotateAround(GetComponent<Renderer>().bounds.center, Vector3.right, rotateData);
         }
     }

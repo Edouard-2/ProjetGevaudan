@@ -39,8 +39,11 @@ public class PapierManager : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
                 //On verifie qu'il n'est pas déja en avancé
-                if (hit.transform.tag == "Papier" && zoom && raycastReady) 
+                if (hit.transform.tag == "Papier" && zoom && raycastReady && hit.transform.GetComponent<PapierMovement>().state == 0) 
                 {
+                    GetComponent<AudioSource>().Play();
+
+                    FindObjectOfType<PapierCompteur>().VerifDataText();
                     hit.transform.SetParent(gameObject.transform);
                     // On change son état
                     hit.transform.GetComponent<PapierMovement>().state = 1;

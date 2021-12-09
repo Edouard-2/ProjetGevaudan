@@ -8,11 +8,17 @@ public class GameManager : MonoBehaviour
     public int gameState = 0;
     public int prevGameState;
 
+    public AudioSource Music;
+    public AudioSource Ambiance;
+
     // Start is called before the first frame update
     void Start()
     {
         prevGameState = 0;
         gameState = 0;
+
+        Music.Play();
+        Ambiance.Play();
     }
 
     // Changement de state

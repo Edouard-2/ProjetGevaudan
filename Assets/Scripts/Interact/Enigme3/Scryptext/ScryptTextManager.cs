@@ -12,6 +12,8 @@ public class ScryptTextManager : MonoBehaviour
     public GameObject hitBoxActive;
     public GameObject hitBoxDesactive;
 
+    public AudioSource mySourceAudio;
+
     public GameObject camera;
     public VoixManager myVoixManager;
 
@@ -72,6 +74,7 @@ public class ScryptTextManager : MonoBehaviour
     {
         FindObjectOfType<GameManager>().gameState = -1;
         yield return new WaitForSeconds(0.3f);
+        mySourceAudio.Play();
         gameObject.GetComponent<Animator>().SetTrigger("open");
         StartCoroutine(activePorteAnimation());
     }

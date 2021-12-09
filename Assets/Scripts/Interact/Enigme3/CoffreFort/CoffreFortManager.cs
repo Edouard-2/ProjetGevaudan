@@ -75,6 +75,7 @@ public class CoffreFortManager : MonoBehaviour
         print(nbrWin);
         if (nbrWin == 4)
         {
+            
             myGameManager.switchZoom(3);
             cameraManager.moveCamera(gameObject, false);
             foreach (CaseDrag item in listCases)
@@ -86,10 +87,21 @@ public class CoffreFortManager : MonoBehaviour
 
             CorrectPorte.SetActive(true);
 
-            gameObject.SetActive(false);
-            this.enabled = false;
+            GetComponent<AudioSource>().Play();
+            GetComponent<MeshRenderer>().enabled = false;
+            gameObject.transform.position = new Vector3(3000, 30000, 3000);
 
-            CorrectPorte.GetComponent<Animator>().SetTrigger("open");
+            StartCoroutine(AnimationDelay());
+
         }
+    }
+
+    IEnumerator AnimationDelay()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        this.enabled = false;
+        CorrectPorte.GetComponent<Animator>().SetTrigger("open");
+
     }
 }

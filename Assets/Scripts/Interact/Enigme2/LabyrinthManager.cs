@@ -9,6 +9,8 @@ public class LabyrinthManager : MonoBehaviour
     public GameObject receptableClefLabyrinth;
     public GameObject porteDessus;
 
+    public AudioSource myAudioFinish;
+
     public GameObject AntiHitbox;
     public GameObject LabyrinthRetour;
 
@@ -24,6 +26,9 @@ public class LabyrinthManager : MonoBehaviour
 
     public void finishLabyrinth()
     {
+
+        myAudioFinish.Play();
+
         foreach (BoutLabyrinthDrag item in myListBout)
         {
             item.GetComponent<BoxCollider>().enabled = false;
